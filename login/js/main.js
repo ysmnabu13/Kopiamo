@@ -12,3 +12,19 @@ $(function() {
     
 
 });
+
+function showPass() {
+	var x = document.getElementById("password");
+	if (x.type === "password") {
+	  x.type = "text";
+	} else {
+	  x.type = "password";
+	}
+  } 
+
+// function validator(){
+// 	var x = document.getElementById("username").value;
+// 	var y = document.getElementById("password").value;
+
+
+// }
