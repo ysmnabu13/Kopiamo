@@ -14,4 +14,6 @@
 
  <p>Welcome to index</p>
 
+ <a href="../profile/profile.php">Profile</a>
+ <br/>
  <a href="index.php?logout=true">Logout</a>
