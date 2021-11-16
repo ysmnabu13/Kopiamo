@@ -43,11 +43,11 @@
               <form action="#" method="post">
                 <div class="form-group first">
                   <label for="username">Username</label>
-                  <input type="text" class="form-control" placeholder="your-email@gmail.com" id="username">
+                  <input type="text" class="form-control" placeholder="your-email@gmail.com" name="username" id="username">
                 </div>
                 <div class="form-group last mb-3">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" placeholder="Your Password" id="pword">
+                  <input type="password" class="form-control" placeholder="Your Password" name="pword" id="pword">
                 </div>
 
                 <div class="d-sm-flex mb-5 align-items-center">
@@ -58,7 +58,7 @@
                   <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
                 </div>
 
-                <input type="submit" value="Log In" class="btn btn-block btn-primary">
+                <input type="submit" value="Log In" id="login" class="btn btn-block btn-primary">
 
               </form>
             </div>
