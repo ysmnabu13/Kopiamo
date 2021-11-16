@@ -4,16 +4,16 @@
 	require_once('config.php');
 
 	$username = $_POST['username'];
-	$password = sha1($_POST['password']);
+	$pword = sha1($_POST['pword']);
 
-	$sql = "SELECT * FROM users WHERE email = ? AND password = ? LIMIT 1";
+	$sql = "SELECT * FROM users WHERE username = ? AND pword = ? LIMIT 1";
 	$stmtselect = $db->prepare($sql);
-	$result = $stmtselect->execute([$username, $password]);
+	$result = $stmtselect->execute([$username, $pword]);
 
 	if ($result) {
 		$user = $stmtselect->fetch(PDO::FETCH_ASSOC);
 		if ($stmtselect->rowCount() > 0) {
-			$_SESSION['userlogin'] = $user;
+			$_SESSION['kopiamo'] = $user;
 			echo '1'; 
 		}
 		else{

@@ -4,14 +4,14 @@
 
 <?php 
 	if (isset($_POST)) {
-		$firstname=$_POST['name'];
-		$lastname=$_POST['username'];
+		$nama=$_POST['nama'];
+		$username=$_POST['username'];
 		$email=$_POST['email'];
-		$password=sha1($_POST['password']);
+		$pword=sha1($_POST['pword']);
 
-		$sql = "INSERT INTO users (name, username, email, password) VALUES (?,?,?,?)";
+		$sql = "INSERT INTO users (nama, username, email, pword) VALUES (?,?,?,?)";
 		$stmtinsert = $db->prepare($sql);
-		$result = $stmtinsert->execute([$name,$username,$email,$password]);
+		$result = $stmtinsert->execute([$nama,$username,$email,$pword]);
 		if ($result) {
 			echo "Register Success";
 		}

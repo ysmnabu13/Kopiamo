@@ -42,8 +42,8 @@
               </div>
               <form action="registration.php" method="post">
                 <div class="form-group mb-3">
-                    <label for="fname">Name</label>
-                    <input type="text" name="fname" class="form-control" placeholder="John Doe" id="fname" required>
+                    <label for="nama">Name</label>
+                    <input type="text" name="nama" class="form-control" placeholder="John Doe" id="nama" required>
                 </div>
 
                 <div class="form-group mb-3">
@@ -58,7 +58,7 @@
 
                 <div class="form-group mb-5">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Your Password" id="password" required>
+                    <input type="password" class="form-control" placeholder="Your Password" id="pword" required>
                     <label class="control control--checkbox mb-1 mt-2 mb-sm-0"><span class="caption">Show password</span>
                         <input type="checkbox"  onclick="showPass()"/>
                         <div class="control__indicator"></div>
@@ -97,6 +97,47 @@
 
             });
         });
+    </script>
+
+    <script type="text/javascript">
+      $(function(){
+        $('#register').click(function(e){
+
+          var valid = this.form.checkValidity();
+          if (valid) {
+
+            var nama =$('#nama').val();
+            var username =$('#username').val();
+            var email =$('#email').val();
+            var pword =$('#pword').val();
+
+            e.preventDefault();
+
+            $.ajax({
+              type: 'POST',
+              url: 'process.php',
+              data: {nama: nama, username: username, email:email, pword:pword},
+              success: function(data){
+                alert('You have successfully registered!');
+                /*Swal.fire({
+                  'title': 'Yeay!',
+                  'text': data,
+                  'icon': 'success'*/
+                })
+              },
+              error: function(data){
+                Swal.fire({
+                  /*'title': 'Oh No!',
+                  'text': 'Register Error',
+                  'icon': 'error'*/
+                })
+              }
+            })
+          }
+          else{}
+
+        });
+      });
     </script>
 
 

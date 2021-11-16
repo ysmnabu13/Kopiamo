@@ -47,7 +47,7 @@
                 </div>
                 <div class="form-group last mb-3">
                   <label for="password">Password</label>
-                  <input type="password" class="form-control" placeholder="Your Password" id="password">
+                  <input type="password" class="form-control" placeholder="Your Password" id="pword">
                 </div>
 
                 <div class="d-sm-flex mb-5 align-items-center">
@@ -76,5 +76,39 @@
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+    <script>
+      $(function(){
+        $('#login').click(function(e){
+          var valid = this.form.checkValidity();
+
+          if (valid) {
+            var username = $('#username').val();
+            var pword = $('#pword').val();
+          }
+
+          e.preventDefault();
+
+          $.ajax({
+            type: 'POST',
+            url: 'jslogin.php',
+            data: {username: username, pword: pword},
+            success: function(data){
+              if ($.trim(data) === "1") {
+                setTimeout('window.location.href = "index.php"', 1000);
+              }
+              else{
+                alert('Your account does not exist')
+              }
+            },
+            error: function(data){
+              alert('Error while processing data');
+            }
+          });
+        });
+      });
+    </script>
   </body>
 </html>
