@@ -11,8 +11,8 @@
 	$sql = "SELECT * FROM users WHERE username = '$username' AND pword = '$pword' LIMIT 1";
 	$result = mysqli_query($conn, $sql);
 
-  $rows=mysqli_fetch_assoc($result);
-  $count=mysqli_num_rows($result);
+	$rows=mysqli_fetch_assoc($result);
+	$count=mysqli_num_rows($result);
 
 
   	if($count == 1)
