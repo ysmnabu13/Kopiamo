@@ -83,21 +83,6 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
-    <script type="text/javascript">
-        $(function(){
-            $('#register').click(function(){
-
-                // Swal.fire({
-                //     'title' : 'Registration success!',
-                //     'text' : 'You have successfully registered to Kopiamoo',
-                //     'type' : 'success'
-                // })
-
-                alert('You have successfully registered!');
-
-            });
-        });
-    </script>
 
     <script type="text/javascript">
       $(function(){
