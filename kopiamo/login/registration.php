@@ -1,4 +1,4 @@
-<?php 
+<?php
 	require_once('config.php');
 ?>
 
@@ -50,7 +50,7 @@
                     <label for="username">Username</label>
                     <input type="text" name="username" class="form-control" placeholder="john420" id="username" required>
                 </div>
-            
+
                 <div class="form-group mb-3">
                     <label for="email">Email</label>
                     <input type="email" name="email" class="form-control" placeholder="Your email" id="email" required>
@@ -58,15 +58,17 @@
 
                 <div class="form-group mb-5">
                     <label for="password">Password</label>
-                    <input type="password" class="form-control" placeholder="Your Password" id="pword" required>
+                    <input type="password" class="form-control" placeholder="Your Password" id="pword" name="pword" required>
                     <label class="control control--checkbox mb-1 mt-2 mb-sm-0"><span class="caption">Show password</span>
-                        <input type="checkbox"  onclick="showPass()"/>
+                        <input type="checkbox"  onclick="showPass()" checked/>
                         <div class="control__indicator"></div>
                       </label>
                 </div>
-
-
-                <input type="submit" id="register" value="Sign Up" class="btn btn-block btn-primary">
+								<div class="d-flex justify-content-center links">
+		                 <a style="text-decoration:none" href="login.php" class="ml-2">Sign In</a>
+		            </div>
+								<br/>
+                <input type="submit" id="signingup" value="Sign Up" class="btn btn-block btn-primary">
 
               </form>
             </div>
@@ -82,47 +84,51 @@
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/main.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
     <script type="text/javascript">
-      $(function(){
-        $('#register').click(function(e){
 
-          var valid = this.form.checkValidity();
-          if (valid) {
+						$(function()
+						{
+							$('#signingup').click(function(e)
+							{
+								var valid = this.form.checkValidity();
+								if(valid){
+									var nama =$('#nama').val();
+			            var username =$('#username').val();
+			            var email =$('#email').val();
+			            var pword =$('#pword').val();
+									e.preventDefault();
 
-            var nama =$('#nama').val();
-            var username =$('#username').val();
-            var email =$('#email').val();
-            var pword =$('#pword').val();
+									$.ajax( //ajax can update webpage without reloading,send data to a web server
+									{
+										type: 'POST',
+										url: 'process.php',
+										data: {nama: nama, username: username, email:email, pword:pword},
+										success: function(data)
+										{
+										Swal.fire(  //swal.fire is sweetalert untuk keluarkan window prompt using the attributes(title,text,type)
+										{
+													'title': 'Successful',
+													'text': data,
+													'type': 'success'
+													})
 
-            e.preventDefault();
+										},
+										error: function(data)
+										{
+											Swal.fire(
+											{
+													'title': 'Errors',
+													'text': 'Error in saving data.',
+													'type': 'error'
+											})
+										}
+									});
+								}
+							});
+						});
 
-            $.ajax({
-              type: 'POST',
-              url: 'process.php',
-              data: {nama: nama, username: username, email:email, pword:pword},
-              success: function(data){
-                alert('You have successfully registered!');
-                /*Swal.fire({
-                  'title': 'Yeay!',
-                  'text': data,
-                  'icon': 'success'*/
-                })
-              },
-              error: function(data){
-                Swal.fire({
-                  /*'title': 'Oh No!',
-                  'text': 'Register Error',
-                  'icon': 'error'*/
-                })
-              }
-            })
-          }
-          else{}
-
-        });
-      });
     </script>
 
 

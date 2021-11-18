@@ -1,7 +1,7 @@
-<?php 
+<?php
 	session_start();
 
-	if (isset($_SESSION['kopiamo'])) {		
+	if (isset($_SESSION['kopiamo'])) {
 		header("Location: index.php");
 	}
  ?>
@@ -57,6 +57,10 @@
                   </label>
                   <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
                 </div>
+								<div class="d-flex justify-content-center links">
+						         <a href="registration.php" class="ml-2">Sign Up</a>
+						    </div>
+								<br/>
 
                 <input type="submit" value="Log In" id="login" class="btn btn-block btn-primary">
 
@@ -91,22 +95,20 @@
 
           e.preventDefault();
 
-          $.ajax({
-            type: 'POST',
-            url: 'jslogin.php',
-            data: {username: username, pword: pword},
-            success: function(data){
-              if ($.trim(data) === "1") {
-                setTimeout('window.location.href = "index.php"', 1000);
-              }
-              else{
-                alert('Your account does not exist')
-              }
-            },
-            error: function(data){
-              alert('Error while processing data');
-            }
-          });
+					$.ajax({
+						type: 'POST',
+						url: 'jslogin.php',
+						data:  {username: username, pword: pword},
+						success: function(data){
+							alert(data);
+							if($.trim(data) == 'Click OK to continue'){
+								setTimeout(' window.location.href =  "index.php"', 1000);
+							}
+						},
+						error: function(data){
+							alert('There were erros while signing in.');
+						}
+					});
         });
       });
     </script>
