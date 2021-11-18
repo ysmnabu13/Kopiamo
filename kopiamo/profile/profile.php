@@ -61,7 +61,7 @@
                     <a class="nav-link" href="#">News & Promotion</a>
                     <a class="nav-link" href="#">About us</a>
                 </div>
-                
+
                 <li class="nav-item dropdown d-flex">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="img/avatar.jpg" alt="avatar.jpg" class="d-inline-block align-text-top rounded-circle" height="30">
@@ -69,14 +69,14 @@
                     <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-md-start" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" aria-current="page" href="profile.html">Profile</a>
                         <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="#">Logout</a>
+                        <a class="dropdown-item" href="../login/logout.php">Logout</a>
                     </ul>
                 </li>
-                
+
             </div>
         </div>
     </nav>
-    
+
     <!--My Profile-->
     <br><br>
     <div class="container shadow-sm pt-5">
@@ -169,7 +169,7 @@
         </div>
       </form>
     </div>
-    
+
     <!--Footer-->
     <!-- <footer class="bg-dark text-center text-white fixed-bottom">
         <div class="container p-4">
