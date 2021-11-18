@@ -87,7 +87,6 @@
               echo "
               <div class='col-auto'>
               <input class='form-control rounded' type='text' id='username' value='". $username ."'></div>"
-              
               ?>
             </div>
             <div class="row g-3 align-items-center">
