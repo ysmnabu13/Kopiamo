@@ -15,10 +15,10 @@ $(function() {
 
 function showPass() {
 	var x = document.getElementById("pword");
-	if (x.type === "pword") {
+	if (x.type === "password") {
 	  x.type = "text";
 	} else {
-	  x.type = "pword";
+	  x.type = "password";
 	}
   } 
 
