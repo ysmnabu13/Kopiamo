@@ -5,6 +5,8 @@
 
 	$username = $_POST['username'];
 	$pword = sha1($_POST['pword']);
+	$_SESSION['username'] = $username;
+	$_SESSION['pword'] = $pword;
 
 	$sql = "SELECT * FROM users WHERE username = ? AND pword = ? LIMIT 1";
 	$stmtselect = $db->prepare($sql);

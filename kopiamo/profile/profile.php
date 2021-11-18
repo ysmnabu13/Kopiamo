@@ -26,7 +26,10 @@
 
     <!--Session-->
     <?php
-    session_start();
+      require_once('../login/config.php');
+      session_start();
+      $username = $_SESSION['username'];
+      $pwod = $_SESSION['pword'];
     ?>
 
     <!--Navbar-->
@@ -80,9 +83,12 @@
               <div class="col-auto">
                 <label for="username" class="col-form-label">Username:</label>
               </div>
-              <div class="col-auto">
-                <input class="form-control rounded" type="text" id="username" value="john420">
-              </div>
+              <?php
+              echo "
+              <div class='col-auto'>
+              <input class='form-control rounded' type='text' id='username' value='". $username ."'></div>"
+              
+              ?>
             </div>
             <div class="row g-3 align-items-center">
               <div class="col-auto">
