@@ -29,7 +29,15 @@
       require_once('../login/config.php');
       session_start();
       $username = $_SESSION['username'];
-      $pwod = $_SESSION['pword'];
+      $pword = $_SESSION['pword'];
+      $result = mysqli_query($conn, "SELECT * FROM users");
+
+      while($row = mysqli_fetch_assoc($result)){
+        if($row['username'] == $username){
+          $name = $row['nama'];
+          $email = $row['email'];
+        }
+      }
     ?>
 
     <!--Navbar-->
@@ -93,17 +101,23 @@
               <div class="col-auto">
                 <label for="email" class="col-form-label">Email:</label>
               </div>
-              <div class="col-auto">
-                <input class="form-control rounded" type="text" id="email" value="john420@gmail.com" disabled>
-              </div>
+              <?php
+              echo "
+              <div class='col-auto'>
+                <input class='form-control rounded' type='text' id='email' value='". $email ."' disabled>
+              </div>"
+              ?>
             </div>
             <div class="row g-3 align-items-center">
               <div class="col-auto">
                 <label for="fullname" class="col-form-label">Full name:</label>
               </div>
-              <div class="col-auto">
-                <input class="form-control rounded" type="text" id="fullname" placeholder="Enter your full name">
-              </div>
+              <?php
+              echo "
+              <div class='col-auto'>
+                <input class='form-control rounded' type='text' id='fullname' value='". $name . ">
+              </div>"
+              ?>
             </div>
             <div class="row g-3 align-items-center">
               <div class="col-auto">
