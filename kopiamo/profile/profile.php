@@ -115,7 +115,7 @@
               <?php
               echo "
               <div class='col-auto'>
-                <input class='form-control rounded' type='text' id='fullname' value='". $name . ">
+                <input class='form-control rounded' type='text' id='fullname' value='". $name . "'>
               </div>"
               ?>
             </div>
