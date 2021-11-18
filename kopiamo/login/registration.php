@@ -60,7 +60,7 @@
                     <label for="password">Password</label>
                     <input type="password" class="form-control" placeholder="Your Password" id="pword" name="pword" required>
                     <label class="control control--checkbox mb-1 mt-2 mb-sm-0"><span class="caption">Show password</span>
-                        <input type="checkbox"  onclick="showPass()" checked/>
+                        <input type="checkbox"  onclick="showPass()"/>
                         <div class="control__indicator"></div>
                       </label>
                 </div>
