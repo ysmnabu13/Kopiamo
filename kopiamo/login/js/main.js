@@ -14,7 +14,7 @@ $(function() {
 });
 
 function showPass() {
-	var x = document.getElementById("password");
+	var x = document.getElementById("pword");
 	if (x.type === "password") {
 	  x.type = "text";
 	} else {
