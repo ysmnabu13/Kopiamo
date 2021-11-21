@@ -165,33 +165,33 @@
               if($gender == "Male"){
                 echo "
                 <div class='form-check form-check-inline'>
-                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Male' checked>
-                  <label class='form-check-label' for='Male'>Male</label>
+                  <input class='form-check-input' type='radio' name='gender' id='genderm' value='Male' checked>
+                  <label class='form-check-label' for='gender'>Male</label>
                 </div>
                 <div class='form-check form-check-inline'>
-                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Female'>
-                  <label class='form-check-label' for='Female'>Female</label>
+                  <input class='form-check-input' type='radio' name='gender' id='genderf' value='Female'>
+                  <label class='form-check-label' for='gender'>Female</label>
                 </div>";
               }
               else if($gender == "Female"){
                 echo "
                 <div class='form-check form-check-inline'>
-                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Male'>
-                  <label class='form-check-label' for='Male'>Male</label>
+                  <input class='form-check-input' type='radio' name='gender' id='genderm' value='Male'>
+                  <label class='form-check-label' for='gender'>Male</label>
                 </div>
                 <div class='form-check form-check-inline'>
-                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Female' checked>
-                  <label class='form-check-label' for='Female'>Female</label>
+                  <input class='form-check-input' type='radio' name='gender' id='genderf' value='Female' checked>
+                  <label class='form-check-label' for='gender'>Female</label>
                 </div>";
               }else{
                 echo "
                 <div class='form-check form-check-inline'>
-                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Male'>
-                  <label class='form-check-label' for='Male'>Male</label>
+                  <input class='form-check-input' type='radio' name='gender' id='genderm' value='Male'>
+                  <label class='form-check-label' for='gender'>Male</label>
                 </div>
                 <div class='form-check form-check-inline'>
-                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Female'>
-                  <label class='form-check-label' for='Female'>Female</label>
+                  <input class='form-check-input' type='radio' name='gender' id='genderf' value='Female'>
+                  <label class='form-check-label' for='gender'>Female</label>
                 </div>";
               }
             ?>
@@ -255,7 +255,11 @@
             var nama = $('#fullname').val();
             var phonenum = $('#phonenumber').val();
             var address = $('#address').val();
-            var gender = $('#gender').val();
+            if(document.getElementById('genderm').checked == true){   
+              var gender = $('#genderm').val();
+            }else if(document.getElementById('genderf').checked == true){  
+              var gender = $('#genderf').val();
+            }else{}
             var dob = $('#dateofbirth').val();
             // var avatar = $('#avatar').val();
             e.preventDefault();
