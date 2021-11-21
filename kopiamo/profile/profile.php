@@ -36,6 +36,10 @@
         if($row['username'] == $username){
           $name = $row['nama'];
           $email = $row['email'];
+          $phonenum = $row['phonenum'];
+          $address = $row['address'];
+          $gender = $row['gender'];
+          $dob = $row['dob'];
         }
       }
     ?>
@@ -83,7 +87,7 @@
       <div class="row">
         <h1 class="my-4 text-center">My Profile</h1>
       </div>
-      <form action="#" method="POST">
+      <form action="profile.php" method="POST">
         <div class="row pb-4 lead">
           <!--Left side form-->
           <div class="col-md-8 ps-5 border-end">
@@ -92,9 +96,10 @@
                 <label for="username" class="col-form-label">Username:</label>
               </div>
               <?php
-              echo "
-              <div class='col-auto'>
-              <input class='form-control rounded' type='text' id='username' value='". $username ."'></div>"
+                echo "
+                <div class='col-auto'>
+                  <input class='form-control rounded' type='text' id='username' value='". $username ."'>
+                </div>";
               ?>
             </div>
             <div class="row g-3 align-items-center">
@@ -102,10 +107,10 @@
                 <label for="email" class="col-form-label">Email:</label>
               </div>
               <?php
-              echo "
-              <div class='col-auto'>
-                <input class='form-control rounded' type='text' id='email' value='". $email ."' disabled>
-              </div>"
+                echo "
+                <div class='col-auto'>
+                  <input class='form-control rounded' type='text' id='email' value='". $email ."' disabled>
+                </div>";
               ?>
             </div>
             <div class="row g-3 align-items-center">
@@ -113,44 +118,101 @@
                 <label for="fullname" class="col-form-label">Full name:</label>
               </div>
               <?php
-              echo "
-              <div class='col-auto'>
-                <input class='form-control rounded' type='text' id='fullname' value='". $name . "'>
-              </div>"
+                echo "
+                <div class='col-auto'>
+                  <input class='form-control rounded' type='text' id='fullname' value='". $name . "'>
+                </div>";
               ?>
             </div>
             <div class="row g-3 align-items-center">
               <div class="col-auto">
                 <label for="phonenumber" class="col-form-label">Phone number:</label>
               </div>
-              <div class="col-auto">
-                <input class="form-control rounded" type="text" id="phonenumber" value="+60">
-              </div>
+              <?php
+                if($phonenum == ""){
+                  echo "
+                  <div class='col-auto'>
+                    <input class='form-control rounded' type='text' id='phonenumber' value='+60'>
+                  </div>";
+                }else{
+                  echo "
+                  <div class='col-auto'>
+                    <input class='form-control rounded' type='text' id='phonenumber' value='". $phonenum ."'>
+                  </div>";
+                }
+              ?>
             </div>
             <div class="row g-3 align-items-center">
               <div class="col-auto">
                 <label for="address" class="col-form-label">Address:</label>
               </div>
-              <div class="col-auto">
-                <input class="form-control rounded" type="text" id="address" placeholder="Enter your address">
-              </div>
+              <?php
+                if($address == ""){
+                  echo "
+                  <div class='col-auto'>
+                    <input class='form-control rounded' type='text' id='address' placeholder='Enter your address'>
+                  </div>";
+                }else{
+                  echo "
+                  <div class='col-auto'>
+                    <input class='form-control rounded' type='text' id='address' value='". $address ."'>
+                  </div>";
+                }
+              ?>
             </div>
             <div class="form-check-inline">Gender:</div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
-              <label class="form-check-label" for="gender">Male</label>
-            </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
-              <label class="form-check-label" for="gender">Female</label>
-            </div><br>
+            <?php
+              if($gender == "Male"){
+                echo "
+                <div class='form-check form-check-inline'>
+                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Male' checked>
+                  <label class='form-check-label' for='Male'>Male</label>
+                </div>
+                <div class='form-check form-check-inline'>
+                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Female'>
+                  <label class='form-check-label' for='Female'>Female</label>
+                </div>";
+              }
+              else if($gender == "Female"){
+                echo "
+                <div class='form-check form-check-inline'>
+                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Male'>
+                  <label class='form-check-label' for='Male'>Male</label>
+                </div>
+                <div class='form-check form-check-inline'>
+                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Female' checked>
+                  <label class='form-check-label' for='Female'>Female</label>
+                </div>";
+              }else{
+                echo "
+                <div class='form-check form-check-inline'>
+                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Male'>
+                  <label class='form-check-label' for='Male'>Male</label>
+                </div>
+                <div class='form-check form-check-inline'>
+                  <input class='form-check-input' type='radio' name='gender' id='gender' value='Female'>
+                  <label class='form-check-label' for='Female'>Female</label>
+                </div>";
+              }
+            ?>
+            <br>
             <div class="row g-3 align-items-center">
               <div class="col-auto">
                 <label for="dateofbirth" class="col-form-label">Date of birth:</label>
               </div>
-              <div class="col-auto">
-                <input class=" form-control rounded" type="text" id="dateofbirth" placeholder="DD/MM/YYYY">
-              </div>
+              <?php
+              if($dob == ""){
+                echo"
+                <div class='col-auto'>
+                  <input class=' form-control rounded' type='text' id='dateofbirth' placeholder='DD/MM/YYYY'>
+                </div>";
+              }else{
+                echo"
+                <div class='col-auto'>
+                  <input class=' form-control rounded' type='text' id='dateofbirth' value='". $dob ."'>
+                </div>";
+              }
+              ?>
             </div>
           </div>
           <!--Right side profile picture-->
@@ -164,7 +226,7 @@
         </div>
         <div class="row">
           <div class="col p-3 ps-xl-5 ps-sm-4 ps-md-5">
-            <input type="submit" class="btn btn-primary" value="Update">
+            <input type="submit" id="update" class="btn btn-primary" value="Update">
           </div>
         </div>
       </form>
@@ -180,5 +242,38 @@
     <!--Javascript-->
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="js/bootstrap.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript">
+      $(function(){
+        $('#update').click(function(e){
+          var valid = this.form.checkValidity();
+          if(valid){
+            var username = $('#username').val();
+            var email = $('#email').val();
+            var nama = $('#fullname').val();
+            var phonenum = $('#phonenumber').val();
+            var address = $('#address').val();
+            var gender = $('#gender').val();
+            var dob = $('#dateofbirth').val();
+            // var avatar = $('#avatar').val();
+            e.preventDefault();
+
+            $.ajax({
+              type: 'POST',
+              url: 'updateprofile.php',
+              data: {username: username, email: email, nama: nama, phonenum: phonenum, address: address, gender: gender, dob: dob},
+              success: function(data){
+                alert('Profile updated!');
+              },
+              error: function(data){
+                alert('Failed to update profile.');
+              }
+            });
+          }else{}
+        });
+      });
+    </script>
     </body>
 </html>
