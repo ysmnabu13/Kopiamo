@@ -1,6 +1,5 @@
 <?php
     require_once('../login/config.php');
-    // session_start();
 
     if(isset($_POST)){
         $username = $_POST['username'];
@@ -17,7 +16,7 @@
         }else{
             echo "There was an error -> Error: " . $sql . "<br>" . mysqli_error($conn);
         }
-        
+
         mysqli_close($conn);
     }else{
         echo 'No data';
