@@ -58,7 +58,7 @@
                   <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
                 </div>
 								<div class="d-flex justify-content-center links">
-						         <a href="registration.php" class="ml-2">Sign Up</a>
+						         <a href="registration.blade.php" class="ml-2">Sign Up</a>
 						    </div>
 								<br/>
 
@@ -97,12 +97,12 @@
 
 					$.ajax({
 						type: 'POST',
-						url: 'jslogin.php',
+						url: 'jslogin.blade.php',
 						data:  {username: username, pword: pword},
 						success: function(data){
 							alert(data);
 							if($.trim(data) == 'Click OK to continue'){
-								setTimeout(' window.location.href =  "index.php"', 1000);
+								setTimeout(' window.location.href =  "index.blade.php"', 1000);
 							}
 						},
 						error: function(data){
