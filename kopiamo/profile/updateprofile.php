@@ -10,8 +10,6 @@
         $gender = $_POST['gender'];
         $dob = $_POST['dob'];
 
-        $folder = "profile_img/".$filename;
-
         $sql = "UPDATE users SET username='$username', nama='$nama', phonenum='$phonenum', address='$address', gender='$gender', dob='$dob' WHERE email='$email'";
         if(mysqli_query($conn, $sql)){
             echo "Working!";

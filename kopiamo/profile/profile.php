@@ -40,8 +40,29 @@
           $address = $row['address'];
           $gender = $row['gender'];
           $dob = $row['dob'];
-          // $avatar = $row['avatar'];
+          $avatar = $row['avatar'];
         }
+      }
+    ?>
+
+    <!--Upload files-->
+    <?php
+      if (isset($_POST['upload'])) {
+
+        $filename = $_FILES['uploadfile']['name'];
+        $tempname = $_FILES['uploadfile']['tmp_name'];    
+        $folder = 'profile_img/'.$filename;
+
+        $sql = "UPDATE users SET avatar='$filename' WHERE email='$email'";
+  
+        if(mysqli_query($conn, $sql)){
+          echo "<script type='text/javascript'>
+          alert('Profile picture updated!');
+          </script>";
+        }else{
+          echo "There was an error -> Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
+        move_uploaded_file($tempname, $folder);
       }
     ?>
 
@@ -69,7 +90,16 @@
 
                 <li class="nav-item dropdown d-flex">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="img/avatar.jpg" alt="avatar.jpg" class="d-inline-block align-text-top rounded-circle" height="30">
+                        <?php
+                          if($avatar == ""){
+                            echo"
+                            <img src='img/avatar.jpg' alt='avatar.jpg' class='d-inline-block align-text-top rounded-circle' height='30' width='30'>";
+                          }else{
+                            echo" 
+                            <img src='profile_img/". $avatar ."' alt='avatar.jpg' class='d-inline-block align-text-top rounded-circle' height='30' width='30'>";
+                          }
+                          
+                        ?>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-md-start" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" aria-current="page" href="profile.html">Profile</a>
@@ -215,22 +245,37 @@
               }
               ?>
             </div>
+            <div class="row">
+              <div class="col">
+                <input type="submit" id="update" class="btn btn-primary" value="Update">
+              </div>
+            </div>
           </div>
+      </form>    
+
           <!--Right side profile picture-->
           <div class="col-md-4 g-5">
-            <div class="card w-50 m-auto">
-              <img src="img/avatar.jpg" class="rounded-3">
-            </div><br>
-            <label class="form-label" for="avatar">Upload an image</label>
-            <input type="file" class="form-control" name="uploadfile" id="avatar">
+            <?php
+            if($avatar == ""){
+              echo"
+              <div class='card w-50 m-auto'>
+              <img src='img/avatar.jpg' class='rounded-3' height='200px' width='200px'>
+              </div><br>";
+            }else{
+              echo"
+              <div class='card w-50 m-auto'>
+              <img src='profile_img/". $avatar ."' class='rounded-3' height='200px' width='200px'>
+              </div><br>";
+            }
+            
+            ?>
+            <form action="profile.php" method="POST" enctype="multipart/form-data">
+              <label class="form-label" for="avatar">Upload an image</label>
+              <input type="file" class="form-control" name="uploadfile" id="avatar">
+              <button type="submit" class="btn btn-outline-primary btn-sm" name="upload">UPLOAD</button>
+            </form>
           </div>
         </div>
-        <div class="row">
-          <div class="col p-3 ps-xl-5 ps-sm-4 ps-md-5">
-            <input type="submit" name="update" id="update" class="btn btn-primary" value="Update">
-          </div>
-        </div>
-      </form>
     </div>
 
     <!--Footer-->
@@ -262,19 +307,12 @@
               var gender = $('#genderf').val();
             }else{}
             var dob = $('#dateofbirth').val();
-
-            <?php
-              $filename = $_FILES["uploadfile"]["name"];
-              $tempname = $_FILES["uploadfile"]["tmp_name"];
-            ?>
-            var avatar = $filename;
-
             e.preventDefault();
 
             $.ajax({
               type: 'POST',
               url: 'updateprofile.php',
-              data: {username: username, email: email, nama: nama, phonenum: phonenum, address: address, gender: gender, dob: dob, avatar: avatar},
+              data: {username: username, email: email, nama: nama, phonenum: phonenum, address: address, gender: gender, dob: dob},
               success: function(data){
                 alert('Profile updated!');
               },
