@@ -40,7 +40,7 @@
               <div class="text-center mb-5">
                 <h3>Sign up to <strong>Kopiamoo</strong></h3>
               </div>
-              <form action="registration.php" method="post">
+              <form action="registration.blade.php" method="post">
                 <div class="form-group mb-3">
                     <label for="nama">Name</label>
                     <input type="text" name="nama" class="form-control" placeholder="John Doe" id="nama" required>
