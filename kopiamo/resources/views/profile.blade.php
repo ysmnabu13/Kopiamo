@@ -11,11 +11,11 @@
         rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
         crossorigin="anonymous"
         >
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="css_copy/bootstrap.css">
         <!--Font Awesome-->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" />
         <!--Custom CSS-->
-        <link rel="stylesheet" type="text/css" href="css/styles.css">
+        <link rel="stylesheet" type="text/css" href="css_copy/styles.css">
         <!-- Google Fonts Roboto -->
         <link
         rel="stylesheet"
@@ -104,7 +104,7 @@
                     <ul class="dropdown-menu dropdown-menu-lg-end dropdown-menu-md-start" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" aria-current="page" href="profile.html">Profile</a>
                         <a class="dropdown-item" href="#">Settings</a>
-                        <a class="dropdown-item" href="../login/logout.php">Logout</a>
+                        <a class="dropdown-item" href="logout.blade.php">Logout</a>
                     </ul>
                 </li>
 
@@ -311,7 +311,7 @@
 
             $.ajax({
               type: 'POST',
-              url: 'updateprofile.php',
+              url: 'updateprofile.blade.php',
               data: {username: username, email: email, nama: nama, phonenum: phonenum, address: address, gender: gender, dob: dob},
               success: function(data){
                 alert('Profile updated!');
