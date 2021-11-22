@@ -40,6 +40,7 @@
           $address = $row['address'];
           $gender = $row['gender'];
           $dob = $row['dob'];
+          // $avatar = $row['avatar'];
         }
       }
     ?>
@@ -221,12 +222,12 @@
               <img src="img/avatar.jpg" class="rounded-3">
             </div><br>
             <label class="form-label" for="avatar">Upload an image</label>
-            <input type="file" class="form-control" id="avatar">
+            <input type="file" class="form-control" name="uploadfile" id="avatar">
           </div>
         </div>
         <div class="row">
           <div class="col p-3 ps-xl-5 ps-sm-4 ps-md-5">
-            <input type="submit" id="update" class="btn btn-primary" value="Update">
+            <input type="submit" name="update" id="update" class="btn btn-primary" value="Update">
           </div>
         </div>
       </form>
@@ -244,7 +245,7 @@
     <script src="js/bootstrap.js"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <script type="text/javascript">
       $(function(){
         $('#update').click(function(e){
@@ -261,13 +262,19 @@
               var gender = $('#genderf').val();
             }else{}
             var dob = $('#dateofbirth').val();
-            // var avatar = $('#avatar').val();
+
+            <?php
+              $filename = $_FILES["uploadfile"]["name"];
+              $tempname = $_FILES["uploadfile"]["tmp_name"];
+            ?>
+            var avatar = $filename;
+
             e.preventDefault();
 
             $.ajax({
               type: 'POST',
               url: 'updateprofile.php',
-              data: {username: username, email: email, nama: nama, phonenum: phonenum, address: address, gender: gender, dob: dob},
+              data: {username: username, email: email, nama: nama, phonenum: phonenum, address: address, gender: gender, dob: dob, avatar: avatar},
               success: function(data){
                 alert('Profile updated!');
               },
