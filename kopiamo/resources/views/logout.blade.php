@@ -11,6 +11,6 @@ session_destroy(); //destroy the session
 
 
 // go to login page
-header('Location: index.php');
+header('Location: index.blade.php');
 exit;
 ?>

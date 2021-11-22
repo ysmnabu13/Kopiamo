@@ -26,7 +26,7 @@
 
     <!--Session-->
     <?php
-      require_once('../login/config.php');
+      require_once('config.blade.php');
       session_start();
       $username = $_SESSION['username'];
       $pword = $_SESSION['pword'];

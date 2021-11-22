@@ -2,7 +2,7 @@
 	session_start();
 
 	if (isset($_SESSION['kopiamo'])) {
-		header("Location: index.php");
+		header("Location: index.blade.php");
 	}
  ?>
 <!doctype html>

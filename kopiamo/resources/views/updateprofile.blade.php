@@ -1,5 +1,5 @@
 <?php
-    require_once('../login/config.php');
+    require_once('config.blade.php');
 
     if(isset($_POST)){
         $username = $_POST['username'];

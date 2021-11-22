@@ -2,7 +2,7 @@
 //Name: Muihammad Zulhusni bin Mohd Azhar
 //Matric No:A19EC0108
 
-require_once('config.php');
+require_once('config.blade.php');
 
 
 if(isset($_POST)){

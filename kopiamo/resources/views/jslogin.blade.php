@@ -1,7 +1,7 @@
 <?php
 	session_start();
 
-	require_once('config.php');
+	require_once('config.blade.php');
 
 	$username = $_POST['username'];
 	$pword = sha1($_POST['pword']);
