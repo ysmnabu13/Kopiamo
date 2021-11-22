@@ -9,8 +9,11 @@
         $address = $_POST['address'];
         $gender = $_POST['gender'];
         $dob = $_POST['dob'];
+        $avatar = $_FILES['avatar'];
 
-        $sql = "UPDATE users SET username='$username', nama='$nama', phonenum='$phonenum', address='$address', gender='$gender' ,dob='$dob' WHERE email='$email'";
+        $folder = "profile_img/".$filename;
+
+        $sql = "UPDATE users SET username='$username', nama='$nama', phonenum='$phonenum', address='$address', gender='$gender', dob='$dob', avatar='$avatar' WHERE email='$email'";
         if(mysqli_query($conn, $sql)){
             echo "Working!";
         }else{
