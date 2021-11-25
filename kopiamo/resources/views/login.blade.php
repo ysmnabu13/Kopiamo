@@ -58,7 +58,7 @@
                   <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span>
                 </div>
 								<div class="d-flex justify-content-center links">
-						         <a href="registration.blade.php" class="ml-2">Sign Up</a>
+						         <a href="registration" class="ml-2">Sign Up</a>
 						    </div>
 								<br/>
 

@@ -1,6 +1,4 @@
-<?php
-	require_once('config.blade.php');
-?>
+
 
 <!doctype html>
 <html lang="en">
@@ -40,7 +38,7 @@
               <div class="text-center mb-5">
                 <h3>Sign up to <strong>Kopiamoo</strong></h3>
               </div>
-              <form action="registration.blade.php" method="post">
+              <form action="registration" method="post">
                 <div class="form-group mb-3">
                     <label for="nama">Name</label>
                     <input type="text" name="nama" class="form-control" placeholder="John Doe" id="nama" required>
@@ -65,7 +63,7 @@
                       </label>
                 </div>
 								<div class="d-flex justify-content-center links">
-		                 <a style="text-decoration:none" href="login.blade.php" class="ml-2">Sign In</a>
+		                 <a style="text-decoration:none" href="/" class="ml-2">Sign In</a>
 		            </div>
 								<br/>
                 <input type="submit" id="signingup" value="Sign Up" class="btn btn-block btn-primary">
@@ -93,6 +91,7 @@
 							$('#signingup').click(function(e)
 							{
 								var valid = this.form.checkValidity();
+
 								if(valid){
 									var nama =$('#nama').val();
 			            var username =$('#username').val();
@@ -100,19 +99,27 @@
 			            var pword =$('#pword').val();
 									e.preventDefault();
 
+                  $.ajaxSetup({
+                    headers: {
+                      'X-CSRF-TOKEN' : $("meta[name='csrf-token']").attr('content');
+                    }
+                  })
+
 									$.ajax( //ajax can update webpage without reloading,send data to a web server
 									{
 										type: 'POST',
-										url: 'process.blade.php',
+										url: "{{url('/process')}}",
 										data: {nama: nama, username: username, email:email, pword:pword},
 										success: function(data)
 										{
-										Swal.fire(  //swal.fire is sweetalert untuk keluarkan window prompt using the attributes(title,text,type)
-										{
-													'title': 'Successful',
-													'text': data,
-													'type': 'success'
-													})
+										// Swal.fire(  //swal.fire is sweetalert untuk keluarkan window prompt using the attributes(title,text,type)
+										// {
+										// 			'title': 'Successful',
+										// 			'text': data,
+										// 			'type': 'success'
+										// 			})
+
+
 
 										},
 										error: function(data)

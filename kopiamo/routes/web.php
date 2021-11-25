@@ -14,4 +14,38 @@ use App\Http\Controllers\PageController;
 |
 */
 
-Route::get('/', [PageController::class, 'index']);
+// Route::get('/', [PageController::class, 'index']);
+
+// Route::get('/login',[PageController::class, 'login']);
+
+Route::get('/', function(){
+    return view ('login');
+});
+
+Route::get('/jslogin', function(){
+    return view ('jslogin');
+});
+
+Route::get('/registration', function(){
+    return view ('registration');
+});
+
+Route::get('/index', function(){
+    return view ('index');
+});
+
+Route::get('/logout', function(){
+    return view ('logout');
+});
+
+Route::get('/process', function(){
+    return view ('process');
+});
+
+Route::get('/profile', function(){
+    return view ('profile');
+});
+
+Route::get('/updateprofile', function(){
+    return view ('updateprofile');
+});
