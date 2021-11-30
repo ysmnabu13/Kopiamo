@@ -37,6 +37,10 @@ Generate the key for your environment file, it will define the value for ‘APP_
 php artisan key:generate
 ```
 
+By now, you should have two new file and folder which are :
+1. .env
+2. 'vendor' folder
+
 # Edit then the .env file to suit your needs (APP_*, DB_*, …).
 ```
 DB_DATABASE=kopiamoaccounts
