@@ -8,45 +8,13 @@
 </p>
 
 
-## How to run kopiamo laravel project after cloning the code
+## How to run kopiamo laravel project 
 
 Originally posted on colorfield.be
 
 A quick todo list for setting up a freshly cloned project.
 
-Install the dependencies with Composer.
 
-## 1. Run composer update in VSCODE Terminal            
-```
-composer update
-composer dumpautoload -o
-```
-
-Check if the values in config/app.php meets your needs, depending where (staging, dev, …) and how (php -S, artisan, vm with a domain, …) you are running it.
-
-## 2. Generate key for .env
-
-Generate the key for your environment file, it will define the value for ‘APP_KEY=’
-```
-php artisan key:generate
-```
-
-## 3. Edit the .env file (if needed)
-```
-DB_DATABASE=kopiamoaccounts
-```
-
-
-## 4. Finish by clearing the config and generate the cache and run
-```
-php artisan config:clear
-php artisan config:cache
-```
-
-Time to check your site, depending on your environment, for development, the easiest way is to use Artisan.
-```
-php artisan serve
-```
-Originally posted on colorfield.be
+<a href="" ><img src="https://cdn.discordapp.com/attachments/909655552278282263/915616758344331315/unknown.png" width="600"></a></p>
 
 
