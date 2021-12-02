@@ -7,14 +7,27 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-
-## How to run kopiamo laravel project 
+## 
+# How to run kopiamo laravel project 
 
 Originally posted on colorfield.be
 
 A quick todo list for setting up a freshly cloned project.
 
+## 1. Follow pic
+<p><a href="" ><img src="https://cdn.discordapp.com/attachments/909655552278282263/915616758344331315/unknown.png" width="600"></a></p>
 
-<a href="" ><img src="https://cdn.discordapp.com/attachments/909655552278282263/915616758344331315/unknown.png" width="600"></a></p>
+## 2. Open newly cloned folder in VS Code
 
+## 3. Open XAMMP/Laragon start MySQL
 
+## 4. Create new database "kopiamoaccounts"
+
+## 5. Run in terminal
+```
+php artisan migrate
+```
+
+```
+php artisan serve
+```
