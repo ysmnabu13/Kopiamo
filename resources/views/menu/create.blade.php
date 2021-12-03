@@ -14,41 +14,41 @@
                     @csrf
                     <div class="shadow overflow-hidden sm:rounded-md">
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="name" class="block font-medium text-sm text-gray-700">Name</label>
-                            <input type="text" name="name" id="name" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                            <label for="menuName" class="block font-medium text-sm text-gray-700">Name</label>
+                            <input type="text" name="menuName" id="menuName" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('menuName', '') }}" />
-                            @error('name')
+                            @error('menuName')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="description" class="block font-medium text-sm text-gray-700">Description</label>
-                            <input type="text" name="description" id="description" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                            <label for="menuDesc" class="block font-medium text-sm text-gray-700">Description</label>
+                            <input type="text" name="menuDesc" id="menuDesc" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('menuDesc', '') }}" />
-                            @error('description')
+                            @error('menuDesc')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="type" class="block font-medium text-sm text-gray-700">Type</label>
-                            <input type="text" name="type" id="type"  class="form-input rounded-md shadow-sm mt-1 block w-full"
+                            <label for="menuType" class="block font-medium text-sm text-gray-700">Type</label>
+                            <input type="text" name="menuType" id="menuType"  class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('menuType', '') }}" />
-                            @error('type')
+                            @error('menuType')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
                         <div class="px-4 py-5 bg-white sm:p-6">
-                            <label for="price" class="block font-medium text-sm text-gray-700">Price</label>
-                            <input type="text" name="price" id="price" class="form-input rounded-md shadow-sm mt-1 block w-full"
+                            <label for="menuPrice" class="block font-medium text-sm text-gray-700">Price</label>
+                            <input type="text" name="menuPrice" id="menuPrice" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('menuPrice', '') }}" />
-                            @error('price')
+                            @error('menuPrice')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
 
                         <div class="flex items-center justify-end px-4 py-3 bg-gray-50 text-right sm:px-6">
-                            <button class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150">
-                                Create
+                            <button  type="submit" class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:shadow-outline-gray disabled:opacity-25 transition ease-in-out duration-150" 
+                             >   Create
                             </button>
                         </div>
                     </div>
