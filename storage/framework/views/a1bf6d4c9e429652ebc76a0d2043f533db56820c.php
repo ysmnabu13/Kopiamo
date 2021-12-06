@@ -14,9 +14,13 @@
 
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
-            <div class="block mb-8">
-                <a href="<?php echo e(route('menu.create')); ?>" class="bg-green-500 hover:bg-green text-white font-bold py-2 px-4 rounded">Add Menu</a>
-            </div>
+            <?php if(auth()->guard()->check()): ?> 
+                <?php if(Auth::user()->name === 'admin'): ?>
+                    <div class="block mb-8">
+                        <a href="<?php echo e(route('menu.create')); ?>" class="bg-green-500 hover:bg-green text-white font-bold py-2 px-4 rounded">Add Menu</a>
+                    </div>
+                <?php endif; ?>
+            <?php endif; ?>
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -68,16 +72,19 @@
 
                                         </td>
 
-
-                                        <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
-                                            <!--<a href="<?php echo e(route('menu.show', $menu->id)); ?>" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a> -->
-                                            <a href="<?php echo e(route('menu.edit', $menu->id)); ?>" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
-                                            <form class="inline-block" action="<?php echo e(route('menu.destroy', $menu->id)); ?>" method="POST" onsubmit="return confirm('Are you sure?');">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                                                <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">
-                                            </form>
-                                        </td>
+                                        <?php if(auth()->guard()->check()): ?>
+                                            <?php if(Auth::user()->name === 'admin'): ?>
+                                                <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
+                                                    <!--<a href="<?php echo e(route('menu.show', $menu->id)); ?>" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a> -->
+                                                    <a href="<?php echo e(route('menu.edit', $menu->id)); ?>" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+                                                    <form class="inline-block" action="<?php echo e(route('menu.destroy', $menu->id)); ?>" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                       <input type="hidden" name="_method" value="DELETE">
+                                                       <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
+                                                       <input type="submit" class="text-red-600 hover:text-red-900 mb-2 mr-2" value="Delete">
+                                                    </form>
+                                                </td>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
                                     </tr>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </tbody>
