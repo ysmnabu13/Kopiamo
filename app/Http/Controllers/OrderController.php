@@ -26,6 +26,7 @@ class OrderController extends Controller
         // return view('order.index')->with([
         //     'orders' => $orders
         // ]);
+        return view('order.order');
     }
 
     /**

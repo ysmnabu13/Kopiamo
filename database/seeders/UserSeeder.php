@@ -38,6 +38,14 @@ class UserSeeder extends Seeder
         'phonenum' => '013-4324230',
         ]
         );
+
+        User::create([
+        'name' => 'yoma',
+        'email' => 'yoma@gmail.com',
+        'password' => Hash::make('yoma12345'),
+        'phonenum' => '011-39097549',
+        ]
+        );
     
     }
 }
