@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('orderName');
             $table->decimal('orderPrice',10,2);
             $table->string('paymentType');
-            $table->string('totalPrice');
+            $table->decimal('totalPrice',10,2);
             $table->boolean('paymentStatus');
             $table->string('fullName')->nullable();
             $table->string('ccNumber')->nullable();

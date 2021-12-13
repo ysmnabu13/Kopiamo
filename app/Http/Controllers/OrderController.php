@@ -16,17 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        // $orders=Menu::all();
-        // foreach(Menu::all() as $menu){
-        //     echo $menu->menuName;
-        // }
-        // $orders = Menu::where('id', $currMenu)->findOrFail();
-        // echo $orders;
-        // echo $currMenu->id;
-        // return view('order.index')->with([
-        //     'orders' => $orders
-        // ]);
-        return view('order.index');
+        $orders = Order::all();
+        return view('order.index', compact('orders'));
     }
 
     /**

@@ -20,14 +20,85 @@
                 <h2>Active orders</h2>
             </div>
             <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-white">
-                <a href="/tracker.blade.php">Tracking order example (id)</a><br>
-                <i>List active orders (menu name, qty, price)</i>
+                <a href="#">Order detail page (items)</a><br>
+                <i>List active orders (id, time, total, order status)</i><br>
+                @foreach ($orders as $order)
+                    @if ($order->orderStatus != "Completed")
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->orderStatus}}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->orderName }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->orderPrice }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->paymentType }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->totalPrice }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->paymentStatus }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->fullName }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->ccNumber }}
+                            </td>
+                        </tr>
             </div>
             <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg font-semibold bg-gray-50">
                 <h2>Past orders</h2>
             </div>
             <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-white">
-                <i>List past orders (menu name, qty, price)</i>
+                <i>List past orders (id, time, total, order status)</i><br>
+                    @else
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->orderStatus}}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->orderName }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->orderPrice }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->paymentType }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->totalPrice }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->paymentStatus }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->fullName }}
+                            </td>
+
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                {{ $order->ccNumber }}
+                            </td>
+                        </tr>
+                    @endif
+                @endforeach
             </div>
         </div>
     </div>
