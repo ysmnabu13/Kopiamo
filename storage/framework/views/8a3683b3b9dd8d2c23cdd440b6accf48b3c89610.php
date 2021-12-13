@@ -70,7 +70,6 @@
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
-                <i>List active orders (id, time, total, order status)</i>
             </div><br><br>
             <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg font-semibold bg-gray-50">
                 <h2>Past orders</h2>
@@ -118,7 +117,6 @@
                     <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </table>
-                <i>List past orders (id, time, total, order status)</i>
             </div>
         </div>
     </div>
