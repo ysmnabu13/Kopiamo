@@ -83,7 +83,7 @@
                                                         </x-jet-button>
                                                     </form>
                                                 </td>
-                                            @endif
+                                            @endif                            
                                             
                                         @endauth
                                     </tr>
