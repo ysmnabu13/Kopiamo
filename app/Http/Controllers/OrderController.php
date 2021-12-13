@@ -94,4 +94,8 @@ class OrderController extends Controller
     {
         //
     }
+
+    public function tracker(){
+        return view('order.tracker');
+    }
 }

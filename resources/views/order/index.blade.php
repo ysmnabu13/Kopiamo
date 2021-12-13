@@ -20,7 +20,7 @@
                 <h2>Active orders</h2>
             </div>
             <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-white">
-                <a href="#">Order detail page (items)</a><br>
+                <a href="{{ route('order.tracker')}}">Order detail page (items)</a><br>
                 <i>List active orders (id, time, total, order status)</i><br>
                 @foreach ($orders as $order)
                     @if ($order->orderStatus != "Completed")
