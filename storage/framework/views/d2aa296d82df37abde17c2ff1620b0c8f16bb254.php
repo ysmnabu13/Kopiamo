@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
 
 <head>
     <meta charset="UTF-8">
@@ -7,25 +7,30 @@
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
-<x-app-layout>
-    <x-slot name="header">
+<?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
+<?php $component->withName('app-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+     <?php $__env->slot('header', null, []); ?> 
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             Menu List
         </h2>
-    </x-slot>
+     <?php $__env->endSlot(); ?>
 
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
-            @auth 
-                @if (Auth::user()->name === 'admin')
+            <?php if(auth()->guard()->check()): ?> 
+                <?php if(Auth::user()->name === 'admin'): ?>
                     <div class="block mb-8">
-                        <a href="{{ route('menu.create') }}" class="bg-green-500 hover:bg-green text-white font-bold py-2 px-4 rounded">Add Menu</a>
+                        <a href="<?php echo e(route('menu.create')); ?>" class="bg-green-500 hover:bg-green text-white font-bold py-2 px-4 rounded">Add Menu</a>
                     </div>
-                @endif
-            @endauth
+                <?php endif; ?>
+            <?php endif; ?>
 
-            @auth
-            @if (Auth::user()->name === 'admin')
+            <?php if(auth()->guard()->check()): ?>
+            <?php if(Auth::user()->name === 'admin'): ?>
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
@@ -55,69 +60,84 @@
                                     </tr>
                                     </thead>
                                     <tbody class="bg-white divide-y divide-gray-200">
-                                    @foreach ($menus as $menu)
+                                    <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $menu->menuName }}
+                                                <?php echo e($menu->menuName); ?>
+
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $menu->menuDesc }}
+                                                <?php echo e($menu->menuDesc); ?>
+
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $menu->menuType }}
+                                                <?php echo e($menu->menuType); ?>
+
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $menu->menuPrice }}
+                                                <?php echo e($menu->menuPrice); ?>
+
                                             </td>
 
-                                            @auth
-                                                @if (Auth::user()->name === 'admin')
+                                            <?php if(auth()->guard()->check()): ?>
+                                                <?php if(Auth::user()->name === 'admin'): ?>
                                                     <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
-                                                        <!--<a href="{{ route('menu.show', $menu->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a> -->
-                                                        <a href="{{ route('menu.edit', $menu->id) }}" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
-                                                        <form class="inline-block" action="{{ route('menu.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                        <!--<a href="<?php echo e(route('menu.show', $menu->id)); ?>" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a> -->
+                                                        <a href="<?php echo e(route('menu.edit', $menu->id)); ?>" class="text-indigo-600 hover:text-indigo-900 mb-2 mr-2">Edit</a>
+                                                        <form class="inline-block" action="<?php echo e(route('menu.destroy', $menu->id)); ?>" method="POST" onsubmit="return confirm('Are you sure?');">
                                                         <input type="hidden" name="_method" value="DELETE">
-                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                                                         <input type="submit" class="text-red-600 hover:text-red-900 mr-2 mt-4" value="Delete">
                                                         </form>
                                                     </td>
-                                                @else
+                                                <?php else: ?>
                                                     <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
-                                                        <form action="{{ route('order.show', $menu->id)}}" method="GET">
-                                                            @csrf
-                                                            <x-jet-button class="mt-4">
-                                                                {{ __('Buy Now') }}
-                                                            </x-jet-button>
+                                                        <form action="<?php echo e(route('order.show', $menu->id)); ?>" method="GET">
+                                                            <?php echo csrf_field(); ?>
+                                                            <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.button','data' => ['class' => 'mt-4']]); ?>
+<?php $component->withName('jet-button'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['class' => 'mt-4']); ?>
+                                                                <?php echo e(__('Buy Now')); ?>
+
+                                                             <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
                                                         </form>
                                                     </td>
-                                                @endif
+                                                <?php endif; ?>
                                                 
-                                            @endauth
+                                            <?php endif; ?>
                                         </tr>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
                 </div>
-            @else
+            <?php else: ?>
                 <div class="flex flex-col">
                     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                         <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                             <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <div class="grid grid-flow-cols grid-rows-auto grid-cols-4 gap-4">
-                                    @foreach ($menus as $menu)
+                                    <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                         <div class="w-60 p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
                                             <!--<img src="img/carousel1.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">-->
                                             <div class="p-2">
-                                                <h2 class="font-bold test-lg mb-2">{{ $menu->menuName }}</h2>
-                                                <p class="text-sm text-gray-600">{{ $menu->menuDesc }}<p>
-                                                <p class="text-sm text-gray-600">{{ $menu->menuType }}<p>
-                                                <p class="text-sm text-gray-600">RM {{ $menu->menuPrice }}<p>
+                                                <h2 class="font-bold test-lg mb-2"><?php echo e($menu->menuName); ?></h2>
+                                                <p class="text-sm text-gray-600"><?php echo e($menu->menuDesc); ?><p>
+                                                <p class="text-sm text-gray-600"><?php echo e($menu->menuType); ?><p>
+                                                <p class="text-sm text-gray-600">RM <?php echo e($menu->menuPrice); ?><p>
                                             </div>
                                             <div class="inline-flex rounded-md bg-blue-500 shadow">
                                                 <a href="#" class="text-gray-200 font-bold py-2 px-6">
@@ -125,15 +145,20 @@
                                                 </a>
                                             </div>
                                         </div>
-                                    @endforeach
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            @endif
-            @endauth
+            <?php endif; ?>
+            <?php endif; ?>
 
         </div>
     </div>
-</x-app-layout>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
+<?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
+<?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
+<?php endif; ?><?php /**PATH E:\Kopiamo\resources\views/menu/index.blade.php ENDPATH**/ ?>
