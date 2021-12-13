@@ -26,7 +26,7 @@ class OrderController extends Controller
         // return view('order.index')->with([
         //     'orders' => $orders
         // ]);
-        return view('order.order');
+        return view('order.index');
     }
 
     /**
@@ -65,7 +65,7 @@ class OrderController extends Controller
     public function show($currMenu)
     {
         $orders = Menu::where('id', $currMenu)->get();
-        return view('order.index')->with([
+        return view('order.payment')->with([
             'orders' => $orders
         ]);
     }
