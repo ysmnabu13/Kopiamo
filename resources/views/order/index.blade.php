@@ -7,98 +7,103 @@
         </h2>
     </x-slot>
 
-    <!-- <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    </head> -->
-
     <div class="container mx-auto">
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg font-semibold bg-gray-50">
                 <h2>Active orders</h2>
             </div>
             <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-white">
-                <a href="{{ route('order.tracker')}}">Order detail page (items)</a><br>
-                <i>List active orders (id, time, total, order status)</i><br>
-                @foreach ($orders as $order)
+                <table class="min-w-full divide-y divide-gray-200 w-full">
+                    <thead>
+                        <tr>
+                            <th scope="col" width="80" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Order ID
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Time
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Total (RM)
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Order status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    @foreach ($orders as $order)
                     @if ($order->orderStatus != "Completed")
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->orderStatus}}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                {{ $order->id }}
                             </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->orderName }}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
                             </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->orderPrice }}
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->paymentType }}
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->totalPrice }}
                             </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->paymentStatus }}
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->fullName }}
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->ccNumber }}
-                            </td>
+                            @if (Auth::user()->name === 'admin')
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <select name="orderStatus">
+                                        <option value="Pending">Pending</option>
+                                        <option value="Pick up">Ready to pick up</option>
+                                        <option value="Completed">Completed</option>
+                                    </select>
+                                </td>
+                            @else
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    {{ $order->orderStatus }}
+                                </td>
+                            @endif
                         </tr>
-            </div>
+                    @endif
+                    @endforeach
+                    </tbody>
+                </table>
+            </div><br><br>
             <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg font-semibold bg-gray-50">
                 <h2>Past orders</h2>
             </div>
             <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-white">
-                <i>List past orders (id, time, total, order status)</i><br>
-                    @else
+                <table class="min-w-full divide-y divide-gray-200 w-full">
+                    <thead>
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->orderStatus}}
+                            <th scope="col" width="80" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Order ID
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Time
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Total (RM)
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Order status
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    @foreach ($orders as $order)
+                    @if($order->orderStatus == "Completed")
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                {{ $order->id }}
                             </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->orderName }}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
                             </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->orderPrice }}
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->paymentType }}
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->totalPrice }}
                             </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->paymentStatus }}
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->fullName }}
-                            </td>
-
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                {{ $order->ccNumber }}
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                {{ $order->orderStatus }}
                             </td>
                         </tr>
+                    </tbody>
                     @endif
-                @endforeach
+                    @endforeach
+                </table>
             </div>
         </div>
     </div>
