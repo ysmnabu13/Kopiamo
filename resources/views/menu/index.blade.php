@@ -106,12 +106,9 @@
                 </div>
             @else
                 <div class="flex flex-col">
-                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                                 <div class="grid grid-flow-cols grid-rows-auto grid-cols-4 gap-4">
                                     @foreach ($menus as $menu)
-                                        <div class="w-60 p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
+                                    <div class="w-60 p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
                                             <!--<img src="img/carousel1.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">-->
                                             <div class="p-2">
                                                 <h2 class="font-bold test-lg mb-2">{{ $menu->menuName }}</h2>
@@ -125,12 +122,9 @@
                                                     {{ __('Buy Now') }}
                                                 </x-jet-button>
                                             </form>
-                                        </div>
-                                    @endforeach
                                     </div>
-                            </div>
-                        </div>
-                    </div>
+                                    @endforeach
+                                </div> 
                 </div>
             @endif
             @endauth
