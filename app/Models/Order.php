@@ -14,6 +14,7 @@ class Order extends Model
     protected $table = 'orders';
     
     protected $fillable = [
+        'user_id',
         'orderStatus',
         'orderName',
         'orderPrice',
@@ -27,5 +28,9 @@ class Order extends Model
 
     public function menu() : BelongsToMany{
         return $this->belongsToMany(Menu::class);
+    }
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id' , 'id');
     }
 }

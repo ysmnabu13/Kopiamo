@@ -84,7 +84,7 @@
                                                         <input type="submit" class="text-red-600 hover:text-red-900 mr-2 mt-4" value="Delete">
                                                         </form>
                                                     </td>
-                                                @else
+                                                {{-- @else
                                                     <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
                                                         <form action="{{ route('order.show', $menu->id)}}" method="GET">
                                                             @csrf
@@ -92,7 +92,7 @@
                                                                 {{ __('Buy Now') }}
                                                             </x-jet-button>
                                                         </form>
-                                                    </td>
+                                                    </td> --}}
                                                 @endif
                                                 
                                             @endauth

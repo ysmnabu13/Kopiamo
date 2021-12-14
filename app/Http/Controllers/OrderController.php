@@ -25,9 +25,12 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($currMenu)
     {
-        //
+        $orders = Menu::where('id', $currMenu)->get();
+        return view('order.payment')->with([
+            'orders' => $orders
+        ]);
     }
 
     /**
@@ -38,11 +41,16 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        $orders               = new Order;
-        $orders->orderName    = $request->menuName;
-        $orders->orderStatus  = 'try';
-        $orders->orderPrice   = $request->menuPrice;
-        $orders->save();
+        $order = new Order();
+        $order->user_id = auth()->id();
+        $order->orderStatus = 'pending';
+        $order->orderName = 'pending';
+        $order->orderPrice = 11.22;
+        $order->totalPrice = 21.23;
+        $order->paymentType = 'cod';
+        $order->paymentStatus = 1;
+        $order->save();
+
 
         return redirect()->route('menu.index')->with('success', 'Category successfully created');
     }
@@ -55,8 +63,10 @@ class OrderController extends Controller
      */
     public function show($currMenu)
     {
-        $orders = Menu::where('id', $currMenu)->get();
+        $menus = Menu::where('id', $currMenu)->get();
+        $orders = Order::with('user')->get();
         return view('order.payment')->with([
+            'menus' => $menus,
             'orders' => $orders
         ]);
     }
