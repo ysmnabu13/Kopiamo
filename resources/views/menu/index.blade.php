@@ -119,11 +119,12 @@
                                                 <p class="text-sm text-gray-600">{{ $menu->menuType }}<p>
                                                 <p class="text-sm text-gray-600">RM {{ $menu->menuPrice }}<p>
                                             </div>
-                                            <div class="inline-flex rounded-md bg-blue-500 shadow">
-                                                <a href="#" class="text-gray-200 font-bold py-2 px-6">
-                                                    Buy Now
-                                                </a>
-                                            </div>
+                                            <form action="{{ route('order.show', $menu->id)}}" method="GET">
+                                                @csrf
+                                                <x-jet-button class="mt-4">
+                                                    {{ __('Buy Now') }}
+                                                </x-jet-button>
+                                            </form>
                                         </div>
                                     @endforeach
                                     </div>
