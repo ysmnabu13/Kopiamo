@@ -93,7 +93,7 @@
                                                         <form class="inline-block" action="{{ route('menu.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        <input type="submit" class="text-red-600 hover:text-red-900 mr-2 mt-4" value="Delete">
+                                                        <button type="submit" class="text-red-600 hover:text-red-900 mr-2 mt-4" >Delete</button>
                                                         </form>
                                                     </td>
                                                 {{-- @else
