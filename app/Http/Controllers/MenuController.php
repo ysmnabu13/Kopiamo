@@ -19,6 +19,19 @@ class MenuController extends Controller
         return view('menu.index',compact('menus'));
     }
 
+     /**
+     * Display a listing of the searched resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function search()
+    {
+        $search=$_GET['search'];
+        $menus=Menu::where('menuName','LIKE','%'.$search.'%')->get();
+
+        return view('menu.search',compact('menus'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
