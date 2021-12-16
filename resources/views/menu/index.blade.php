@@ -10,14 +10,18 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-4">
-                Menu List
-            </h2>
-            <form class="form-inline my-2 my-lg-0" action="{{ url('/search') }}" method="GET">
-                <input type="search" class="form-control mr-sm-2" name="search" placeholder="Search Menu">
-                <x-jet-button class="mt-4">
+            <div>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-5">
+                    Menu List
+                </h2>
+            </div>
+            <form class="w-full max-w-sm" action="{{ url('/search') }}" method="GET">
+                <div class="flex items-center border-b border-teal-500 py-2">
+                  <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" name="search" type="search" placeholder="Search Menu">
+                  <x-jet-button>
                     Search
-                </x-jet-button>
+                  </x-jet-button>
+                </div>
             </form>
         </div>
     </x-slot>

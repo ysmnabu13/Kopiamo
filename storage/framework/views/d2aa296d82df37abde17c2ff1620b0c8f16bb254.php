@@ -15,24 +15,28 @@
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?> 
         <div class="flex justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-4">
-                Menu List
-            </h2>
-            <form class="form-inline my-2 my-lg-0" action="<?php echo e(url('/search')); ?>" method="GET">
-                <input type="search" class="form-control mr-sm-2" name="search" placeholder="Search Menu">
-                <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.button','data' => ['class' => 'mt-4']]); ?>
+            <div>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-5">
+                    Menu List
+                </h2>
+            </div>
+            <form class="w-full max-w-sm" action="<?php echo e(url('/search')); ?>" method="GET">
+                <div class="flex items-center border-b border-teal-500 py-2">
+                  <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" name="search" type="search" placeholder="Search Menu">
+                  <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.button','data' => ['class' => 'flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded','type' => 'button']]); ?>
 <?php $component->withName('jet-button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['class' => 'mt-4']); ?>
+<?php $component->withAttributes(['class' => 'flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded','type' => 'button']); ?>
                     Search
-                 <?php echo $__env->renderComponent(); ?>
+                   <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
 <?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
+                </div>
             </form>
         </div>
      <?php $__env->endSlot(); ?>
