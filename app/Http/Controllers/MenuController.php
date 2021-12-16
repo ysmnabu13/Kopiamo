@@ -66,6 +66,8 @@ class MenuController extends Controller
      */
     public function edit(Menu $menu)
     {
+        
+        
         return view('menu.edit',compact('menu'));
     }
 
@@ -78,7 +80,22 @@ class MenuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $menu = Menu::find($id);
+        request()->validate([
+            'menuName' => 'required',
+            'menuDesc' => 'required',
+            'menuType' => 'required',
+            'menuPrice' => 'required',
+        ]);
+
+        $menu->update([
+            'menuName' => request('menuName'),
+            'menuDesc' => request('menuDesc'),
+            'menuType' => request('menuType'),
+            'menuPrice' => request('menuPrice'),
+        ]);
+
+        return redirect()->route('menu.index');
     }
 
     /**
