@@ -7,6 +7,8 @@
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
 </head>
 
+
+
 <x-app-layout>
     <x-slot name="header">
         <div class="flex justify-between">
@@ -25,6 +27,11 @@
             </form>
         </div>
     </x-slot>
+    
+    {{-- Success message for when an item is added to cart  --}}
+    @if (session('message'))
+        <div class="mt-5 ml-5">{{ session('message')}}</div>
+    @endif
 
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
@@ -128,12 +135,24 @@
                                                 <p class="text-sm text-gray-600">{{ $menu->menuType }}<p>
                                                 <p class="text-sm text-gray-600">RM {{ $menu->menuPrice }}<p>
                                             </div>
-                                            <form action="{{ route('order.show', $menu->id)}}" method="GET">
-                                                @csrf
-                                                <x-jet-button class="mt-4">
-                                                    {{ __('Buy Now') }}
-                                                </x-jet-button>
-                                            </form>
+                                            <div>
+                                                <form action="{{ route('order.show', $menu->id)}}" method="GET">
+                                                    @csrf
+                                                    <x-jet-button class="mt-4">
+                                                        {{ __('Buy Now') }}
+                                                    </x-jet-button>
+                                                </form>
+                                                <form action="{{ route('cart.store')}}" method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                                                    <input type="hidden" name="quantity" value="1"> 
+                                                    {{-- ^ TBC later --}}
+                                                    <x-jet-button>
+                                                        {{ __('Add to Cart') }}
+                                                    </x-jet-button>
+                                                </form>
+                                            </div>
+                                       
                                     </div>
                                     @endforeach
                                 </div> 

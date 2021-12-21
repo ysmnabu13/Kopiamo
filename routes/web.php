@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
@@ -32,9 +33,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::resource('menu', MenuController::class);
     Route::resource('order', OrderController::class);
     Route::get('/search', [MenuController::class, 'search']);
-
-    
-
-
+    Route::resource('cart', CartController::class);
+    Route::get('payment', [OrderController::class, 'checkout'])->name('payment');
 
 });

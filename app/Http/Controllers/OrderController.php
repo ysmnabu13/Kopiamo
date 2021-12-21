@@ -25,12 +25,9 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($currMenu)
+    public function create()
     {
-        $orders = Menu::where('id', $currMenu)->get();
-        return view('order.payment')->with([
-            'orders' => $orders
-        ]);
+ 
     }
 
     /**
@@ -104,4 +101,5 @@ class OrderController extends Controller
     {
         //
     }
+
 }
