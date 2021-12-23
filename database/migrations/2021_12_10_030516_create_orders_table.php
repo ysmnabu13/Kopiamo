@@ -17,11 +17,11 @@ class CreateOrdersTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('orderStatus');
-            $table->string('orderName');
-            $table->decimal('orderPrice',10,2);
+            $table->string('orderName')->nullable();
+            $table->decimal('orderPrice',10,2)->nullable();
             $table->decimal('totalPrice',10,2);
-            $table->string('paymentType');
-            $table->boolean('paymentStatus');
+            $table->string('paymentType')->nullable();
+            $table->boolean('paymentStatus')->nullable();
             $table->string('fullName')->nullable();
             $table->string('ccNumber')->nullable();
             $table->timestamps();
