@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
+<script src="https://cdn.tailwindcss.com"></script>
 
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
@@ -15,7 +16,9 @@
 
     <div class="container mx-auto py-2">
         <div class="max mx-auto py-8 sm:px-6 lg:px-8 bg-white">
-            <div class="bg-fixed" style="background-image:url('');"></div>
+            <div class="bg-fixed">
+                <img class="mx-auto" src="https://cdn.discordapp.com/attachments/748017610809147414/923312895385813032/empty-cafe-interior-with-chairs-and-tables-picture-id1286692956.png">
+            </div>
             <div class="border-b max-w-7xl mx-auto py-4 bg-white text-center">
                 <p class="font-bold text-2xl">About Us</p>
             </div>
