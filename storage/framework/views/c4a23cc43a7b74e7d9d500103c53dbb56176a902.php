@@ -82,7 +82,7 @@ unset($__errorArgs, $__bag); ?>
                             <label for="coffee_photo_path" class="block font-medium text-sm text-gray-700">Photo</label>
                             <input type="file" name="coffee_photo_path" id="coffee_photo_path" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="<?php echo e(old('coffee_photo_path', '')); ?>" />
-                            <?php $__errorArgs = ['menuPrice'];
+                            <?php $__errorArgs = ['coffee_photo_path'];
 $__bag = $errors->getBag($__errorArgs[1] ?? 'default');
 if ($__bag->has($__errorArgs[0])) :
 if (isset($message)) { $__messageOriginal = $message; }

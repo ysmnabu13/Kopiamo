@@ -49,7 +49,7 @@
                             <label for="coffee_photo_path" class="block font-medium text-sm text-gray-700">Photo</label>
                             <input type="file" name="coffee_photo_path" id="coffee_photo_path" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('coffee_photo_path', '') }}" />
-                            @error('menuPrice')
+                            @error('coffee_photo_path')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
                         </div>
