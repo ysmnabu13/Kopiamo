@@ -14,6 +14,7 @@ class Menu extends Model
         'menuDesc',
         'menuType',
         'menuPrice',
+        'coffee_photo_path',
     ];
 
 

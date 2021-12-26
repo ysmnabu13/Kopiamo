@@ -92,6 +92,8 @@
                                                 {{ $menu->menuPrice }}
                                             </td>
 
+                                            
+
                                             @auth
                                                 @if (Auth::user()->name === 'admin')
                                                     <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
@@ -130,15 +132,20 @@
                                     <div class="w-60 p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
                                             <!--<img src="img/carousel1.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">-->
                                             <div class="p-2">
+                                                <p class="w-full min-h-40 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-50 lg:aspect-none">
+                                                    <img src="{{ asset('uploads/menus/'. $menu->coffee_photo_path) }}"  alt="Image"> 
+                                                </p>
+                                                <br/>
                                                 <h2 class="font-bold test-lg mb-2">{{ $menu->menuName }}</h2>
                                                 <p class="text-sm text-gray-600">{{ $menu->menuDesc }}<p>
                                                 <p class="text-sm text-gray-600">{{ $menu->menuType }}<p>
                                                 <p class="text-sm text-gray-600">RM {{ $menu->menuPrice }}<p>
+                                                
                                             </div>
                                             <div>
                                                 <form action="{{ route('order.show', $menu->id)}}" method="GET">
                                                     @csrf
-                                                    <x-jet-button class="mt-4">
+                                                    <x-jet-button class="mt-4 ">
                                                         {{ __('Buy Now') }}
                                                     </x-jet-button>
                                                 </form>

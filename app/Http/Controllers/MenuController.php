@@ -50,13 +50,40 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        Menu::create([
+        /*Menu::create([
             'menuName'=> $request->get('menuName'),
             'menuDesc'=>$request->get('menuDesc'),
             'menuType'=>$request->get('menuType'),
             'menuPrice'=>$request->get('menuPrice'),
-        ]);
 
+            if($request->hasfile('image'))
+        {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/students/', $filename);
+            'coffee_photo_path' => $filename;
+        },
+            
+         
+        ]);*/
+        $menu = new Menu;
+        $menu->menuName = $request->input('menuName');
+        $menu->menuDesc = $request->input('menuDesc');
+        $menu->menuType = $request->input('menuType');
+        $menu->menuPrice = $request->input('menuPrice');
+        
+
+        if($request->hasfile('coffee_photo_path'))
+        {
+            $file = $request->file('coffee_photo_path');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/menus/', $filename);
+            $menu->coffee_photo_path = $filename;
+        }
+
+        $menu->save();
         return redirect()->route('menu.index');
     }
 
