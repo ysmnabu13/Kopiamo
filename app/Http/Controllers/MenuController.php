@@ -121,7 +121,7 @@ class MenuController extends Controller
     public function update(Request $request, $id)
     {
         $menu = Menu::find($id);
-        request()->validate([
+       /* request()->validate([
             'menuName' => 'required',
             'menuDesc' => 'required',
             'menuType' => 'required',
@@ -133,7 +133,23 @@ class MenuController extends Controller
             'menuDesc' => request('menuDesc'),
             'menuType' => request('menuType'),
             'menuPrice' => request('menuPrice'),
-        ]);
+        ]);*/
+        $menu->menuName = $request->input('menuName');
+        $menu->menuDesc = $request->input('menuDesc');
+        $menu->menuType = $request->input('menuType');
+        $menu->menuPrice = $request->input('menuPrice');
+        
+
+        if($request->hasfile('coffee_photo_path'))
+        {
+            $file = $request->file('coffee_photo_path');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extension;
+            $file->move('uploads/menus/', $filename);
+            $menu->coffee_photo_path = $filename;
+        }
+
+        $menu->save();
 
         return redirect()->route('menu.index');
     }

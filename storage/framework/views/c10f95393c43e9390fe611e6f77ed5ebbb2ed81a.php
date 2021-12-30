@@ -13,7 +13,7 @@
     <div>
         <div class="max-w-4xl mx-auto py-10 sm:px-6 lg:px-8">
             <div class="mt-5 md:mt-0 md:col-span-2">
-                <form method="post" action="<?php echo e(route('menu.update', $menu->id)); ?>">
+                <form method="post" action="<?php echo e(route('menu.update', $menu->id)); ?>" enctype="multipart/form-data">
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('PUT'); ?>
                     <div class="shadow overflow-hidden sm:rounded-md">
