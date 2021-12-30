@@ -32,6 +32,7 @@ return array(
     'App\\Http\\Requests\\UpdateMenuStaff' => $baseDir . '/app/Http/Requests/UpdateMenuStaff.php',
     'App\\Models\\Menu' => $baseDir . '/app/Models/Menu.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',
+    'App\\Models\\Rating' => $baseDir . '/app/Models/Rating.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'App\\Providers\\AuthServiceProvider' => $baseDir . '/app/Providers/AuthServiceProvider.php',

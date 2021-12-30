@@ -603,6 +603,7 @@ class ComposerStaticInit10a0c9c794fbea530666e474b73e6351
         'App\\Http\\Requests\\UpdateMenuStaff' => __DIR__ . '/../..' . '/app/Http/Requests/UpdateMenuStaff.php',
         'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',
+        'App\\Models\\Rating' => __DIR__ . '/../..' . '/app/Models/Rating.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',
