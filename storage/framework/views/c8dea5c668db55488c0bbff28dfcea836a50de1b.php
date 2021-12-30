@@ -73,8 +73,9 @@
                                         <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Price
                                         </th>
-                                        
-                                        
+                                        <th scope="col" width="200" class="py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
+                                            Image
+                                        </th>
                                         <th scope="col" width="200" class="py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
                                             Action
                                         </th>
@@ -102,6 +103,9 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 <?php echo e($menu->menuPrice); ?>
 
+                                            </td>
+                                            <td>
+                                                <img src="<?php echo e(asset('uploads/menus/'. $menu->coffee_photo_path)); ?>" height="100px;" width="100px;"  alt="Image"> 
                                             </td>
 
                                             <?php if(auth()->guard()->check()): ?>
