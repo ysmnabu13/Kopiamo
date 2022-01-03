@@ -63,7 +63,7 @@
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes(['href' => ''.e(route('order.index')).'','active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('order.index'))]); ?>
-                        <?php echo e(__('My Orders')); ?>
+                        <?php echo e(__('Order')); ?>
 
                      <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
@@ -87,6 +87,22 @@
 <?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
 <?php endif; ?>
                 </div>
+                <!--<div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.nav-link','data' => ['href' => ''.e(route('order.index')).'','active' => request()->routeIs('order.index')]]); ?>
+<?php $component->withName('jet-nav-link'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes(['href' => ''.e(route('order.index')).'','active' => \Illuminate\View\Compilers\BladeCompiler::sanitizeComponentAttribute(request()->routeIs('order.index'))]); ?>
+                        <?php echo e(__('Review')); ?>
+
+                     <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4)): ?>
+<?php $component = $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4; ?>
+<?php unset($__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4); ?>
+<?php endif; ?>
+                </div>-->
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">

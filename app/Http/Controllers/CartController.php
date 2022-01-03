@@ -11,7 +11,9 @@ class CartController extends Controller
 {
     public function index(){
         $carts = Cart::content();
-        return view('cart.index', compact('carts'));
+        // $menus = Menu::where('id', $carts->id)->get();
+        $menus = Menu::all();
+        return view('cart.index', compact('carts','menus'));
     }
 
     public function store(Request $request){
@@ -22,10 +24,18 @@ class CartController extends Controller
             $menus->menuName,
             $request->input('quantity'),
             $menus->menuPrice,
+            0.00,
+            ['photo' => $menus->coffee_photo_path]
         )->associate(Menu::class);
 
-        Cart::store(auth()->id());
+        // Cart::add([
+        //     ['id' => $menus->id, 'name' => $menus->menuName, 'qty' => $request->input('quantity') ,
+        //     'price' => $menus->menuPrice, 'weight' => 0], 'options' => ['photo' => $menus->coffee_photo_path]
+        //   ])->associate(Menu::class);
+
+        // Cart::store(auth()->id());
 
         return redirect()->route('menu.index')->with('message', 'Item successfully added to cart');
+        // return view('menu.index');
     }
 }

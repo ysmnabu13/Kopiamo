@@ -22,6 +22,9 @@
                     <thead>
                         <tr>
                             <th scope="col" width="80" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                
+                            </th>
+                            <th scope="col" width="80" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                                 Menu Name
                             </th>
                             <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
@@ -36,8 +39,16 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
+                        
                         <?php $__currentLoopData = $carts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cart): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                
+                                <img src="<?php echo e(asset('uploads/menus/'. $cart->options->photo)); ?>" height="75px;" width="100px;"  alt="Image"> 
+                                
+                                
+                                
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 <?php echo e($cart->name); ?>
 
@@ -56,8 +67,8 @@
                             </td>
 
                         </tr>                        
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>  
+                        
                     </tbody>
                 </table>
                 <div>

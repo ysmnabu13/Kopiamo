@@ -142,6 +142,15 @@
                                                     {{ __('Buy Now') }}
                                                 </x-jet-button>
                                             </form>
+                                            <form action="{{ route('cart.store')}}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="menu_id" value="{{ $menu->id }}">
+                                                <input type="hidden" name="quantity" value="1"> 
+                                                {{-- ^ TBC later --}}
+                                                <x-jet-button>
+                                                    {{ __('Add to Cart') }}
+                                                </x-jet-button>
+                                            </form>
                                     </div>
                                     @endforeach
                                 </div> 
