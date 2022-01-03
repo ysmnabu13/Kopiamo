@@ -34,15 +34,10 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        {{-- @foreach ($menus as $menu ) --}}
                         @foreach ($carts as $cart)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{-- @if ($menu->id == $cart->id) --}}
                                 <img src="{{ asset('uploads/menus/'. $cart->options->photo) }}" height="75px;" width="100px;"  alt="Image"> 
-                                {{-- {{ $cart->options->photo}} --}}
-                                {{-- @endif --}}
-                                
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $cart->name }}
@@ -59,7 +54,6 @@
 
                         </tr>                        
                         @endforeach  
-                        {{-- @endforeach --}}
                     </tbody>
                 </table>
                 <div>
