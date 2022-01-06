@@ -25,7 +25,7 @@
                             <label for="menuDesc" class="block font-medium text-sm text-gray-700">Description</label>
                             <input type="text" name="menuDesc" id="menuDesc" class="form-input rounded-md shadow-sm mt-1 block w-full"
                                    value="{{ old('menuDesc', '') }}" />
-kd
+
                             @error('menuDesc')
                                 <p class="text-sm text-red-600">{{ $message }}</p>
                             @enderror
