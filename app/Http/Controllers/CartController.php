@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     public function index(){
+        // Cart::store(auth()->id());
         $carts = Cart::content();
         $menus = Menu::all();
         return view('cart.index', compact('carts','menus'));
@@ -27,6 +28,20 @@ class CartController extends Controller
             ['photo' => $menus->coffee_photo_path]
         )->associate(Menu::class);
 
+        
+
         return redirect()->route('menu.index')->with('message', 'Item successfully added to cart');
+    }
+
+    public function destroy($cart){
+        // $item = Cart::where('id',$id);
+        Cart::remove($cart);
+        return $this->index();
+    }
+
+    public function update(Request $request, $id){
+        // $carts = Cart::where('i')
+        Cart::update($id, $request->input('cart_qty'));
+        return $this->index();
     }
 }

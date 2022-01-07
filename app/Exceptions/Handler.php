@@ -13,7 +13,7 @@ class Handler extends ExceptionHandler
      * @var string[]
      */
     protected $dontReport = [
-        //
+        \Gloudemans\Shoppingcart\Exceptions\CartAlreadyStoredException::class
     ];
 
     /**
