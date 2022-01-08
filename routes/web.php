@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\AboutUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,5 +36,5 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('/search', [MenuController::class, 'search']);
     Route::resource('cart', CartController::class);
     Route::get('payment', [OrderController::class, 'checkout'])->name('payment');
-
+    Route::get('aboutus', [AboutUsController::class, 'index'])->name('aboutus');
 });
