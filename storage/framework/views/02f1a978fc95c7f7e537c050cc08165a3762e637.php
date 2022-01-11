@@ -80,7 +80,9 @@
                                         <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Price
                                         </th>
-                                        
+                                        <th scope="col" width="200" class="py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
+                                            Image
+                                        </th>
                                         
                                         <th scope="col" width="200" class="py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
                                             Action
@@ -109,7 +111,12 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 <?php echo e($menu->menuPrice); ?>
 
+                                            </td>   
+                                            <td>
+                                                <img src="<?php echo e(asset('uploads/menus/'. $menu->coffee_photo_path)); ?>" height="100px;" width="100px;"  alt="Image"> 
                                             </td>
+
+                                            
 
                                             <?php if(auth()->guard()->check()): ?>
                                                 <?php if(Auth::user()->name === 'admin'): ?>
@@ -141,20 +148,25 @@
                                     <div class="w-60 p-2 bg-white rounded-xl transform transition-all hover:-translate-y-2 duration-300 shadow-lg hover:shadow-2xl">
                                             <!--<img src="img/carousel1.jpg" class="img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}" alt="">-->
                                             <div class="p-2">
+                                                <p class="w-full min-h-40 bg-gray-200 aspect-w-1 aspect-h-1 rounded-md overflow-hidden group-hover:opacity-75 lg:h-50 lg:aspect-none">
+                                                    <img src="<?php echo e(asset('uploads/menus/'. $menu->coffee_photo_path)); ?>"  alt="Image"> 
+                                                </p>
+                                                <br/>
                                                 <h2 class="font-bold test-lg mb-2"><?php echo e($menu->menuName); ?></h2>
                                                 <p class="text-sm text-gray-600"><?php echo e($menu->menuDesc); ?><p>
                                                 <p class="text-sm text-gray-600"><?php echo e($menu->menuType); ?><p>
                                                 <p class="text-sm text-gray-600">RM <?php echo e($menu->menuPrice); ?><p>
+                                                
                                             </div>
                                             <div>
-                                                <form action="<?php echo e(route('order.show', $menu->id)); ?>" method="GET">
+                                                <form action="<?php echo e(route('checkout.show', $menu->id)); ?>" method="GET">
                                                     <?php echo csrf_field(); ?>
                                                     <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
-<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.button','data' => ['class' => 'mt-4']]); ?>
+<?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.button','data' => ['class' => 'mt-4 ']]); ?>
 <?php $component->withName('jet-button'); ?>
 <?php if ($component->shouldRender()): ?>
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
-<?php $component->withAttributes(['class' => 'mt-4']); ?>
+<?php $component->withAttributes(['class' => 'mt-4 ']); ?>
                                                         <?php echo e(__('Buy Now')); ?>
 
                                                      <?php echo $__env->renderComponent(); ?>

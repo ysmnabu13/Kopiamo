@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
+<script src="https://cdn.tailwindcss.com"></script>
 
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
@@ -25,7 +26,8 @@
                 <div class="flex flex-col md:w-full pl-20">
                     <h2 class="mb-4 font-bold md:text-xl text-heading ">Choose Your Payment Type
                     </h2>
-                    <form class="justify-center w-full mx-auto" method="post" action>
+                    <form class="justify-center w-full mx-auto" method="post" action="<?php echo e(route('order.store')); ?>">
+                        <?php echo csrf_field(); ?>
                         <div class="">
                             <div class="space-x-0 lg:flex lg:space-x-4">
                                 <div class="w-full lg:w-1/2">
@@ -56,6 +58,7 @@
                                     class="flex items-center w-full px-4 py-3 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600"
                                     rows="4" placeholder="Notes for delivery"></textarea>
                             </div>
+
                             <div class="mt-4">
                                 <button
                                     class="w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900">Process</button>
@@ -69,16 +72,16 @@
                         </h2>
                         <div class="mt-8">
                             <div class="flex flex-col space-y-4">
-                                <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php $__currentLoopData = $menus; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $menu): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                 <div class="flex space-x-4">
                                     <div>
                                         <img src="https://source.unsplash.com/user/erondu/1600x900" alt="image"
                                             class="w-40">
                                     </div>
                                     <div>
-                                        <h2 class="text-xl font-bold"><?php echo e($order->menuName); ?></h2>
-                                        <p class="text-sm"><b>Coffee Type: </b><?php echo e($order->menuType); ?></p>
-                                        <span class="text-red-600">Price</span> RM <?php echo e($order->menuPrice); ?>
+                                        <h2 class="text-xl font-bold"><?php echo e($menu->menuName); ?></h2>
+                                        <p class="text-sm"><b>Coffee Type: </b><?php echo e($menu->menuType); ?></p>
+                                        <span class="text-red-600">Price</span> RM <?php echo e($menu->menuPrice); ?>
 
                                     </div>
                                     <div>
@@ -89,7 +92,7 @@
                                         </svg>
                                     </div>
                                 </div>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
                         </div>
                         <div class="flex p-4 mt-4">

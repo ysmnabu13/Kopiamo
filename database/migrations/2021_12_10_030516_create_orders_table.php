@@ -16,7 +16,13 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('fname');
+            $table->string('lname');
+            $table->string('email');
+            $table->string('phone');
+            $table->string('notes')->nullable();
             $table->string('orderStatus');
+
             $table->string('orderName')->nullable();
             $table->decimal('orderPrice',10,2)->nullable();
             $table->decimal('totalPrice',10,2);

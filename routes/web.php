@@ -7,6 +7,7 @@ use App\Http\Controllers\MenuController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AboutUsController;
+use App\Http\Controllers\CheckoutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,5 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::resource('cart', CartController::class);
     Route::get('payment', [OrderController::class, 'checkout'])->name('payment');
     Route::get('aboutus', [AboutUsController::class, 'index'])->name('aboutus');
+    Route::resource('checkout', CheckoutController::class);
 });

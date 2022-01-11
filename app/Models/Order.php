@@ -15,15 +15,19 @@ class Order extends Model
     
     protected $fillable = [
         'user_id',
+        'fname',
+        'lname',
+        'email',
+        'phone',
+        'notes',
         'orderStatus',
         'orderName',
         'orderPrice',
-        'paymentType',
         'totalPrice',
+        'paymentType',
         'paymentStatus',
         'fullName',
         'ccNumber',
-
     ];
 
     public function menu() : BelongsToMany{

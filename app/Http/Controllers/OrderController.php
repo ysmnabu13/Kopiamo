@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Http\Controllers\Controller;
-use App\Models\Menu;
+// use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -40,32 +40,16 @@ class OrderController extends Controller
     {
         $order = new Order();
         $order->user_id = auth()->id();
-        $order->orderStatus = 'pending';
-        $order->orderName = 'pending';
-        $order->orderPrice = 11.22;
-        $order->totalPrice = 21.23;
-        $order->paymentType = 'cod';
-        $order->paymentStatus = 1;
+        $order->fname = $request->input('firstName');
+        $order->lname = $request->input('lastName');
+        $order->email = $request->input('Email');
+        $order->phone = $request->input('phoneNumber');
+        $order->notes = $request->input('note');
+        $order->orderStatus = 'Pending';
+        $order->totalPrice = $request->input('total');
         $order->save();
 
-
-        return redirect()->route('menu.index')->with('success', 'Category successfully created');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function show($currMenu)
-    {
-        $menus = Menu::where('id', $currMenu)->get();
-        $orders = Order::with('user')->get();
-        return view('order.payment')->with([
-            'menus' => $menus,
-            'orders' => $orders
-        ]);
+        return redirect()->route('order.index')->with('success', 'Category successfully created');
     }
 
     /**

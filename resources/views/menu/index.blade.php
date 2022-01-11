@@ -112,7 +112,7 @@
                                                     </td>
                                                 {{-- @else
                                                     <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
-                                                        <form action="{{ route('order.show', $menu->id)}}" method="GET">
+                                                        <form action="{{ route('checkout.show', $menu->id)}}" method="GET">
                                                             @csrf
                                                             <x-jet-button class="mt-4">
                                                                 {{ __('Buy Now') }}
@@ -148,7 +148,7 @@
                                                 
                                             </div>
                                             <div>
-                                                <form action="{{ route('order.show', $menu->id)}}" method="GET">
+                                                <form action="{{ route('checkout.show', $menu->id)}}" method="GET">
                                                     @csrf
                                                     <x-jet-button class="mt-4 ">
                                                         {{ __('Buy Now') }}
