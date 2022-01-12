@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\CheckoutController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +34,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('menu', MenuController::class);
+    Route::resource('review', ReviewController::class);
     Route::resource('order', OrderController::class);
     Route::get('/search', [MenuController::class, 'search']);
     Route::resource('cart', CartController::class);

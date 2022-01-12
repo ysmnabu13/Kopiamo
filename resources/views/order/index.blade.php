@@ -124,7 +124,7 @@
                                 </td>
                             </form>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                <a href="#" class="underline text-blue-600 hover:text-blue-800">
+                                <a href="{{ route('review.index') }}" class="underline text-blue-600 hover:text-blue-800">
                                 Review</a>
                             </td>
                         </tr>
