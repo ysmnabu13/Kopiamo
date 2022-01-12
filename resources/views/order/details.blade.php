@@ -10,11 +10,10 @@
 
     <div class="container mx-auto py-2">
         <div class="max mx-auto py-8 sm:px-6 lg:px-8 bg-white">
-            <div class="pl-20">
-                <p class="">Product details</p>
+            <div class="pl-20 py-4">
+                <p class="text-lg font-bold">Product details</p>
             </div>
-            <div class="w-3/4 mx-auto">
-                @foreach ($orders as $order)
+            <div class="w-3/4 pl-20">
                 <table class="min-w-full divide-y divide-gray-200 w-full">
                     <thead>
                         <tr>
@@ -33,9 +32,16 @@
                         </tr>
                     </thead>
                 </table>
-                <p>{{ $order->notes }}</p>
-                @endforeach
             </div>
+            <div class="pl-20 py-4">
+                <p class="text-xl font-bold">TOTAL: RM</p>
+            </div>
+            @foreach ($orders as $order)
+            <div class="pl-20">
+                <p class="text-lg"><b>Notes: </b>{{ $order->notes }}</p>
+                <p class="text-lg"><b>Order status: </b>{{ $order->orderStatus }}</p>
+            </div>
+            @endforeach
         </div>
     </div>
 </x-app-layout>

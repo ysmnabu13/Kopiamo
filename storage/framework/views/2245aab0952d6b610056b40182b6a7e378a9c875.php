@@ -15,11 +15,10 @@
 
     <div class="container mx-auto py-2">
         <div class="max mx-auto py-8 sm:px-6 lg:px-8 bg-white">
-            <div class="pl-20">
-                <p class="">Product details</p>
+            <div class="pl-20 py-4">
+                <p class="text-lg font-bold">Product details</p>
             </div>
-            <div class="w-3/4 mx-auto">
-                <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="w-3/4 pl-20">
                 <table class="min-w-full divide-y divide-gray-200 w-full">
                     <thead>
                         <tr>
@@ -38,9 +37,16 @@
                         </tr>
                     </thead>
                 </table>
-                <p><?php echo e($order->notes); ?></p>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </div>
+            <div class="pl-20 py-4">
+                <p class="text-xl font-bold">TOTAL: RM</p>
+            </div>
+            <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <div class="pl-20">
+                <p class="text-lg"><b>Notes: </b><?php echo e($order->notes); ?></p>
+                <p class="text-lg"><b>Order status: </b><?php echo e($order->orderStatus); ?></p>
+            </div>
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>
  <?php echo $__env->renderComponent(); ?>
