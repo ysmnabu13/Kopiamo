@@ -14,7 +14,7 @@ class CheckoutController extends Controller
         // return view('order.checkout');
     }
 
-    public function show($currMenu)
+    public function buynow($currMenu)
     {
         $menus = Menu::where('id', $currMenu)->get();
         $orders = Order::with('user')->get();
