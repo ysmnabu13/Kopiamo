@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('menu', MenuController::class);
     Route::resource('review', ReviewController::class);
+    Route::get('order-details/{orderid}', [OrderController::class, 'details']);
     Route::resource('order', OrderController::class);
     Route::get('/search', [MenuController::class, 'search']);
     Route::resource('cart', CartController::class);

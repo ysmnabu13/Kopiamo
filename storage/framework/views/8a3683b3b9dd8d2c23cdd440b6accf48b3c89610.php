@@ -52,7 +52,7 @@
                                 <?php echo e($order->orderStatus); ?>
 
                             </td>
-                            <form>
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
@@ -76,7 +76,7 @@
                                     <option value="Completed">Completed</option>
                                 </select>
                             </td>
-                            <form>
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
@@ -130,15 +130,15 @@
                                 <?php echo e($order->orderStatus); ?>
 
                             </td>
-                            <form>
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
                                 </td>
                             </form>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                <a href="#" class="underline text-blue-600 hover:text-blue-800">
-                                Review</a>
+                                <a href="<?php echo e(route('review.index')); ?>" class="underline text-blue-600 hover:text-blue-800">
+                                Rate & Review</a>
                             </td>
                         </tr>
                     <?php elseif($order->orderStatus != "Completed" && Auth::user()->name === 'admin'): ?>
@@ -155,7 +155,7 @@
                                 <?php echo e($order->orderStatus); ?>
 
                             </td>
-                            <form>
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>

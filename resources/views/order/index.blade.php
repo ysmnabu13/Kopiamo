@@ -44,7 +44,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->orderStatus }}
                             </td>
-                            <form>
+                            <form action="{{ url('order-details', $order->id) }}" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
@@ -66,7 +66,7 @@
                                     <option value="Completed">Completed</option>
                                 </select>
                             </td>
-                            <form>
+                            <form action="{{ url('order-details', $order->id) }}" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
@@ -117,7 +117,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->orderStatus }}
                             </td>
-                            <form>
+                            <form action="{{ url('order-details', $order->id) }}" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
@@ -125,7 +125,7 @@
                             </form>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 <a href="{{ route('review.index') }}" class="underline text-blue-600 hover:text-blue-800">
-                                Review</a>
+                                Rate & Review</a>
                             </td>
                         </tr>
                     @elseif ($order->orderStatus != "Completed" && Auth::user()->name === 'admin')
@@ -139,7 +139,7 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->orderStatus }}
                             </td>
-                            <form>
+                            <form action="{{ url('order-details', $order->id) }}" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>

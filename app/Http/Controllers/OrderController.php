@@ -86,4 +86,12 @@ class OrderController extends Controller
         //
     }
 
+    public function details($orderid)
+    {
+        $orders = Order::where('id', $orderid)->get();
+        return view('order.details')->with([
+            'orders' => $orders
+        ]);
+    }
+
 }
