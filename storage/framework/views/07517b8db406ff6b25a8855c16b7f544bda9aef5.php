@@ -108,7 +108,7 @@
                     <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
                       <i class="fas fa-user"></i>
                     </div>
-                      <h6 class="text-xl font-semibold">Syed Saddiq</h6>
+                      <h6 class="text-xl font-semibold">Azmin Ali</h6>
                       <p class="mt-2 mb-4 text-blueGray-500">
                         "Theres no way you guys still dont try their coffee yet!"
                       </p>
