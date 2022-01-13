@@ -22,7 +22,7 @@
                 <table class="min-w-full divide-y divide-gray-200 w-full">
                     <thead>
                         <tr>
-                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
                                 Image
                             </th>
                             <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -36,16 +36,52 @@
                             </th>
                         </tr>
                     </thead>
+                <?php $__currentLoopData = $orderitems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $items): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-900">
+                                <img src="<?php echo e(asset('uploads/menus/'. $items->products->coffee_photo_path)); ?>"  alt="Image" height="80px;" width="80px;">
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-900">
+                                <?php echo e($items->products->menuName); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-900">
+                                <?php echo e($items->qty); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-900">
+                                RM<?php echo e($items->price); ?>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </table>
             </div>
-            <div class="pl-20 py-4">
-                <p class="text-xl font-bold">TOTAL: RM</p>
-            </div>
             <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <div class="pl-20">
-                <p class="text-lg"><b>Notes: </b><?php echo e($order->notes); ?></p>
-                <p class="text-lg"><b>Order status: </b><?php echo e($order->orderStatus); ?></p>
+            <div class="pl-20 py-4">
+                <p class="text-xl font-bold">TOTAL: RM<?php echo e($order->totalPrice); ?></p>
             </div>
+            <div class="pl-20">
+                <p class="text-lg"><b>Notes         : </b><?php echo e($order->notes); ?></p>
+                <p class="text-lg"><b>Order status  : </b><?php echo e($order->orderStatus); ?></p>
+                <?php if($order->orderStatus == "Pending"): ?>
+                    <p class="text-lg">Please wait while we are preparing your drinks ...</p>
+                <?php elseif($order->orderStatus == "Ready to pick up"): ?>
+                    <p class="text-lg">Your drinks are ready to pick up at our store!</p>
+                <?php else: ?>
+                    <p class="text-lg">Don't forget to rate & review our drinks. We love to hear a feedback from you.</p>
+                <?php endif; ?>
+            </div>
+            <?php if(Auth::user()->name === 'admin'): ?>
+            <div class="pl-20 pt-5">
+                <p class="text-lg pb-2"><b>Customer details</b<</p>
+                <p class="text-lg"><b>Full Name     : </b><?php echo e($order->fullname); ?></p>
+                <p class="text-lg"><b>Email         : </b><?php echo e($order->email); ?></p>
+                <p class="text-lg"><b>Phone Number  : </b><?php echo e($order->phone); ?></p>
+            </div>
+            <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </div>
     </div>

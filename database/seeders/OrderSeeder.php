@@ -16,8 +16,7 @@ class OrderSeeder extends Seeder
     public function run()
     {
         Order::create([
-            'fname'         =>  'yoma',
-            'lname'         =>  'tashi',
+            'fullname'      =>  'yoma',
             'email'         =>  'yoma@gmail.com',
             'phone'         =>  '011-39097549',
             'user_id'       =>  '4',
@@ -26,8 +25,7 @@ class OrderSeeder extends Seeder
         ]);
 
         Order::create([
-            'fname'         =>  'yoma',
-            'lname'         =>  'tashi',
+            'fullname'      =>  'yoma',
             'email'         =>  'yoma@gmail.com',
             'phone'         =>  '011-39097549',
             'user_id'       =>  '4',
@@ -36,8 +34,7 @@ class OrderSeeder extends Seeder
         ]);
 
         Order::create([
-            'fname'         =>  'yoma',
-            'lname'         =>  'tashi',
+            'fullname'      =>  'yoma',
             'email'         =>  'yoma@gmail.com',
             'phone'         =>  '011-39097549',
             'user_id'       =>  '4',

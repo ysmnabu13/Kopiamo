@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\OrderItem;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,8 +16,7 @@ class Order extends Model
     
     protected $fillable = [
         'user_id',
-        'fname',
-        'lname',
+        'fullname',
         'email',
         'phone',
         'notes',
@@ -26,7 +26,6 @@ class Order extends Model
         'totalPrice',
         'paymentType',
         'paymentStatus',
-        'fullName',
         'ccNumber',
     ];
 
@@ -37,8 +36,14 @@ class Order extends Model
     public function user(){
         return $this->belongsTo(User::class, 'user_id' , 'id');
     }
+
     public function ratings()
     {
         return $this->hasMany('App\Models\Rating');
+    }
+
+    public function orderitems()
+    {
+        return $this->hasMany(OrderItem::class);
     }
 }

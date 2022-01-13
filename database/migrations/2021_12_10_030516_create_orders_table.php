@@ -16,8 +16,7 @@ class CreateOrdersTable extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users');
-            $table->string('fname');
-            $table->string('lname');
+            $table->string('fullname');
             $table->string('email');
             $table->string('phone');
             $table->string('notes')->nullable();
@@ -28,7 +27,6 @@ class CreateOrdersTable extends Migration
             $table->decimal('totalPrice',10,2);
             $table->string('paymentType')->nullable();
             $table->boolean('paymentStatus')->nullable();
-            $table->string('fullName')->nullable();
             $table->string('ccNumber')->nullable();
             $table->timestamps();
         });

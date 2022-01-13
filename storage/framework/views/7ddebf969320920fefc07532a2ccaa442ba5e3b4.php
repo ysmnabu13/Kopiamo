@@ -4,11 +4,13 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Richiamoo</title>
         <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+            <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
         <!-- Styles -->
         <style>
@@ -21,10 +23,11 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased ">
+      
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             <?php if(Route::has('login')): ?>
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block ">
                     <?php if(auth()->guard()->check()): ?>
                         <a href="<?php echo e(url('/dashboard')); ?>" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
                     <?php else: ?>
@@ -32,89 +35,90 @@
 
                         <?php if(Route::has('register')): ?>
                             <a href="<?php echo e(route('register')); ?>" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                        
                         <?php endif; ?>
                     <?php endif; ?>
                 </div>
             <?php endif; ?>
-            <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-            <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+            
 
 
-<section class="relative  bg-blueGray-50">
-<div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
-        <div class="absolute top-0 w-full h-full bg-center bg-cover" style="
-            background-image: url('https://i.pinimg.com/564x/06/80/99/068099a0b5375516f4d1d98d5d74c95e.jpg');
-          ">
-          <span id="blackOverlay" class="w-full h-full absolute opacity-75 bg-black"></span>
-        </div>
-        <div class="container relative mx-auto">
-          <div class="items-center flex flex-wrap">
-            <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
-              <div class="pr-12">
-                <h1 class="text-white font-semibold text-5xl">
-                  Your day starts with us. The Coffee :)
-                </h1>
-                <p class="mt-4 text-lg text-blueGray-200">
-                  A place you can come to anytime to enjoy a sip of coffee
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
-          <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
-            <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
-          </svg>
-        </div>
-      </div>
-      <section class="pb-10 bg-blueGray-200 -mt-24">
-        <div class="container mx-auto px-4">
-          <div class="flex flex-wrap">
-            <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
-              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                <div class="px-4 py-5 flex-auto">
-                  <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
-                    <i class="fas fa-user"></i>
+          <section class="relative mt-12 w-full h-full bg-blueGray-50">
+              <div class="relative pt-16 pb-32 flex content-center items-center justify-center min-h-screen-75">
+                <div class="absolute top-0 w-full h-full bg-center " style="
+                  background-image: url('https://i.pinimg.com/564x/06/80/99/068099a0b5375516f4d1d98d5d74c95e.jpg');
+                ">
+                  <span id="blackOverlay" class="w-full h-full absolute opacity-80 bg-black"></span>
+                </div>
+                  <div class="container relative mx-auto">
+                    <div class="items-center flex flex-wrap">
+                      <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
+                        <div class="pr-12">
+                          <h1 class="text-white font-semibold text-5xl">
+                             Your day starts with us. The Coffee :)
+                          </h1>
+                            <p class="mt-4 text-lg text-blueGray-200">
+                              A place you can come to anytime to enjoy a sip of coffee, having fun, sharing love.
+                            </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h6 class="text-xl font-semibold">Zulhusni Azhar</h6>
-                  <p class="mt-2 mb-4 text-blueGray-500">
-                    Surely worth the money spent.
-                  </p>
+                <div class="top-auto bottom-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden h-70-px" style="transform: translateZ(0px)">
+                    <svg class="absolute bottom-0 overflow-hidden" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" version="1.1" viewBox="0 0 2560 100" x="0" y="0">
+                      <polygon class="text-blueGray-200 fill-current" points="2560 0 2560 100 0 100"></polygon>
+                    </svg>
                 </div>
               </div>
-            </div>
-            <div class="w-full md:w-4/12 px-4 text-center">
-              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                <div class="px-4 py-5 flex-auto">
-                  <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
-                    <i class="fas fa-user"></i>
+            <section class="pb-10 bg-blueGray-200 -mt-24">
+              <div class="container mx-auto px-4">
+                <div class="flex flex-wrap">
+                  <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+                    <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                      <div class="px-4 py-5 flex-auto">
+                        <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400">
+                          <i class="fas fa-user"></i>
+                        </div>
+                          <h6 class="text-xl font-semibold">Zulhusni Azhar</h6>
+                          <p class="mt-2 mb-4 text-blueGray-500">
+                            "Surely worth the money spent."
+                          </p>
+                      </div>
+                    </div>
                   </div>
-                  <h6 class="text-xl font-semibold">Ahmad Maslan</h6>
-                  <p class="mt-2 mb-4 text-blueGray-500">
-                    Cant even describe the feeling!
-                  </p>
+                <div class="w-full md:w-4/12 px-4 text-center">
+                  <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                    <div class="px-4 py-5 flex-auto">
+                      <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-lightBlue-400">
+                        <i class="fas fa-user"></i>
+                      </div>
+                        <h6 class="text-xl font-semibold">Ahmad Maslan</h6>
+                        <p class="mt-2 mb-4 text-blueGray-500">
+                          "Cant even describe the feeling!"
+                        </p>
+                    </div>
+                  </div>
+                </div>
+              <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+                <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
+                  <div class="px-4 py-5 flex-auto">
+                    <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
+                      <i class="fas fa-user"></i>
+                    </div>
+                      <h6 class="text-xl font-semibold">Syed Saddiq</h6>
+                      <p class="mt-2 mb-4 text-blueGray-500">
+                        "Theres no way you guys still dont try their coffee yet!"
+                      </p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="pt-6 w-full md:w-4/12 px-4 text-center">
-              <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg">
-                <div class="px-4 py-5 flex-auto">
-                  <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
-                    <i class="fas fa-user"></i>
-                  </div>
-                  <h6 class="text-xl font-semibold">Syed Saddiq</h6>
-                  <p class="mt-2 mb-4 text-blueGray-500">
-                    Theres no way you guys still dont try thier coffee yet!
-                  </p>
-                </div>
               </div>
-            </div>
-          </div>
 
-      </section>
-      </section>
+            </section>
+          </section>
             
         </div>
+      
     </body>
 </html>
 <?php /**PATH D:\GitHub files\Kopiamo\resources\views/welcome.blade.php ENDPATH**/ ?>

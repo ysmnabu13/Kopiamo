@@ -141,7 +141,7 @@
                                 Rate & Review</a>
                             </td>
                         </tr>
-                    <?php elseif($order->orderStatus != "Completed" && Auth::user()->name === 'admin'): ?>
+                    <?php elseif($order->orderStatus == "Completed" && Auth::user()->name === 'admin'): ?>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>

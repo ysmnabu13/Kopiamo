@@ -27,17 +27,9 @@
                         @auth
                         <div>
                             <div class="space-x-0 lg:flex lg:space-x-4">
-                                <div class="w-full lg:w-1/2">
-                                    <label for="firstName" class="block mb-3 text-sm font-semibold text-gray-500">First
-                                        Name</label> 
-                                    <input name="firstName" type="text" value="{{Auth::user()->name}}"
-                                        class="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
-                                        required>
-                                </div>
-                                <div class="w-full lg:w-1/2 ">
-                                    <label for="lastName" class="block mb-3 text-sm font-semibold text-gray-500">Last
-                                        Name</label>
-                                    <input name="lastName" type="text" placeholder="Enter Last Name"
+                                <div class="w-full">
+                                    <label for="fullName" class="block mb-3 text-sm font-semibold text-gray-500">Full Name</label> 
+                                    <input name="fullName" type="text" value="{{Auth::user()->name}}"
                                         class="w-full px-4 py-3 text-sm border border-gray-300 rounded lg:text-sm focus:outline-none focus:ring-1 focus:ring-blue-600"
                                         required>
                                 </div>
@@ -64,11 +56,6 @@
                                     class="flex items-center w-full px-4 py-3 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-600"
                                     rows="4" placeholder="Notes for takeout"></textarea>
                             </div>
-
-                            <!-- <div class="mt-4">
-                                <button
-                                    class="w-full px-6 py-2 text-blue-200 bg-blue-600 hover:bg-blue-900">Process</button>
-                            </div> -->
                         </div>
                 </div>
                 <div class="flex flex-col w-full ml-0 lg:ml-12 lg:w-2/5 md:ml-12">
@@ -83,6 +70,8 @@
                                         <img src="{{ asset('uploads/menus/'. $menu->coffee_photo_path) }}"  alt="Image" height="100px;" width="100px;">
                                     </div>
                                     <div>
+                                        <input name="prodID" value="{{ $menu->id }}" hidden>
+                                        <input name="qty" value="1" hidden>
                                         <h2 class="text-xl font-bold">{{ $menu->menuName }}</h2>
                                         <p class="text-sm"><b>Coffee Type: </b>{{ $menu->menuType }}</p>
                                         <p class="text-sm"><b>Quantity: </b>1</p>

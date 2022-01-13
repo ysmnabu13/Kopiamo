@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Http\Controllers\Controller;
-// use App\Models\Menu;
+use App\Models\Menu;
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -40,14 +41,20 @@ class OrderController extends Controller
     {
         $order = new Order();
         $order->user_id = auth()->id();
-        $order->fname = $request->input('firstName');
-        $order->lname = $request->input('lastName');
+        $order->fullname = $request->input('fullName');
         $order->email = $request->input('Email');
         $order->phone = $request->input('phoneNumber');
         $order->notes = $request->input('note');
         $order->orderStatus = 'Pending';
         $order->totalPrice = $request->input('total');
         $order->save();
+
+        OrderItem::create([
+            'order_id'  =>  $order->id,
+            'prod_id'   =>  $request->input('prodID'),
+            'price'     =>  $request->input('total'),
+            'qty'       =>  $request->input('qty'),
+        ]);
 
         return redirect()->route('order.index')->with('success', 'Category successfully created');
     }
@@ -89,8 +96,10 @@ class OrderController extends Controller
     public function details($orderid)
     {
         $orders = Order::where('id', $orderid)->get();
+        $orderitems = OrderItem::where('order_id', $orderid)->get();
         return view('order.details')->with([
-            'orders' => $orders
+            'orders'        =>  $orders,
+            'orderitems'    =>  $orderitems
         ]);
     }
 

@@ -128,7 +128,7 @@
                                 Rate & Review</a>
                             </td>
                         </tr>
-                    @elseif ($order->orderStatus != "Completed" && Auth::user()->name === 'admin')
+                    @elseif ($order->orderStatus == "Completed" && Auth::user()->name === 'admin')
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
