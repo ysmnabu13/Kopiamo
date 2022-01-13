@@ -9,6 +9,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
+            <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
 
         <!-- Styles -->
         <style>
@@ -36,8 +38,7 @@
                     @endauth
                 </div>
             @endif
-            <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/styles/tailwind.css">
-            <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
+            
 
 
 <section class="relative  bg-blueGray-50">
@@ -55,7 +56,7 @@
                   Your day starts with us. The Coffee :)
                 </h1>
                 <p class="mt-4 text-lg text-blueGray-200">
-                  A place you can come to anytime to enjoy a sip of coffee
+                  A place you can come to anytime to enjoy a sip of coffee, having fun, sharing love.
                 </p>
               </div>
             </div>
@@ -78,7 +79,7 @@
                   </div>
                   <h6 class="text-xl font-semibold">Zulhusni Azhar</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
-                    Surely worth the money spent.
+                    "Surely worth the money spent."
                   </p>
                 </div>
               </div>
@@ -91,7 +92,7 @@
                   </div>
                   <h6 class="text-xl font-semibold">Ahmad Maslan</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
-                    Cant even describe the feeling!
+                    "Cant even describe the feeling!"
                   </p>
                 </div>
               </div>
@@ -104,7 +105,7 @@
                   </div>
                   <h6 class="text-xl font-semibold">Syed Saddiq</h6>
                   <p class="mt-2 mb-4 text-blueGray-500">
-                    Theres no way you guys still dont try thier coffee yet!
+                    "Theres no way you guys still dont try their coffee yet!"
                   </p>
                 </div>
               </div>
