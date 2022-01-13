@@ -15,7 +15,7 @@
         <div class="bg-white shadow-2xl rounded-b-3xl">
           <h2 class="text-center text-gray-800 text-2xl font-bold pt-6">Customer Feedback</h2>
           <div class="w-5/6 m-auto">
-            <p class="text-center text-gray-500 pt-5">Name:Latte pu sama lu</p>
+            <p class="text-center text-gray-500 pt-5">Name:Latte</p>
           </div>
           <div class="w-5/6 m-auto mt-9">
             <p class="text-center pt-5">Rate Your Order</p>
