@@ -15,31 +15,31 @@ class OrderSeeder extends Seeder
      */
     public function run()
     {
-        Order::create([
-            'fullname'      =>  'yoma',
-            'email'         =>  'yoma@gmail.com',
-            'phone'         =>  '011-39097549',
-            'user_id'       =>  '4',
-            'orderStatus'   =>  'Pending',
-            'totalPrice'    =>  '23.50',
-        ]);
+        // Order::create([
+        //     'fullname'      =>  'yoma',
+        //     'email'         =>  'yoma@gmail.com',
+        //     'phone'         =>  '011-39097549',
+        //     'user_id'       =>  '4',
+        //     'orderStatus'   =>  'Pending',
+        //     'totalPrice'    =>  '23.50',
+        // ]);
 
-        Order::create([
-            'fullname'      =>  'yoma',
-            'email'         =>  'yoma@gmail.com',
-            'phone'         =>  '011-39097549',
-            'user_id'       =>  '4',
-            'orderStatus'   =>  'Ready to pick up',
-            'totalPrice'    =>  '12.80',
-        ]);
+        // Order::create([
+        //     'fullname'      =>  'yoma',
+        //     'email'         =>  'yoma@gmail.com',
+        //     'phone'         =>  '011-39097549',
+        //     'user_id'       =>  '4',
+        //     'orderStatus'   =>  'Ready to pick up',
+        //     'totalPrice'    =>  '12.80',
+        // ]);
 
-        Order::create([
-            'fullname'      =>  'yoma',
-            'email'         =>  'yoma@gmail.com',
-            'phone'         =>  '011-39097549',
-            'user_id'       =>  '4',
-            'orderStatus'   =>  'Completed',
-            'totalPrice'    =>  '19.60',
-        ]);
+        // Order::create([
+        //     'fullname'      =>  'yoma',
+        //     'email'         =>  'yoma@gmail.com',
+        //     'phone'         =>  '011-39097549',
+        //     'user_id'       =>  '4',
+        //     'orderStatus'   =>  'Completed',
+        //     'totalPrice'    =>  '19.60',
+        // ]);
     }
 }

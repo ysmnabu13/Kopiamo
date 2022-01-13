@@ -55,7 +55,10 @@
                       <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                         <div class="pr-12">
                           <h1 class="text-white font-semibold text-5xl">
-                             Your day starts with us. The Coffee :)
+                             <p>Your day starts with us.</p>
+                             <br/>
+                             <p> The <b>Richiamoo</b> . </p>
+                             <br/>
                           </h1>
                             <p class="mt-4 text-lg text-blueGray-200">
                               A place you can come to anytime to enjoy a sip of coffee, having fun, sharing love.
@@ -105,7 +108,7 @@
                     <div class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-emerald-400">
                       <i class="fas fa-user"></i>
                     </div>
-                      <h6 class="text-xl font-semibold">Syed Saddiq</h6>
+                      <h6 class="text-xl font-semibold">Azmin Ali</h6>
                       <p class="mt-2 mb-4 text-blueGray-500">
                         "Theres no way you guys still dont try their coffee yet!"
                       </p>
