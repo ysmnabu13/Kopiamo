@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
+<script src="https://cdn.tailwindcss.com"></script>
 
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
@@ -21,9 +22,6 @@
                 <table class="min-w-full divide-y divide-gray-200 w-full">
                     <thead>
                         <tr>
-                            <th scope="col" width="80" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
-                                Order ID
-                            </th>
                             <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                                 Time
                             </th>
@@ -33,73 +31,15 @@
                             <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                                 Order status
                             </th>
-                        </tr>
-                    </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
-                    <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <?php if($order->orderStatus != "Completed"): ?>
-                        <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                <?php echo e($order->id); ?>
-
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>
-
-                            </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                <?php echo e($order->totalPrice); ?>
-
-                            </td>
-                            <?php if(Auth::user()->name === 'admin'): ?>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                    <select name="orderStatus">
-                                        <option value="Pending">Pending</option>
-                                        <option value="Pick up">Ready to pick up</option>
-                                        <option value="Completed">Completed</option>
-                                    </select>
-                                </td>
-                            <?php else: ?>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                    <?php echo e($order->orderStatus); ?>
-
-                                </td>
-                            <?php endif; ?>
-                        </tr>
-                    <?php endif; ?>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    </tbody>
-                </table>
-            </div><br><br>
-            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg font-semibold bg-gray-50">
-                <h2>Past orders</h2>
-            </div>
-            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-white">
-                <table class="min-w-full divide-y divide-gray-200 w-full">
-                    <thead>
-                        <tr>
-                            <th scope="col" width="80" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
-                                Order ID
-                            </th>
                             <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
-                                Time
-                            </th>
-                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
-                                Total (RM)
-                            </th>
-                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
-                                Order status
+                                Order details
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
                     <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <?php if($order->orderStatus == "Completed"): ?>
+                    <?php if($order->orderStatus != "Completed" && $order->user_id === Auth::user()->id): ?>
                         <tr>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                <?php echo e($order->id); ?>
-
-                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>
 
@@ -112,10 +52,119 @@
                                 <?php echo e($order->orderStatus); ?>
 
                             </td>
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
+                                    View</button>
+                                </td>
+                            </form>
                         </tr>
-                    </tbody>
+                    <?php elseif($order->orderStatus != "Completed" && Auth::user()->name === 'admin'): ?>
+                    <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <?php echo e($order->totalPrice); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <select name="orderStatus">
+                                    <option value="Pending">Pending</option>
+                                    <option value="Pick up">Ready to pick up</option>
+                                    <option value="Completed">Completed</option>
+                                </select>
+                            </td>
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
+                                    View</button>
+                                </td>
+                            </form>
+                        </tr>
                     <?php endif; ?>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </tbody>
+                </table>
+            </div><br><br>
+            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg font-semibold bg-gray-50">
+                <h2>Completed orders</h2>
+            </div>
+            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-white">
+                <table class="min-w-full divide-y divide-gray-200 w-full">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Time
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Total (RM)
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Order status
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Order details
+                            </th>
+                            <?php if(Auth::user()->name != 'admin'): ?>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
+                                Action
+                            </th>
+                            <?php endif; ?>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                    <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($order->orderStatus == "Completed" && $order->user_id === Auth::user()->id): ?>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <?php echo e($order->totalPrice); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <?php echo e($order->orderStatus); ?>
+
+                            </td>
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
+                                    View</button>
+                                </td>
+                            </form>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <a href="<?php echo e(route('review.index')); ?>" class="underline text-blue-600 hover:text-blue-800">
+                                Rate & Review</a>
+                            </td>
+                        </tr>
+                    <?php elseif($order->orderStatus != "Completed" && Auth::user()->name === 'admin'): ?>
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <?php echo e($order->totalPrice); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                <?php echo e($order->orderStatus); ?>
+
+                            </td>
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
+                                    View</button>
+                                </td>
+                            </form>
+                        </tr>
+                    <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                    </tbody>
                 </table>
             </div>
         </div>
