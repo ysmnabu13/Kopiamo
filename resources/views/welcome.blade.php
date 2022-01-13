@@ -55,7 +55,10 @@
                       <div class="w-full lg:w-6/12 px-4 ml-auto mr-auto text-center">
                         <div class="pr-12">
                           <h1 class="text-white font-semibold text-5xl">
-                             Your day starts with us. The Coffee :)
+                             <p>Your day starts with us.</p>
+                             <br/>
+                             <p> The <b>Richiamoo</b> . </p>
+                             <br/>
                           </h1>
                             <p class="mt-4 text-lg text-blueGray-200">
                               A place you can come to anytime to enjoy a sip of coffee, having fun, sharing love.
