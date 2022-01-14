@@ -25,23 +25,23 @@ class CartController extends Controller
             $request->input('quantity'),
             $menus->menuPrice,
             0.00,
-            ['photo' => $menus->coffee_photo_path]
+            ['photo' => $menus->coffee_photo_path, 'type' => $menus->menuType]
         )->associate(Menu::class);
 
-        
+        Cart::store(auth()->id());
 
         return redirect()->route('menu.index')->with('message', 'Item successfully added to cart');
     }
 
     public function destroy($cart){
-        // $item = Cart::where('id',$id);
         Cart::remove($cart);
+        Cart::store(auth()->id());
         return $this->index();
     }
 
     public function update(Request $request, $id){
-        // $carts = Cart::where('i')
         Cart::update($id, $request->input('cart_qty'));
+        Cart::store(auth()->id());
         return $this->index();
     }
 }

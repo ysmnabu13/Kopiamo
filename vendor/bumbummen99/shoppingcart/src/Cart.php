@@ -14,6 +14,8 @@ use Illuminate\Database\DatabaseManager;
 use Illuminate\Session\SessionManager;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Traits\Macroable;
+use Illuminate\Support\Facades\DB;
+
 
 class Cart
 {
@@ -640,16 +642,20 @@ class Cart
         $instance = $this->currentInstance();
 
         if ($this->storedCartInstanceWithIdentifierExists($instance, $identifier)) {
-            throw new CartAlreadyStoredException("A cart with identifier {$identifier} was already stored.");
+            // throw new CartAlreadyStoredException("A cart with identifier {$identifier} was already stored.");
+            DB::table('shoppingcart')
+              ->where('identifier', $identifier)
+              ->update(['content' => serialize($content)]);
         }
-
-        $this->getConnection()->table($this->getTableName())->insert([
-            'identifier' => $identifier,
-            'instance'   => $instance,
-            'content'    => serialize($content),
-            'created_at' => $this->createdAt ?: Carbon::now(),
-            'updated_at' => Carbon::now(),
-        ]);
+        else{
+            $this->getConnection()->table($this->getTableName())->insert([
+                'identifier' => $identifier,
+                'instance'   => $instance,
+                'content'    => serialize($content),
+                'created_at' => $this->createdAt ?: Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
 
         $this->events->dispatch('cart.stored');
     }

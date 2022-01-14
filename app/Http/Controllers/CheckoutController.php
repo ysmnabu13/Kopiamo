@@ -11,7 +11,7 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        // return view('order.checkout');
+        return view('order.checkout');
     }
 
     public function buynow($currMenu)
@@ -22,5 +22,16 @@ class CheckoutController extends Controller
             'menus' => $menus,
             'orders' => $orders
         ]);
+    }
+
+    public function pageToCheckout(Request $request){
+        //Source of page 
+        $source = $request->input('from');
+        if(strcmp($source, 'cartpage')){
+            return $this->index()->with('fromCart', 'Items from cart');
+        }
+        else{
+            return $this->index()->with('fromBuyNow', 'Items from menu');
+        }
     }
 }
