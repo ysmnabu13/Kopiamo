@@ -21,12 +21,9 @@ class Order extends Model
         'phone',
         'notes',
         'orderStatus',
-        'orderName',
-        'orderPrice',
         'totalPrice',
         'paymentType',
         'paymentStatus',
-        'ccNumber',
     ];
 
     public function menu() : BelongsToMany{

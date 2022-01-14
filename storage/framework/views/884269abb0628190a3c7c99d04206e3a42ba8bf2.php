@@ -22,8 +22,9 @@
 
     <body>
 
+
         <div class="container p-12 mx-auto">
-            <div class="flex flex-col w-full px-0 mx-auto md:flex-row">
+            <div class="flex flex-col w-4/5 px-0 mx-auto md:flex-row">
                 <div class="flex flex-col md:w-full pl-20">
                     <h2 class="mb-4 font-bold md:text-xl text-heading">Customer details
                     </h2>
@@ -63,6 +64,50 @@
                             </div>
                         </div>
                 </div>
+                
+                <?php if(session('fromCart')): ?>
+                <input name="ordertype" value="cart" hidden>
+                <div class="flex flex-col w-full ml-0 lg:ml-12 lg:w-2/5 md:ml-12">
+                    <div class="pt-12 md:pt-0 2xl:ps-4">
+                        <h2 class="text-xl font-bold">Order Summary
+                        </h2>
+                        <?php $__currentLoopData = Cart::content(); $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                        <div class="mt-8">
+                            <div class="flex flex-col space-y-4">
+                                <div class="flex space-x-4">
+                                    <div>
+                                        <img src="<?php echo e(asset('uploads/menus/'. $item->options->photo)); ?>"  alt="Image" width="60" class="rounded-full">
+                                    </div>
+                                    <div>
+                                        <!-- <input name="prodID" value="<?php echo e($item->id); ?>" hidden>
+                                        <input name="qty" value="<?php echo e($item->qty); ?>" hidden>
+                                        <input name="itemprice" value="<?php echo e($item->priceTotal()); ?>" hidden> -->
+                                        <h2 class="text-xl font-bold"><?php echo e($item->name); ?></h2>
+                                        <p class="text-sm"><b>Coffee Type: </b><?php echo e($item->options->type); ?></p>
+                                        <p class="text-sm"><b>Quantity: </b><?php echo e($item->qty); ?></p>
+                                        <span class="text-red-600">Price</span> RM <?php echo e($item->priceTotal()); ?>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <input name="total" value="<?php echo e(Cart::subTotal()); ?>" hidden>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                        <div
+                            class="flex items-center w-full py-4 text-sm font-semibold border-t border-gray-300 lg:py-5 text-heading text-xl last:border-b-0 last:text-base last:pb-0">
+                            TOTAL<span class="ml-2" id="sum">RM <?php echo e(Cart::subTotal()); ?></span>
+                        </div>
+                        <div>
+                            <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
+                            Place order</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+
+                
+                <?php else: ?>
+                <input name="ordertype" value="buynow" hidden>
                 <div class="flex flex-col w-full ml-0 lg:ml-12 lg:w-2/5 md:ml-12">
                     <div class="pt-12 md:pt-0 2xl:ps-4">
                         <h2 class="text-xl font-bold">Order Summary
@@ -72,11 +117,12 @@
                             <div class="flex flex-col space-y-4">
                                 <div class="flex space-x-4">
                                     <div>
-                                        <img src="<?php echo e(asset('uploads/menus/'. $menu->coffee_photo_path)); ?>"  alt="Image" height="100px;" width="100px;">
+                                        <img src="<?php echo e(asset('uploads/menus/'. $menu->coffee_photo_path)); ?>"  alt="Image" width="60" class="rounded-full">
                                     </div>
                                     <div>
                                         <input name="prodID" value="<?php echo e($menu->id); ?>" hidden>
                                         <input name="qty" value="1" hidden>
+                                        <input name="itemprice" value="<?php echo e($menu->menuPrice); ?>" hidden>
                                         <h2 class="text-xl font-bold"><?php echo e($menu->menuName); ?></h2>
                                         <p class="text-sm"><b>Coffee Type: </b><?php echo e($menu->menuType); ?></p>
                                         <p class="text-sm"><b>Quantity: </b>1</p>
@@ -98,8 +144,10 @@
                     </div>
                     </form>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
+    </div>
 
 
     </body>
@@ -109,4 +157,6 @@
 <?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
 <?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
 <?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
-<?php endif; ?><?php /**PATH D:\GitHub files\Kopiamo\resources\views/order/checkout.blade.php ENDPATH**/ ?>
+<?php endif; ?>
+
+<?php /**PATH D:\GitHub files\Kopiamo\resources\views/order/checkout.blade.php ENDPATH**/ ?>

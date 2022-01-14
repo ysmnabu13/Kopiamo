@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Menu;
 use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 class OrderController extends Controller
 {
@@ -49,12 +50,24 @@ class OrderController extends Controller
         $order->totalPrice = $request->input('total');
         $order->save();
 
-        OrderItem::create([
-            'order_id'  =>  $order->id,
-            'prod_id'   =>  $request->input('prodID'),
-            'price'     =>  $request->input('total'),
-            'qty'       =>  $request->input('qty'),
-        ]);
+        if($request->input('ordertype') == 'cart'){
+            foreach (Cart::content() as $item){
+                OrderItem::create([
+                    'order_id'  =>  $order->id,
+                    'prod_id'   =>  $item->id,
+                    'price'     =>  $item->priceTotal(),
+                    'qty'       =>  $item->qty,
+                ]);
+            }
+        }else{
+            OrderItem::create([
+                'order_id'  =>  $order->id,
+                'prod_id'   =>  $request->input('prodID'),
+                'price'     =>  $request->input('itemprice'),
+                'qty'       =>  $request->input('qty'),
+            ]);
+        }
+        
 
         return redirect()->route('order.index')->with('success', 'Category successfully created');
     }

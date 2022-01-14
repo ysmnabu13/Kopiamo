@@ -21,13 +21,9 @@ class CreateOrdersTable extends Migration
             $table->string('phone');
             $table->string('notes')->nullable();
             $table->string('orderStatus');
-
-            $table->string('orderName')->nullable();
-            $table->decimal('orderPrice',10,2)->nullable();
             $table->decimal('totalPrice',10,2);
             $table->string('paymentType')->nullable();
             $table->boolean('paymentStatus')->nullable();
-            $table->string('ccNumber')->nullable();
             $table->timestamps();
         });
     }
