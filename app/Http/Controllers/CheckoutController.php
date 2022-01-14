@@ -24,14 +24,17 @@ class CheckoutController extends Controller
         ]);
     }
 
-    public function pageToCheckout(Request $request){
+    public function pagetocheckout(Request $request){
         //Source of page 
         $source = $request->input('from');
-        if(strcmp($source, 'cartpage')){
-            return $this->index()->with('fromCart', 'Items from cart');
+        if($source == 'cartpage'){
+            // return $this->index()->with('fromCart', 'Items from cart');
+            return redirect()->route('checkout.index')->with('fromCart', 'Items from cart');
+
         }
         else{
-            return $this->index()->with('fromBuyNow', 'Items from menu');
+            // return redirect()->route('menu.index')->with('fromBuyNow', 'Items from menu');
+            echo $source;
         }
     }
 }

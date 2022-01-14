@@ -43,4 +43,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('aboutus', [AboutUsController::class, 'index'])->name('aboutus');
     Route::get('buy-now/{currMenu}', [CheckoutController::class, 'buynow']);
     Route::resource('checkout', CheckoutController::class);
+    Route::put('/cart-checkout', [CheckoutController::class, 'pagetocheckout'])->name('checkout.pagetocheckout');
+
 });

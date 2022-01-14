@@ -107,8 +107,9 @@
                   <span>Total cost</span>
                   <span>RM<?php echo e(Cart::subTotal()); ?></span>
                 </div>
-                <form action="<?php echo e(route('checkout.index')); ?>" method="GET">
+                <form action="<?php echo e(route('checkout.pagetocheckout')); ?>" method="post">
                     <?php echo csrf_field(); ?>
+                    <?php echo method_field('PUT'); ?>
                     <input type="hidden" name="from" value="cartpage">
                     <button type="submit" class= "bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
                 </form>

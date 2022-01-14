@@ -101,8 +101,9 @@
                   <span>Total cost</span>
                   <span>RM{{ Cart::subTotal() }}</span>
                 </div>
-                <form action="{{ route('checkout.index') }}" method="GET">
+                <form action="{{ route('checkout.pagetocheckout') }}" method="post">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="from" value="cartpage">
                     <button type="submit" class= "bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
                 </form>
