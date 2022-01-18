@@ -1,55 +1,109 @@
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-<script src="https://cdn.tailwindcss.com"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
+</head>
+
+
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            Review Form
-        </h2>
+        <div class="flex justify-between">
+            <div>
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-5">
+                    Review List
+                </h2>
+            </div>
+            <form class="w-full max-w-sm" action="{{ url('/search') }}" method="GET">
+                <div class="flex items-center border-b border-teal-500 py-2">
+                  <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" name="search" type="search" placeholder="Search Menu">
+                  <x-jet-button>
+                    Search
+                  </x-jet-button>
+                </div>
+            </form>
+        </div>
     </x-slot>
     
- 
-    <div class="h-screen">
-      <div class="w-100 mt-24 m-auto lg:mt-16 max-w-sm">
-        <img src="{{ asset('uploads/menus/1cold.jfif') }}" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
-        <div class="bg-white shadow-2xl rounded-b-3xl">
-          <h2 class="text-center text-gray-800 text-2xl font-bold pt-6">Customer Feedback</h2>
-          <div class="w-5/6 m-auto">
-            <p class="text-center text-gray-500 pt-5">Name:Latte</p>
-          </div>
-          <div class="w-5/6 m-auto mt-9">
-            <p class="text-center pt-5">Rate Your Order</p>
-          </div>
-          <div class=" w-72 lg:w-5/6 m-auto bg-indigo-50 mt-5 p-4 lg:p-4 rounded-2xl flex flex-wrap justify-center mt-4 space-x-3">
-         
-                    <option value="1"
-						class="  flex items-center text-gray-600 hover:bg-green-500 transition duration-150 rounded-full font-bold hover:text-green-50 cursor-pointer">
-						1</option>
-                    <option value="2"
-						class="  bg-gray--100 text-gray-600 hover:bg-green-500 transition duration-150 rounded-full font-bold hover:text-green-50 cursor-pointer">
-						2</option>
-                    <option value="3"
-						class="  bg-gray--100 text-gray-600 hover:bg-green-500 transition duration-150 rounded-full font-bold hover:text-green-50 cursor-pointer">
-						3</option>
-                    <option value="4"
-						class="  bg-gray--100 text-gray-600 hover:bg-green-500 transition duration-150 rounded-full font-bold hover:text-green-50 cursor-pointer">
-						4</option>
-                    <option value="5"
-						class="  bg-gray--100 text-gray-600 hover:bg-green-500 transition duration-150 rounded-full font-bold hover:text-green-50 cursor-pointer">
-						5</option>
-					
-          </div>
-            <div class="flex justify-center mt-4 mb-9">
-                <input class="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="review" type="text" placeholder="Your Review">
-            </div>
-          <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-2 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
-            <button classs="lg:text-sm text-lg font-bold">Send Review</button>
-          </div>
+
+    <div>
+        <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
+                    <div class="flex mb-8">
+                        <a href="{{ route('review.create') }}" class="bg-green-500 hover:bg-green text-white font-bold py-2 px-4 rounded">Add Review</a>
+                    </div>
             
-          <div class="text-center m-auto mt-6 w-full h-16">
-            <button class="text-gray-500 font-bold lg:text-sm hover:text-gray-900">Cancel Review</button>
-          </div>
+                <div class="flex flex-col">
+                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                                <table class="min-w-full divide-y divide-gray-200 w-full">
+                                    <thead>
+                                    <tr>
+
+                                        <th scope="col" width="50" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Review ID
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Rating (/5)
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Message
+                                        </th>
+                                        <th scope="col" width="200" class="py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
+                                        Time and Date
+                                        </th>
+                                        @auth
+                                          @if (Auth::user()->name !== 'admin')
+                                        <th scope="col" width="200" class="py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
+                                            Action
+                                        </th>
+                                          @endif
+                                        @endauth
+                                    </tr>
+                                    </thead>
+                                    <tbody class="bg-white divide-y divide-gray-200">
+                                    <!--@foreach ($reviews as $review)-->
+                                        <tr>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                Order 1
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                22-10-2021 14:33:12
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                RM12
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                2
+                                            </td>
+                                            
+                                            @auth
+                                                @if (Auth::user()->name !== 'admin')
+                                                    <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
+                                                        <a href="{{ route('review.show',$review->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a> 
+                                                        <form class="inline-block" action="{{ route('review.destroy', $review->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                                                        <input type="hidden" name="_method" value="DELETE">
+                                                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                                        <button type="submit" class="text-red-600 hover:text-red-900 mr-2 mt-4" >Delete</button>
+                                                        </form>
+                                                    </td>
+                                                @endif   
+                                            @endauth
+                                        </tr>
+                                   <!-- @endforeach-->
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          
         </div>
-      </div>
     </div>
 </x-app-layout>

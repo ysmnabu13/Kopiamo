@@ -15,8 +15,8 @@ class ReviewController extends Controller
      */
     public function index()
     {
-  
-        return view('review.index');
+        $reviews = Rating::all();
+        return view('review.index',compact('reviews'));
     }
 
     /**
@@ -25,8 +25,9 @@ class ReviewController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        
+        return view('review.create');
     }
 
     /**
@@ -37,7 +38,12 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $review = new Rating;
+        $review->rating = $request->input('rating');
+        $review->comment = $request->input('comment');
+
+        $review->save();
+        return redirect()->route('review.index');
     }
 
     /**
@@ -48,7 +54,7 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('review.reviewdetails',compact('id'));
     }
 
     /**
@@ -82,6 +88,7 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $review->delete();
+        return redirect()->route('review.index');
     }
 }
