@@ -18,7 +18,7 @@
      <?php $__env->slot('header', null, []); ?> 
         <div class="flex justify-between">
             <div>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-5">
+                <h2 class="font-semibold text-xl text-white leading-tight mt-5">
                     Menu List
                 </h2>
             </div>

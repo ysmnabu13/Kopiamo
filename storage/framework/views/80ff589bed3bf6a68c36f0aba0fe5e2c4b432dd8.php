@@ -1,11 +1,16 @@
-<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
 
-<x-app-layout>
-    <x-slot name="header">
+<?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
+<?php $component->withName('app-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+     <?php $__env->slot('header', null, []); ?> 
         <h2 class="font-semibold text-xl text-white leading-tight">
             Cart
         </h2>
-    </x-slot>
+     <?php $__env->endSlot(); ?>
 
     <head>
         <meta charset="UTF-8">
@@ -27,9 +32,9 @@
             <div class="w-3/4 bg-white px-10 py-10">
               <div class="flex justify-between border-b pb-8">
                 <h1 class="font-semibold text-2xl">Shopping Cart</h1>
-                {{-- @foreach (Cart::content() as $item) --}}
-                    <h2 class="font-semibold text-2xl">{{ Cart::content()->count() }} Drinks</h2> 
-                {{-- @endforeach --}}
+                
+                    <h2 class="font-semibold text-2xl"><?php echo e(Cart::content()->count()); ?> Drinks</h2> 
+                
               </div>
               <div class="flex mt-10 mb-5">
                 <h3 class="font-semibold text-gray-600 text-xs uppercase w-2/5">Menu Details</h3>
@@ -37,35 +42,36 @@
                 <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Quantity</h3>
                 <h3 class="font-semibold text-center text-gray-600 text-xs uppercase w-1/5 text-center">Total</h3>
               </div>
-              @foreach ($carts as $cart)
+              <?php $__currentLoopData = $carts; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $cart): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
                     <div class="flex w-2/5"> <!-- product -->
                         <div class="w-20">
-                            <img class="h-24" src="{{ asset('uploads/menus/'. $cart->options->photo) }}" alt="">
+                            <img class="h-24" src="<?php echo e(asset('uploads/menus/'. $cart->options->photo)); ?>" alt="">
                         </div>
                         <div class="flex flex-col justify-between ml-4 flex-grow">
-                            <span class="font-bold text-sm">{{ $cart->name }}</span>
-                            <span class="text-red-500 text-xs">{{ $cart->options->type }}</span>
-                            <form class="inline-block" action="{{ route('cart.destroy', $cart->rowId) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                            <span class="font-bold text-sm"><?php echo e($cart->name); ?></span>
+                            <span class="text-red-500 text-xs"><?php echo e($cart->options->type); ?></span>
+                            <form class="inline-block" action="<?php echo e(route('cart.destroy', $cart->rowId)); ?>" method="POST" onsubmit="return confirm('Are you sure?');">
                                 <input type="hidden" name="_method" value="DELETE">
-                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
                                 <button class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>
                             </form>
                         </div>
                     </div>
 
-                    <span class="text-center w-1/5 font-semibold text-sm">RM{{ $cart->price(2) }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm">RM<?php echo e($cart->price(2)); ?></span>
                     <div class="flex justify-center w-1/5">
                         <div>
-                            <form action={{ route('cart.update', $cart->rowId)}} method="post" onsubmit="return confirm('Are you sure?');">
-                                @csrf
-                                @method('PUT')
+                            <form action=<?php echo e(route('cart.update', $cart->rowId)); ?> method="post" onsubmit="return confirm('Are you sure?');">
+                                <?php echo csrf_field(); ?>
+                                <?php echo method_field('PUT'); ?>
                             <input
                                 type="number"
                                 class="form-control block w-20 px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                                 id="cart_qty" name="cart_qty"
                                 placeholder="Number input"
-                                value={{ $cart->qty }}
+                                value=<?php echo e($cart->qty); ?>
+
                             />
                         </div>
                         <div>
@@ -76,9 +82,9 @@
                         </div>
                             </form>
                     </div>
-                    <span class="text-center w-1/5 font-semibold text-sm">RM{{ $cart->priceTotal() }}</span>
+                    <span class="text-center w-1/5 font-semibold text-sm">RM<?php echo e($cart->priceTotal()); ?></span>
                 </div>
-              @endforeach
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     
             </div>
       
@@ -86,11 +92,11 @@
               <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
               <div class="flex justify-between mt-10 mb-5">
                 <span class="font-semibold text-sm uppercase">Total Items </span>
-                <span class="font-semibold text-sm">{{ Cart::content()->count() }}</span>
+                <span class="font-semibold text-sm"><?php echo e(Cart::content()->count()); ?></span>
               </div>
               <div class="flex justify-between mt-10 mb-5">
                 <span class="font-semibold text-sm uppercase">Subtotal</span>
-                <span class="font-semibold text-sm">RM{{ Cart::subTotal() }}</span>
+                <span class="font-semibold text-sm">RM<?php echo e(Cart::subTotal()); ?></span>
               </div>
               <div class="flex justify-between mt-10 mb-5">
                 <span class="font-semibold text-sm uppercase">Sales Tax</span>
@@ -99,11 +105,11 @@
               <div class="border-t mt-8">
                 <div class="flex font-semibold justify-between py-6 text-sm uppercase">
                   <span>Total cost</span>
-                  <span>RM{{ Cart::subTotal() }}</span>
+                  <span>RM<?php echo e(Cart::subTotal()); ?></span>
                 </div>
-                <form action="{{ route('checkout.pagetocheckout') }}" method="post">
-                    @csrf
-                    @method('PUT')
+                <form action="<?php echo e(route('checkout.pagetocheckout')); ?>" method="post">
+                    <?php echo csrf_field(); ?>
+                    <?php echo method_field('PUT'); ?>
                     <input type="hidden" name="from" value="cartpage">
                     <button type="submit" class= "bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
                 </form>
@@ -114,4 +120,10 @@
         </div>
       </body>
       
-</x-app-layout>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
+<?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
+<?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
+<?php endif; ?>
+<?php /**PATH E:\Github FIles\AD\resources\views/cart/index.blade.php ENDPATH**/ ?>
