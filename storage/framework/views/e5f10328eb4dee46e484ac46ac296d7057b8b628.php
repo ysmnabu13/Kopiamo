@@ -1,12 +1,17 @@
-<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
 <script src="https://cdn.tailwindcss.com"></script>
 
-<x-app-layout>
-    <x-slot name="header">
+<?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
+<?php $component->withName('app-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+     <?php $__env->slot('header', null, []); ?> 
         <h2 class="font-semibold text-xl text-white leading-tight">
             Orders List
         </h2>
-    </x-slot>
+     <?php $__env->endSlot(); ?>
 
     <div class="container mx-auto">
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
@@ -32,32 +37,37 @@
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($orders as $order)
-                    @if ($order->orderStatus != "Completed" && $order->user_id === Auth::user()->id)
+                    <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($order->orderStatus != "Completed" && $order->user_id === Auth::user()->id): ?>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
+                                <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ $order->totalPrice }}
+                                <?php echo e($order->totalPrice); ?>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ $order->orderStatus }}
+                                <?php echo e($order->orderStatus); ?>
+
                             </td>
-                            <form action="{{ url('order-details', $order->id) }}" method="GET">
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
                                 </td>
                             </form>
                         </tr>
-                    @elseif ($order->orderStatus != "Completed" && Auth::user()->name === 'admin')
+                    <?php elseif($order->orderStatus != "Completed" && Auth::user()->name === 'admin'): ?>
                     <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
+                                <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ $order->totalPrice }}
+                                <?php echo e($order->totalPrice); ?>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 <select name="orderStatus">
@@ -66,15 +76,15 @@
                                     <option value="Completed">Completed</option>
                                 </select>
                             </td>
-                            <form action="{{ url('order-details', $order->id) }}" method="GET">
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
                                 </td>
                             </form>
                         </tr>
-                    @endif
-                    @endforeach
+                    <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
             </div><br><br>
@@ -97,60 +107,71 @@
                             <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                                 Order details
                             </th>
-                            @if (Auth::user()->name != 'admin')
+                            <?php if(Auth::user()->name != 'admin'): ?>
                             <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider text-center">
                                 Action
                             </th>
-                            @endif
+                            <?php endif; ?>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                    @foreach ($orders as $order)
-                    @if($order->orderStatus == "Completed" && $order->user_id === Auth::user()->id)
+                    <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <?php if($order->orderStatus == "Completed" && $order->user_id === Auth::user()->id): ?>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
+                                <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ $order->totalPrice }}
+                                <?php echo e($order->totalPrice); ?>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ $order->orderStatus }}
+                                <?php echo e($order->orderStatus); ?>
+
                             </td>
-                            <form action="{{ url('order-details', $order->id) }}" method="GET">
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
                                 </td>
                             </form>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                <a href="{{ route('review.index') }}" class="underline text-blue-600 hover:text-blue-800">
+                                <a href="<?php echo e(route('review.index')); ?>" class="underline text-blue-600 hover:text-blue-800">
                                 Rate & Review</a>
                             </td>
                         </tr>
-                    @elseif ($order->orderStatus == "Completed" && Auth::user()->name === 'admin')
+                    <?php elseif($order->orderStatus == "Completed" && Auth::user()->name === 'admin'): ?>
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
+                                <?php echo e(date('D, d F Y, h:i', strtotime($order->created_at))); ?>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ $order->totalPrice }}
+                                <?php echo e($order->totalPrice); ?>
+
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ $order->orderStatus }}
+                                <?php echo e($order->orderStatus); ?>
+
                             </td>
-                            <form action="{{ url('order-details', $order->id) }}" method="GET">
+                            <form action="<?php echo e(url('order-details', $order->id)); ?>" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
                                     View</button>
                                 </td>
                             </form>
                         </tr>
-                    @endif
-                    @endforeach
+                    <?php endif; ?>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-</x-app-layout>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
+<?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
+<?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
+<?php endif; ?><?php /**PATH E:\Github FIles\AD\resources\views/order/index.blade.php ENDPATH**/ ?>
