@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<script src="https://cdn.tailwindcss.com"></script>
 
 <x-guest-layout>
     <div class="pt-4 bg-gray-100">

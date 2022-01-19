@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
+<script src="https://cdn.tailwindcss.com"></script>
 
 <nav x-data="{ open: false }" class="bg-[#37251b] border-b border-[#e4bc84]">
     <!-- Primary Navigation Menu -->

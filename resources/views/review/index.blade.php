@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<script src="https://cdn.tailwindcss.com"></script>
 
 <head>
     <meta charset="UTF-8">
