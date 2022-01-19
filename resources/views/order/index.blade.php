@@ -36,7 +36,7 @@
                     @if ($order->orderStatus != "Completed" && $order->user_id === Auth::user()->id)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
+                                {{ date('h:iA, D, d/n/Y', strtotime($order->created_at)) }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->totalPrice }}
@@ -54,7 +54,7 @@
                     @elseif ($order->orderStatus != "Completed" && Auth::user()->name === 'admin')
                     <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
+                                {{ date('h:iA, D, d/n/Y', strtotime($order->created_at)) }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->totalPrice }}
@@ -64,7 +64,7 @@
                                     <select name="status">
                                         @if ($order->orderStatus == "Pending")
                                             <option value="Pending" selected>Pending</option>
-                                            <option value="Pick up">Ready to pick up</option>
+                                            <option value="Ready to pick up">Ready to pick up</option>
                                             <option value="Completed">Completed</option>
                                         @else
                                             <option value="Pending">Pending</option>
@@ -119,7 +119,7 @@
                     @if($order->orderStatus == "Completed" && $order->user_id === Auth::user()->id)
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
+                                {{ date('h:iA, D, d/n/Y', strtotime($order->created_at)) }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->totalPrice }}
@@ -141,7 +141,7 @@
                     @elseif ($order->orderStatus == "Completed" && Auth::user()->name === 'admin')
                         <tr>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                {{ date('D, d F Y, h:i', strtotime($order->created_at)) }}
+                                {{ date('h:iA, D, d/n/Y', strtotime($order->created_at)) }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->totalPrice }}
