@@ -10,10 +10,10 @@
 
     <div class="container mx-auto">
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
-            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg font-semibold bg-gray-50">
+            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg text-white font-semibold bg-[#BE8E4B]">
                 <h2>Active orders</h2>
             </div>
-            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-white">
+            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-[#37251b]">
                 <table class="min-w-full divide-y divide-gray-200 w-full">
                     <thead>
                         <tr>
@@ -31,7 +31,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-white divide-y divide-gray-200">
+                    <tbody class="bg-[#37251b] divide-y divide-gray-200">
                     @foreach ($orders as $order)
                     @if ($order->orderStatus != "Completed" && $order->user_id === Auth::user()->id)
                         <tr>
@@ -59,13 +59,23 @@
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                 {{ $order->totalPrice }}
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                <select name="orderStatus">
-                                    <option value="Pending">Pending</option>
-                                    <option value="Pick up">Ready to pick up</option>
-                                    <option value="Completed">Completed</option>
-                                </select>
-                            </td>
+                            <form action="{{ route('order.update', $order->id) }}" method="GET">
+                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
+                                    <select name="orderStatus">
+                                        @if ($order->orderStatus=="Pending")
+                                        <option value="Pending" selected>Pending</option>
+                                        <option value="Pick up">Ready to pick up</option>
+                                        <option value="Completed">Completed</option>
+                                        @else
+                                        <option value="Pending">Pending</option>
+                                        <option value="Pick up" selected>Ready to pick up</option>
+                                        <option value="Completed">Completed</option>
+                                        @endif                                        
+                                    </select>
+                                    <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
+                                    Update</button>
+                                </td>
+                            </form>
                             <form action="{{ url('order-details', $order->id) }}" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
