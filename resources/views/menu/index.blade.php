@@ -19,7 +19,7 @@
                 </h2>
             </div>
             <form class="w-full max-w-sm" action="{{ url('/search') }}" method="GET">
-                <div class="flex items-center border-b border-teal-500 py-2">
+                <div class="flex items-center py-2">
                   <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" name="search" type="search" placeholder="Search Menu">
                   <x-jet-button>
                     Search

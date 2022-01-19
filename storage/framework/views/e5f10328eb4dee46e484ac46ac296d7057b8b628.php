@@ -69,17 +69,17 @@
                                 <?php echo e($order->totalPrice); ?>
 
                             </td>
-                            <form action="<?php echo e(route('order.update', $order->id)); ?>" method="GET">
+                            <form action="<?php echo e(route('order.show', $order->id)); ?>" method="GET">
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                    <select name="orderStatus">
-                                        <?php if($order->orderStatus=="Pending"): ?>
-                                        <option value="Pending" selected>Pending</option>
-                                        <option value="Pick up">Ready to pick up</option>
-                                        <option value="Completed">Completed</option>
+                                    <select name="status">
+                                        <?php if($order->orderStatus == "Pending"): ?>
+                                            <option value="Pending" selected>Pending</option>
+                                            <option value="Pick up">Ready to pick up</option>
+                                            <option value="Completed">Completed</option>
                                         <?php else: ?>
-                                        <option value="Pending">Pending</option>
-                                        <option value="Pick up" selected>Ready to pick up</option>
-                                        <option value="Completed">Completed</option>
+                                            <option value="Pending">Pending</option>
+                                            <option value="Pick up" selected>Ready to pick up</option>
+                                            <option value="Completed">Completed</option>
                                         <?php endif; ?>                                        
                                     </select>
                                     <button class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
