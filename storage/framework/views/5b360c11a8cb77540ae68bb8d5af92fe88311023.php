@@ -37,22 +37,22 @@
             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('navigation-menu')->html();
-} elseif ($_instance->childHasBeenRendered('VnHuKO5')) {
-    $componentId = $_instance->getRenderedChildComponentId('VnHuKO5');
-    $componentTag = $_instance->getRenderedChildComponentTagName('VnHuKO5');
+} elseif ($_instance->childHasBeenRendered('Fko7wsv')) {
+    $componentId = $_instance->getRenderedChildComponentId('Fko7wsv');
+    $componentTag = $_instance->getRenderedChildComponentTagName('Fko7wsv');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('VnHuKO5');
+    $_instance->preserveRenderedChild('Fko7wsv');
 } else {
     $response = \Livewire\Livewire::mount('navigation-menu');
     $html = $response->html();
-    $_instance->logRenderedChild('VnHuKO5', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('Fko7wsv', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
 
             <!-- Page Heading -->
             <?php if(isset($header)): ?>
-                <header class="bg-white shadow">
+                <header class="bg-[#37251b] shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <?php echo e($header); ?>
 

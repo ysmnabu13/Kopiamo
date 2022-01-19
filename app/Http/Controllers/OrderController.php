@@ -83,6 +83,14 @@ class OrderController extends Controller
         //
     }
 
+    public function show($id, Request $request)
+    {
+        Order::where('id', $id)->update([
+            'orderStatus'   =>  $request->input('status'),
+        ]);
+        return redirect()->route('order.index');
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -90,14 +98,9 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
-        $order=Order::find($id);
-
-        $order->orderStatus=$request->input('orderStatus');
-        $order->save();
-
-        return redirect()->route('order.index');
+        //
     }
 
     /**
