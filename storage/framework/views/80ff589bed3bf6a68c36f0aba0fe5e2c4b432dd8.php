@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
+<script src="https://cdn.tailwindcss.com"></script>
 
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
@@ -21,7 +22,7 @@
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
         <style>
           #summary {
-            background-color: #f6f6f6;
+            background-color:  #BE8E4B;
           }
         </style>
       </head>
@@ -89,21 +90,21 @@
             </div>
       
             <div id="summary" class="w-1/4 px-8 py-10">
-              <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+              <h1 class="font-semibold text-2xl border-b pb-8 text-white">Order Summary</h1>
               <div class="flex justify-between mt-10 mb-5">
-                <span class="font-semibold text-sm uppercase">Total Items </span>
-                <span class="font-semibold text-sm"><?php echo e(Cart::content()->count()); ?></span>
+                <span class="font-semibold text-sm uppercase text-white">Total Items </span>
+                <span class="font-semibold text-sm text-white"><?php echo e(Cart::content()->count()); ?></span>
               </div>
-              <div class="flex justify-between mt-10 mb-5">
-                <span class="font-semibold text-sm uppercase">Subtotal</span>
-                <span class="font-semibold text-sm">RM<?php echo e(Cart::subTotal()); ?></span>
+              <div class="flex justify-between mt-10 mb-5 text-white">
+                <span class="font-semibold text-sm uppercase text-white">Subtotal</span>
+                <span class="font-semibold text-sm text-white">RM<?php echo e(Cart::subTotal()); ?></span>
               </div>
-              <div class="flex justify-between mt-10 mb-5">
-                <span class="font-semibold text-sm uppercase">Sales Tax</span>
-                <span class="font-semibold text-sm">RM 0.00</span>
+              <div class="flex justify-between mt-10 mb-5 text-white">
+                <span class="font-semibold text-sm uppercase text-white">Sales Tax</span>
+                <span class="font-semibold text-sm text-white">RM 0.00</span>
               </div>
               <div class="border-t mt-8">
-                <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+                <div class="flex font-semibold justify-between py-6 text-sm uppercase text-white">
                   <span>Total cost</span>
                   <span>RM<?php echo e(Cart::subTotal()); ?></span>
                 </div>

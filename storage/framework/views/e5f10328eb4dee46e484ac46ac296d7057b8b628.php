@@ -36,7 +36,7 @@
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="bg-[#37251b] divide-y divide-gray-200">
+                    <tbody class="bg-white divide-y divide-gray-200">
                     <?php $__currentLoopData = $orders; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $order): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                     <?php if($order->orderStatus != "Completed" && $order->user_id === Auth::user()->id): ?>
                         <tr>
@@ -98,10 +98,10 @@
                     </tbody>
                 </table>
             </div><br><br>
-            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg font-semibold bg-gray-50">
+            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 text-lg text-white font-semibold bg-[#BE8E4B]">
                 <h2>Completed orders</h2>
             </div>
-            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-white">
+            <div class="shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-[#37251b]">
                 <table class="min-w-full divide-y divide-gray-200 w-full">
                     <thead>
                         <tr>
