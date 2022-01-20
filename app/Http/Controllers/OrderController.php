@@ -48,6 +48,8 @@ class OrderController extends Controller
         $order->notes = $request->input('note');
         $order->orderStatus = 'Pending';
         $order->totalPrice = $request->input('total');
+        $order->paymentType = 'Cash on pick up';
+        $order->paymentStatus = '0';
         $order->save();
 
         if($request->input('ordertype') == 'cart'){
@@ -69,7 +71,7 @@ class OrderController extends Controller
         }
         
 
-        return redirect()->route('order.index')->with('success', 'Category successfully created');
+        return redirect()->route('order.index')->with('success', 'Order placed successfully!');
     }
 
     /**
@@ -122,6 +124,41 @@ class OrderController extends Controller
             'orders'        =>  $orders,
             'orderitems'    =>  $orderitems
         ]);
+    }
+
+    public function storepaypal(Request $request)
+    {
+        $order = new Order();
+        $order->user_id = auth()->id();
+        $order->fullname = $request['fullName'];
+        $order->email = $request['Email'];
+        $order->phone = $request['phoneNumber'];
+        $order->notes = $request['note'];
+        $order->orderStatus = 'Pending';
+        $order->totalPrice = $request['total'];
+        $order->paymentType = 'Paid with PayPal';
+        $order->paymentStatus = '1';
+        $order->save();
+
+        if($request->input('ordertype') == 'cart'){
+            foreach (Cart::content() as $item){
+                OrderItem::create([
+                    'order_id'  =>  $order->id,
+                    'prod_id'   =>  $item->id,
+                    'price'     =>  $item->priceTotal(),
+                    'qty'       =>  $item->qty,
+                ]);
+            }
+        }else{
+            OrderItem::create([
+                'order_id'  =>  $order->id,
+                'prod_id'   =>  $request['prodID'],
+                'price'     =>  $request['itemprice'],
+                'qty'       =>  $request['qty'],
+            ]);
+        }
+
+        return response()->json(['status'=>"Order placed successfully!"]);
     }
 
 }

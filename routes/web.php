@@ -36,6 +36,8 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::resource('menu', MenuController::class);
     Route::resource('review', ReviewController::class);
     Route::get('order-details/{orderid}', [OrderController::class, 'details']);
+    Route::post('store-paypal', [OrderController::class, 'storepaypal']);
+    Route::get('my-orders', [OrderController::class, 'index']);
     Route::resource('order', OrderController::class);
     Route::get('/search', [MenuController::class, 'search']);
     Route::resource('cart', CartController::class);

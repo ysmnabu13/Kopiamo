@@ -61,17 +61,18 @@
                 @if ($order->orderStatus == "Pending")
                     <p class="text-lg">Please wait while we are preparing your drinks ...</p>
                 @elseif ($order->orderStatus == "Ready to pick up")
-                    <p class="text-lg">Your drinks are ready to pick up at our store!</p>
+                    <p class="text-lg">Your drinks are ready to be picked up at our store!</p>
                 @else
                     <p class="text-lg">Don't forget to rate & review our drinks. We love to hear a feedback from you.</p>
                 @endif
             </div>
             @if (Auth::user()->name === 'admin')
             <div class="pl-20 pt-5">
-                <p class="text-lg pb-2"><b>Customer details</b<</p>
+                <p class="text-lg pb-2"><b>Customer details</b></p>
                 <p class="text-lg"><b>Full Name     : </b>{{ $order->fullname }}</p>
                 <p class="text-lg"><b>Email         : </b>{{ $order->email }}</p>
                 <p class="text-lg"><b>Phone Number  : </b>{{ $order->phone }}</p>
+                <p class="text-lg"><b>Payment Type  : </b>{{ $order->paymentType }}</p>
             </div>
             @endif
             @endforeach
