@@ -134,8 +134,8 @@
                                 </td>
                             </form>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 text-center">
-                                <a href="{{ route('review.show',$order->id) }}" class="underline text-blue-600 hover:text-blue-800">
-                                Rate & Review</a>
+                                <a href="{{ url('add-review',$order->id)}}" class="underline text-blue-600 hover:text-blue-800">
+                                Leave a review</a>
                             </td>
                         </tr>
                     @elseif ($order->orderStatus == "Completed" && Auth::user()->name === 'admin')

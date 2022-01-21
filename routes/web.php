@@ -34,6 +34,7 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('menu', MenuController::class);
+    Route::get('add-review/{orderid}', [ReviewController::class, 'addreview']);
     Route::resource('review', ReviewController::class);
     Route::get('order-details/{orderid}', [OrderController::class, 'details']);
     Route::post('store-paypal', [OrderController::class, 'storepaypal']);
@@ -46,5 +47,6 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('buy-now/{currMenu}', [CheckoutController::class, 'buynow']);
     Route::resource('checkout', CheckoutController::class);
     Route::put('/cart-checkout', [CheckoutController::class, 'pagetocheckout'])->name('checkout.pagetocheckout');
+    
 
 });

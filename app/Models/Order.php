@@ -36,7 +36,7 @@ class Order extends Model
 
     public function ratings()
     {
-        return $this->hasMany('App\Models\Rating');
+        return $this->hasOne('App\Models\Rating');
     }
 
     public function orderitems()

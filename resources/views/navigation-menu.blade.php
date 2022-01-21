@@ -29,11 +29,24 @@
                         {{ __('Order') }}
                     </x-jet-nav-link>
                 </div>
+                @auth
+                @if (Auth::user()->name !== 'admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('cart.index') }}" :active="request()->routeIs('cart.index')">
                         {{ __('Cart ') }} ({{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count()}}) 
                     </x-jet-nav-link>
                 </div>
+                @endif
+                @endauth
+                @auth
+                @if (Auth::user()->name === 'admin')
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('review.index') }}" :active="request()->routeIs('review.index')">
+                        {{ __('Review') }}
+                    </x-jet-nav-link>
+                </div>
+                @endif
+                @endauth
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('aboutus') }}" :active="request()->routeIs('aboutus')">
                         {{ __('About Us') }}
