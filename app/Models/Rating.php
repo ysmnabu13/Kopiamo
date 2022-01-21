@@ -12,10 +12,9 @@ class Rating extends Model
 
     protected $fillable = [
         'user_id',
-        'comment',
         'order_id',
         'rating',
-        'status',
+        'comment',
     ];
 
     public function user()

@@ -19,7 +19,6 @@ class CreateRatingsTable extends Migration
             $table->foreignId('order_id')->constrained('orders');
             $table->integer('rating');
             $table->text('comment')->nullable();
-            $table->integer('status')->nullable();
             $table->timestamps();
         });
     }
