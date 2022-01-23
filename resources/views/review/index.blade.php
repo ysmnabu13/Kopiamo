@@ -93,7 +93,7 @@
                                                     <button onclick="closeModal()">x</button>
                                                 </div>
 
-                                                <!-- Modal body -->
+                                                <!-- Modal body PART NI TAK JADI JADI CAMNE NAK DISPLAY ORDER MENU WEHHH-->
                                                 <div class="max-h-48 overflow-y-scroll p-4">
                                                     Customer's comment:<br/>
                                                     {{ $review->comment }}
