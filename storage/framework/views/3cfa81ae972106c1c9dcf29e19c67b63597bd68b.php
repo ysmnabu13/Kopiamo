@@ -1,10 +1,6 @@
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
 <script src="https://cdn.tailwindcss.com"></script>
-<!-- Swiper's CSS -->
-<link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    >
+
 
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
@@ -24,13 +20,19 @@
         <div class="bg-white shadow-2xl rounded-b-3xl">
           <h2 class="text-center text-gray-800 text-2xl font-bold pt-6">Customer Feedback</h2>
           <div class="w-5/6 m-auto">
-            <p class="text-center text-gray-500 pt-5">Order ID: <?php echo e($orderid); ?>  </p> <!--SINI KENA TAKE ORDERID AND LIST OF PRODUCT(MENU) YANG ADA DALAM ORDER TU-->
+          
+            <p class="text-center text-gray-500 pt-5">Order ID: <?php echo e($orderid); ?>  </p>
+            <p class="text-center">Orders:<br/>
+              <?php $__currentLoopData = $orderitems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $items): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              -<?php echo e($items->products->menuName); ?>-<br/>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+              </p>       
           </div>
 
 
           <form method="post" action="<?php echo e(route('review.store')); ?>" enctype="multipart/form-data">
           <?php echo csrf_field(); ?>
-            <div class="w-5/6 m-auto mt-9">
+            <div class="w-5/6 m-auto mt-3">
               <p class="text-center pt-5">Rate Your Order</p>
             </div>
 
@@ -72,22 +74,7 @@
       </div>
     </div>
 
-        <!-- Swiper JS -->
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-    <script>
-      var swiper = new Swiper(".mySwiper", {
-        cssMode: true,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination",
-        },
-        mousewheel: true,
-        keyboard: true,
-      });
-    </script>
+
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
