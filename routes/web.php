@@ -9,6 +9,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\AboutUsController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function(){
     Route::get('buy-now/{currMenu}', [CheckoutController::class, 'buynow']);
     Route::resource('checkout', CheckoutController::class);
     Route::put('/cart-checkout', [CheckoutController::class, 'pagetocheckout'])->name('checkout.pagetocheckout');
+    Route::get('report', [ReportController::class, 'index'])->name('report');
     
 
 });
