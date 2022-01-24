@@ -88,18 +88,19 @@
                                             <div class="relative top-40 mx-auto shadow-lg rounded-md bg-white max-w-md">
 
                                                 <!-- Modal header -->
-                                                <div class="flex justify-between items-center bg-green-500 text-white text-xl rounded-t-md px-4 py-2">
+                                                <div class="flex justify-between items-center bg-yellow-800 text-white text-xl rounded-t-md px-4 py-2">
                                                     <h3>ORDER ID:{{ $review->order_id}}</h3>
                                                     <button onclick="closeModal()">x</button>
                                                 </div>
 
                                                 <!-- Modal body PART NI TAK JADI JADI CAMNE NAK DISPLAY ORDER MENU WEHHH-->
                                                 <div class="max-h-48 overflow-y-scroll p-4">
-                                                    Customer's comment:<br/>
-                                                    {{ $review->comment }}
-
+                                                    <b>Customer's comment:</b><br/>
+                                                    {{ $review->comment }}<br/><br/>
+                                                
+                                                    <b>Customer's order menu:</b><br/>
                                                 @foreach ($orderitems as $items )
-                                                    @if('$items->order_id' === '$review->order_id')
+                                                    @if($items->order_id == $review->order_id)
                                                         -{{ $items->products->menuName }}-<br/>
 
                                                     @endif
