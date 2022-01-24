@@ -44,6 +44,9 @@
                                         <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Rating
                                         </th>
+                                        <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Comment
+                                        </th>
                             
                                         <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Time created
@@ -67,14 +70,17 @@
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 {{ $review->rating }} /5
                                             </td> 
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $review->comment }}
+                                            </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 {{ date('h:iA, D, d/n/Y', strtotime($review->created_at)) }}
                                             </td> 
                                             
                                             <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
-                                                <!--a href="{{ route('review.show', $review->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View Menu in Order</a-->
-                                                <button class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-700 transition" onclick="openModal('modal')">Open Review Details</button>
+                                                <a href="{{ route('review.show', $review->order_id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View Menu in Order</a>
+                                                <!--button class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-700 transition" onclick="openModal('modal')">Open Review Details</button-->
                                                 <!--<form class="inline-block" action="{{ route('review.destroy', $review->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -83,17 +89,17 @@
                                             </td>
                                         </tr>
 
-                                        <!--dasadadasdnadbasdbuasdbjasdbuyasdvuyasdbuyazsdbuaysd-->
+                                        <!--dasadadasdnadbasdbuasdbjasdbuyasdvuyasdbuyazsdbuaysd
                                         <div id="modal" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4">
-                                            <div class="relative top-40 mx-auto shadow-lg rounded-md bg-white max-w-md">
+                                            <div class="relative top-40 mx-auto shadow-lg rounded-md bg-white max-w-md"-->
 
-                                                <!-- Modal header -->
+                                                <!-- Modal header 
                                                 <div class="flex justify-between items-center bg-yellow-800 text-white text-xl rounded-t-md px-4 py-2">
                                                     <h3>ORDER ID:{{ $review->order_id}}</h3>
                                                     <button onclick="closeModal()">x</button>
-                                                </div>
+                                                </div-->
 
-                                                <!-- Modal body PART NI TAK JADI JADI CAMNE NAK DISPLAY ORDER MENU WEHHH-->
+                                                <!-- Modal body PART NI TAK JADI JADI CAMNE NAK DISPLAY ORDER MENU WEHHH
                                                 <div class="max-h-48 overflow-y-scroll p-4">
                                                     <b>Customer's comment:</b><br/>
                                                     {{ $review->comment }}<br/><br/>
@@ -105,16 +111,16 @@
 
                                                     @endif
                                                 @endforeach
-                                                </div>
+                                                </div-->
 
                                                 
 
-                                                <!-- Modal footer -->
+                                                <!-- Modal footer 
                                                 <div class="px-4 py-2 border-t border-t-gray-500 flex justify-end items-center space-x-4">
                                                     <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition" onclick="closeModal()">Close</button>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div-->
                                     @endforeach
                                     </tbody>
                                 </table>

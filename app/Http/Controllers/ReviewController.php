@@ -89,10 +89,17 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($reviewid)
+    public function show($orderid)
     {   
         
-        return view('review.reviewdetails',compact('reviewid'));
+        $orders = Order::where('id', $orderid)->get();
+        $orderitems = OrderItem::where('order_id', $orderid)->get();
+        $reviews = Rating::where('order_id', $orderid)->get();
+            return view('review.reviewdetails',compact('reviews'))->with([
+                'orderid'       =>  $orderid,
+                'orders'        =>  $orders,
+                'orderitems'    =>  $orderitems
+            ]);
     }
 
     /**
