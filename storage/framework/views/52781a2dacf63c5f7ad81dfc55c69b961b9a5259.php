@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
+<script src="https://cdn.tailwindcss.com"></script>
 
 <head>
     <meta charset="UTF-8">
@@ -18,12 +19,12 @@
      <?php $__env->slot('header', null, []); ?> 
         <div class="flex justify-between">
             <div>
-                <h2 class="font-semibold text-xl text-gray-800 leading-tight mt-5">
+                <h2 class="font-semibold text-xl text-white leading-tight mt-5">
                     Menu List
                 </h2>
             </div>
             <form class="w-full max-w-sm" action="<?php echo e(url('/search')); ?>" method="GET">
-                <div class="flex items-center border-b border-teal-500 py-2">
+                <div class="flex items-center py-2">
                   <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" name="search" type="search" placeholder="Search Menu">
                   <?php if (isset($component)) { $__componentOriginalc254754b9d5db91d5165876f9d051922ca0066f4 = $component; } ?>
 <?php $component = $__env->getContainer()->make(Illuminate\View\AnonymousComponent::class, ['view' => 'jetstream::components.button','data' => []]); ?>
@@ -44,10 +45,8 @@
      <?php $__env->endSlot(); ?>
     
     
-    <?php if(session('message')): ?>
-        <div class="mt-5 ml-5"><?php echo e(session('message')); ?></div>
-    <?php endif; ?>
 
+    <?php echo $__env->make('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
             <?php if(auth()->guard()->check()): ?> 

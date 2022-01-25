@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 </head>
 
 
@@ -30,10 +31,8 @@
     </x-slot>
     
     {{-- Success message for when an item is added to cart  --}}
-    @if (session('message'))
-        <div class="mt-5 ml-5">{{ session('message')}}</div>
-    @endif
 
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
             @auth 
@@ -174,5 +173,30 @@
             @endauth
 
         </div>
-    </div>
+    </div>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
+
+<script type="text/javascript">
+
+     $('.show_confirm').click(function(event) {
+         var form =  $(this).closest("form");
+         var name = $(this).data("name");
+         event.preventDefault();
+         swal({
+             title: `Are you sure you want to delete this record?`,
+             text: "If you delete this, it will be gone forever.",
+             icon: "warning",
+             buttons: true,
+             dangerMode: true,
+         })
+         .then((willDelete) => {
+           if (willDelete) {
+             form.submit();
+           }
+         });
+     });
+
+  
+
+</script>
 </x-app-layout>

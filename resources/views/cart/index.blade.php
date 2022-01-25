@@ -1,3 +1,4 @@
+@include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
 <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -47,7 +48,7 @@
                         <div class="flex flex-col justify-between ml-4 flex-grow">
                             <span class="font-bold text-sm">{{ $cart->name }}</span>
                             <span class="text-red-500 text-xs">{{ $cart->options->type }}</span>
-                            <form class="inline-block" action="{{ route('cart.destroy', $cart->rowId) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                            <form class="inline-block" action="{{ route('cart.destroy', $cart->rowId) }}" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                 <button class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>
