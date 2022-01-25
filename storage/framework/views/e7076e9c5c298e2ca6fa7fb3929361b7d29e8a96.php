@@ -1,37 +1,42 @@
-<link rel="stylesheet" href="{{ mix('css/app.css') }}">
+<link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
 <script src="https://cdn.tailwindcss.com"></script>
 
 
-<x-app-layout>
-    <x-slot name="header">
+<?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
+<?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
+<?php $component->withName('app-layout'); ?>
+<?php if ($component->shouldRender()): ?>
+<?php $__env->startComponent($component->resolveView(), $component->data()); ?>
+<?php $component->withAttributes([]); ?>
+     <?php $__env->slot('header', null, []); ?> 
         <h2 class="font-semibold text-xl text-white leading-tight">
             Review Form
         </h2>
-    </x-slot>
+     <?php $__env->endSlot(); ?>
     
     <div class="h-screen">
       <div class="w-100 mt-24 m-auto lg:mt-16 max-w-sm">
-        <img src="{{ asset('uploads/menus/1cold.jfif') }}" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
+        <img src="<?php echo e(asset('uploads/menus/1cold.jfif')); ?>" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
         <div class="bg-white shadow-2xl rounded-b-3xl">
           <h2 class="text-center text-gray-800 text-2xl font-bold pt-6">Customer Feedback</h2>
           <div class="w-5/6 m-auto">
           
-            <p class="text-center text-gray-500 pt-5">Order ID: {{$orderid}}  </p>
+            <p class="text-center text-gray-500 pt-5">Order ID: <?php echo e($orderid); ?>  </p>
             <p class="text-center">Orders:<br/>
-              @foreach ($orderitems as $items )
-              -{{ $items->products->menuName }}-<br/>
-              @endforeach
+              <?php $__currentLoopData = $orderitems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $items): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+              -<?php echo e($items->products->menuName); ?>-<br/>
+              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
               </p>       
           </div>
 
 
-          <form method="post" action="{{ route('review.store') }}" enctype="multipart/form-data">
-          @csrf
+          <form method="post" action="<?php echo e(route('review.store')); ?>" enctype="multipart/form-data">
+          <?php echo csrf_field(); ?>
             <div class="w-5/6 m-auto mt-3">
               <p class="text-center pt-5">Rate Your Order</p>
             </div>
 
-            <input type="text" name="orderid" value={{$orderid}} hidden>
+            <input type="text" name="orderid" value=<?php echo e($orderid); ?> hidden>
             
             <div class=" w-72 lg:w-5/6 m-auto bg-indigo-50 mt-5 p-4 lg:p-4 rounded-2xl flex flex-wrap justify-center mt-4 space-x-3">
                   <select id="rating" name="rating">
@@ -70,4 +75,9 @@
     </div>
 
 
-</x-app-layout>
+ <?php echo $__env->renderComponent(); ?>
+<?php endif; ?>
+<?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>
+<?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
+<?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
+<?php endif; ?><?php /**PATH E:\Github FIles\Kopiamo\resources\views/review/create.blade.php ENDPATH**/ ?>
