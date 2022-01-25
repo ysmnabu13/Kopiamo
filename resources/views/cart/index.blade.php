@@ -18,30 +18,6 @@
         <script src="https://kit.fontawesome.com/c28a70ce29.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        {{-- <script>
-          $(document).ready(function() {
-            $('.confirm_delete').click(function(e) {
-              e.preventDefault();
-              var form = e.target.form;
-              swal({
-                title: "Are you sure you want to remove this item from your cart?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-              })
-              .then((willDelete) => {
-                if (willDelete) {
-                  form.submit();
-                  swal("Item successfully deleted!", {
-                    icon: "success",
-                  });
-                } else {
-                  
-                }
-              });
-            })
-          })
-        </script> --}}
         <style>
           #summary {
             background-color:  #BE8E4B;

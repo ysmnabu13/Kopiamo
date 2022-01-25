@@ -114,7 +114,7 @@
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('PUT'); ?>
                     <input type="hidden" name="from" value="cartpage">
-                    <button type="submit" class= "bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                    <button type="submit" class= "py-3 text-sm w-full inline-flex items-center px-4 bg-[#e4bc84] border border-transparent rounded-md font-semibold text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Checkout</button>
                 </form>
               </div>
             </div>
