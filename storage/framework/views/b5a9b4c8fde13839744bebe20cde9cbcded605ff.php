@@ -192,20 +192,18 @@
 <?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
 <?php endif; ?>
 <script>
-    //CONFIRM ORDER STATUS
-    $(document).ready(function() {
-  
-  
-      $('#confirm_update').click(function(e) {
-        e.preventDefault();
-        var form = e.target.form;
-        form.submit();   
-        swal("Order status successfully changed!", {
-            icon: "success",
-        });
-          
+  $(document).ready(function() {
 
-      })
+    $('#confirm_update').click(function(e) {
+      e.preventDefault();
+      var form = e.target.form;
+
+          form.submit();
+          swal("Item quantity successfully updated!", {
+            icon: "success",
+          });
+
     })
-  
-  </script><?php /**PATH C:\Users\Fahmi ZB W\Documents\GitHub\Kopiamo\resources\views/order/index.blade.php ENDPATH**/ ?>
+  })
+
+</script><?php /**PATH C:\Users\Fahmi ZB W\Documents\GitHub\Kopiamo\resources\views/order/index.blade.php ENDPATH**/ ?>

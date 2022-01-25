@@ -173,27 +173,15 @@
 <script>
   $(document).ready(function() {
 
-
-
     $('#confirm_update').click(function(e) {
       e.preventDefault();
       var form = e.target.form;
-      swal({
-        title: "Are you sure you want to update the quantity?",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willUpdate) => {
-        if (willUpdate) {
+
           form.submit();
-          swal("Item quantity successfully updated!", {
+          swal("Order status successfully changed!", {
             icon: "success",
           });
-        } else {
-          
-        }
-      });
+
     })
   })
 

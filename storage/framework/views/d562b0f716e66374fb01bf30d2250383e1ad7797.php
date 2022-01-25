@@ -23,7 +23,6 @@
         <script src="https://kit.fontawesome.com/c28a70ce29.js" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-        
         <style>
           #summary {
             background-color:  #BE8E4B;
