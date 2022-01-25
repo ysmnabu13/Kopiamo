@@ -1,4 +1,3 @@
-<?php echo $__env->make('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -21,6 +20,10 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c28a70ce29.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        
         <style>
           #summary {
             background-color:  #BE8E4B;
@@ -56,7 +59,7 @@
                             <form class="inline-block" action="<?php echo e(route('cart.destroy', $cart->rowId)); ?>" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                                <button class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>
+                                <button class="font-semibold hover:text-red-500 text-gray-500 text-xs confirm_delete">Remove</button>
                             </form>
                         </div>
                     </div>
@@ -64,7 +67,7 @@
                     <span class="text-center w-1/5 font-semibold text-sm">RM<?php echo e($cart->price(2)); ?></span>
                     <div class="flex justify-center w-1/5">
                         <div>
-                            <form action=<?php echo e(route('cart.update', $cart->rowId)); ?> method="post" onsubmit="return confirm('Are you sure?');">
+                            <form action=<?php echo e(route('cart.update', $cart->rowId)); ?> method="post">
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('PUT'); ?>
                             <input
@@ -77,9 +80,7 @@
                             />
                         </div>
                         <div>
-                            <button type="submit" class="text-blue-600 hover:text-blue-900 mt-2" ><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg></button>
+                            <button id="confirm_update" class="text-blue-600 hover:text-blue-900 mt-2 ml-5 fas fa-edit confirm_update" ></button>
                             
                         </div>
                             </form>
@@ -128,4 +129,51 @@
 <?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
 <?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
 <?php endif; ?>
-<?php /**PATH C:\Users\Fahmi ZB W\Documents\GitHub\Kopiamo\resources\views/cart/index.blade.php ENDPATH**/ ?>
+<script>
+  //CONFIRM DELETE
+  $(document).ready(function() {
+    $('.confirm_delete').click(function(e) {
+      e.preventDefault();
+      var form = e.target.form;
+      swal({
+        title: "Are you sure you want to remove this item from your cart?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          form.submit();
+          swal("Item successfully deleted!", {
+            icon: "success",
+          });
+        } else {
+          
+        }
+      });
+    })
+
+
+    $('#confirm_update').click(function(e) {
+      e.preventDefault();
+      var form = e.target.form;
+      swal({
+        title: "Are you sure you want to update the quantity?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willUpdate) => {
+        if (willUpdate) {
+          form.submit();
+          swal("Item quantity successfully updated!", {
+            icon: "success",
+          });
+        } else {
+          
+        }
+      });
+    })
+  })
+
+</script><?php /**PATH C:\Users\Fahmi ZB W\Documents\GitHub\Kopiamo\resources\views/cart/index.blade.php ENDPATH**/ ?>
