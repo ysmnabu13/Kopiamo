@@ -6,7 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/c28a70ce29.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 
@@ -107,7 +110,7 @@
                                                         <form class="inline-block" action="{{ route('menu.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        <button type="submit" class="text-red-600 hover:text-red-900 mr-2 mt-4" >Delete</button>
+                                                        <button type="submit" class="confirm_delete text-red-600 hover:text-red-900 mr-2 mt-4" >Delete</button>
                                                         </form>
                                                     </td>
                                                 {{-- @else
@@ -174,29 +177,33 @@
 
         </div>
     </div>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
-<script type="text/javascript">
 
-     $('.show_confirm').click(function(event) {
-         var form =  $(this).closest("form");
-         var name = $(this).data("name");
-         event.preventDefault();
-         swal({
-             title: `Are you sure you want to delete this record?`,
-             text: "If you delete this, it will be gone forever.",
-             icon: "warning",
-             buttons: true,
-             dangerMode: true,
-         })
-         .then((willDelete) => {
-           if (willDelete) {
-             form.submit();
-           }
-         });
-     });
-
-  
-
-</script>
 </x-app-layout>
+<script>
+    //CONFIRM DELETE
+    $(document).ready(function() {
+      $('.confirm_delete').click(function(e) {
+        e.preventDefault();
+        var form = e.target.form;
+        swal({
+          title: "Are you sure you want to remove this drink from the menu?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            form.submit();
+            swal("Item successfully deleted!", {
+              icon: "success",
+            });
+          } else {
+            
+          }
+        });
+      })
+
+    })
+  
+  </script>
