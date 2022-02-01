@@ -16,7 +16,7 @@
     <div class="container mx-auto py-2">
         <div class="max mx-auto py-8 sm:px-6 lg:px-8 bg-white">
             <div class="bg-fixed">
-                <img class="mx-auto" src="https://cdn.discordapp.com/attachments/748017610809147414/923312895385813032/empty-cafe-interior-with-chairs-and-tables-picture-id1286692956.png">
+                <img class="mx-auto" src="<?php echo e(asset('uploads/aboutus/about-us-cafe.png')); ?>">
             </div>
             <div class="border-b max-w-7xl mx-auto py-4 bg-white text-center">
                 <p class="font-bold text-2xl">About Us</p>
@@ -76,7 +76,7 @@
 
                     <div class="py-3 text-left">
                         <button type="submit"
-                        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        class="inline-flex items-center px-4 py-2 bg-[#e4bc84] border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition"
                         onclick="popup()">
                             Send
                         </button>
