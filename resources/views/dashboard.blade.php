@@ -8,7 +8,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-white leading-tight">
-            {{ __('Dashboard') }}
+            {{ __('Welcome to Kopiamo') }}
         </h2>
     </x-slot>
 
@@ -90,33 +90,16 @@
         </button>
     </div>
 
-    <div class="flex justify-center">
-        <div class="block rounded-lg shadow-lg mt-10 bg-white max-w-sm text-center">
-          <div class="py-3 px-6 border-b border-gray-300">
-            Welcome dear coffee lovers!
-          </div>
-          <div class="p-6">
-            <h5 class="text-gray-900 text-xl font-medium mb-2">Craving for those dirty beans?</h5>
-            <p class="text-gray-700 text-base mb-4">
-              Kopiamo is your destination.
-            </p>
-          </div>
-          <div class="py-3 px-6 border-t border-gray-300 text-gray-600">
-            We'll be waiting for you
-          </div>
-        </div>
-    </div>
-
     <section class="text-gray-600 body-font">
     <div class="container px-5 py-20 mx-auto flex flex-wrap">
         <div class="lg:w-2/3 mx-auto">
         <div class="flex flex-wrap w-full bg-gray-100 py-32 px-10 relative mb-4">
-            <img alt="gallery" class="w-full object-cover h-full object-center block opacity-25 absolute inset-0"
-            src="https://mdbcdn.b-cdn.net/img/Photos/Horizontal/Nature/4-col/img%20(70).webp">
+            <img alt="gallery" class="w-full object-cover h-full object-center block opacity-30 absolute inset-0"
+            src="{{ asset('uploads/welcome/coffee-shop.png') }}">
             <div class="text-center relative z-10 w-full">
             <h2 class="text-2xl text-gray-900 font-medium title-font mb-2">Our Menu</h2>
-            <p class="leading-relaxed">Choose your favourite now!</p>
-            <a class="mt-3 text-indigo-500 inline-flex items-center">Get Me There
+            <p class="leading-relaxed">Check out our variety of high-quality coffee brewed by our professional barista!</p>
+            <a class="mt-3 text-indigo-500 inline-flex items-center" href="{{ route('menu.index') }}">Get Me There
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                 class="w-4 h-4 ml-2" viewBox="0 0 24 24">
                 <path d="M5 12h14M12 5l7 7-7 7"></path>
@@ -130,8 +113,8 @@
 
     <footer class="text-center bg-[#37251b] text-white">
         <div class="container px-6 pt-6">
-          <div class="flex justify-center mb-6">
-            <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+          <div class="flex mb-6">
+            <a href="https://www.facebook.com/" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
               <svg aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -148,7 +131,7 @@
               </svg>
             </a>
       
-            <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+            <a href="https://twitter.com/?lang=en" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
               <svg aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -165,24 +148,7 @@
               </svg>
             </a>
       
-            <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
-              <svg aria-hidden="true"
-              focusable="false"
-              data-prefix="fab"
-                data-icon="google"
-                class="w-3 h-full mx-auto"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 488 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"
-                ></path>
-              </svg>
-            </a>
-      
-            <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+            <a href="https://www.instagram.com/" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
               <svg aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -199,7 +165,7 @@
               </svg>
             </a>
       
-            <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+            <a href="https://www.linkedin.com/" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
               <svg aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -216,7 +182,7 @@
               </svg>
             </a>
       
-            <a href="#!" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
+            <a href="https://github.com/Richiamoo/Kopiamo" type="button" class="rounded-full border-2 border-white text-white leading-normal uppercase hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out w-9 h-9 m-1">
               <svg aria-hidden="true"
               focusable="false"
               data-prefix="fab"
@@ -235,9 +201,8 @@
           </div>
         </div>
       
-        <div class="text-center p-4" style="background-color: [#37251b];">
-          © 2021 Copyright:
-          <a class="text-whitehite" href="https://tailwind-elements.com/">Kopiamo</a>
+        <div class="text-center p-4" style="background-color: #37251b;">
+          © 2022 Copyright: Kopiamo
         </div>
     </footer>
 </x-app-layout>
