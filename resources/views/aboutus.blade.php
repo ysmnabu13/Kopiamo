@@ -13,6 +13,7 @@
             <div class="bg-fixed">
                 <img class="mx-auto" src="{{ asset('uploads/aboutus/about-us-cafe.png') }}">
             </div>
+
             <div class="border-b max-w-7xl mx-auto py-4 bg-white text-center">
                 <p class="font-bold text-2xl">About Us</p>
             </div>

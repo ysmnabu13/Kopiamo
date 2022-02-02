@@ -199,7 +199,7 @@
       var form = e.target.form;
 
           form.submit();
-          swal("Item quantity successfully updated!", {
+          swal("Order status successfully changed!", {
             icon: "success",
           });
 

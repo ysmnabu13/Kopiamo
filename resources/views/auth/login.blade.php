@@ -2,7 +2,7 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <img src="{{ asset('uploads/KOPIMAOLOGOtext.png') }}" class="h-25 w-20" alt="Image">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
