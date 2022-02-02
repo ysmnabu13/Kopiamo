@@ -36,19 +36,23 @@
                                     <tr>
 
                                         <th scope="col" width="50" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            User ID
+                                            
                                         </th>
-                                        <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            OrderID
+                                        <th scope="col" width="50" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Username
                                         </th>
                                         <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                             Rating
                                         </th>
                                         <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                            Review
+                                            Comment
+                                        </th>
+                            
+                                        <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                            Time created
                                         </th>
                                         <th scope="col" width="200" class="py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider ">
-                                            Action
+                                            Details
                                         </th>
 
                                     </tr>
@@ -57,23 +61,26 @@
                                     @foreach ($reviews as $review)
                                         <tr>
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $review->user_id }}
+                                                <img class="h-8 w-8 rounded-full object-cover" src="{{ $review->user->profile_photo_url}}" alt="{{ $review->user->name}}" />
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ $review->user->name}}
                                             </td>
 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $review->order_id }}
-                                            </td>
-
-                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                                                {{ $review->rating }}
-                                            </td>
-
+                                                {{ $review->rating }} /5
+                                            </td> 
                                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
                                                 {{ $review->comment }}
-                                            </td>   
+                                            </td>
+
+                                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
+                                                {{ date('h:iA, D, d/n/Y', strtotime($review->created_at)) }}
+                                            </td> 
                                             
                                             <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
-                                                <a href="{{ route('review.show', $review->id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View</a>
+                                                <a href="{{ route('review.show', $review->order_id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View Menu in Order</a>
+                                                <!--button class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-700 transition" onclick="openModal('modal')">Open Review Details</button-->
                                                 <!--<form class="inline-block" action="{{ route('review.destroy', $review->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                 <input type="hidden" name="_method" value="DELETE">
                                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -81,6 +88,39 @@
                                                 </form>
                                             </td>
                                         </tr>
+
+                                        <!--dasadadasdnadbasdbuasdbjasdbuyasdvuyasdbuyazsdbuaysd
+                                        <div id="modal" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4">
+                                            <div class="relative top-40 mx-auto shadow-lg rounded-md bg-white max-w-md"-->
+
+                                                <!-- Modal header 
+                                                <div class="flex justify-between items-center bg-yellow-800 text-white text-xl rounded-t-md px-4 py-2">
+                                                    <h3>ORDER ID:{{ $review->order_id}}</h3>
+                                                    <button onclick="closeModal()">x</button>
+                                                </div-->
+
+                                                <!-- Modal body PART NI TAK JADI JADI CAMNE NAK DISPLAY ORDER MENU WEHHH
+                                                <div class="max-h-48 overflow-y-scroll p-4">
+                                                    <b>Customer's comment:</b><br/>
+                                                    {{ $review->comment }}<br/><br/>
+                                                
+                                                    <b>Customer's order menu:</b><br/>
+                                                @foreach ($orderitems as $items )
+                                                    @if($items->order_id == $review->order_id)
+                                                        -{{ $items->products->menuName }}-<br/>
+
+                                                    @endif
+                                                @endforeach
+                                                </div-->
+
+                                                
+
+                                                <!-- Modal footer 
+                                                <div class="px-4 py-2 border-t border-t-gray-500 flex justify-end items-center space-x-4">
+                                                    <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition" onclick="closeModal()">Close</button>
+                                                </div>
+                                            </div>
+                                        </div-->
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -90,8 +130,9 @@
                 </div>
                 </div>
                 
+                
                 @else
-                <div class="lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
+        <div class="lg:px-24 lg:py-12 md:py-20 md:px-44 px-4 py-12 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
             <div class="xl:pt-24 w-screen xl:w-1/4 relative pb-12 lg:pb-0">
                 <div class="relative">
                     <div >
@@ -101,7 +142,7 @@
                                 review
                             </h1>
                             <p class="z-20 my-2 text-gray-800">Big thanks and kudos to you!!</p><br/><br/><br/>
-                            <a href="{{ url()->previous() }}" class=" sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-indigo-600 text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50">Sure! Alright,bring me back!</a>
+                            <a href="{{ url()->previous() }}" class=" sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-yellow-600 text-white hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50">Sure! Alright,bring me back!</a>
                         </div>
                     </div>
                    <!-- <div>
@@ -112,11 +153,55 @@
             <div>
                 <img src="{{ asset('uploads/menus/'.'review.png') }}" width="500px" height="30px"/>
             </div>
-        </div>
-                    
-        
+    </div>
+                @foreach ($reviews as $review)
+                <div class="flex bg-white shadow-lg rounded-lg mx-4 md:mx-auto my-0 max-w-md md:max-w-2xl "><!--horizantil margin is just for display-->
+                    <div class="flex items-start px-4 py-6">
+                        <img class="w-12 h-12 rounded-full object-cover mr-4 shadow" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}">
+                        <div class="">
+                        
+                            <div class="flex items-center justify-between">
+                                <h2 class="text-lg font-semibold text-gray-900 -mt-1">{{ $review->user->name}}</h2>
+                                <small class="text-sm text-gray-700 ml-96">{{date('h:iA, D, d/n/Y', strtotime($review->created_at))}}</small>
+                            </div>
+                            <p class="text-gray-700">Order ID: {{ $review->order_id}}</p><br/>
+                            <p>Menu:</p>
+                            @foreach ($orderitems as $items )
+                            -{{ $items->products->menuName }}-<br/>
+                            @endforeach
+                            <p class="mt-3 text-gray-700 text-sm">
+                            Comment:<br/>
+                            {{ $review->comment}}
+                            </p>
+                            <div class="mt-4 flex items-center">
+                                <div class="flex mr-2 text-gray-700 text-sm mr-3">
+                                <svg fill="none" viewBox="0 0 24 24"  class="w-4 h-4 mr-1" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                                    </svg>
+                                <span>{{ $review->rating}} /5</span>
+                                </div>
+                                
+                            </div>
+                        
+                        </div>
+                    </div>
+                </div> <br/>  
+                @endforeach
+
         @endif  
-        @endauth                                                                       
+        @endauth 
+        
+        <script type="text/javascript">
+            function openModal(modalId) {
+                modal = document.getElementById(modalId)
+                modal.classList.remove('hidden')
+            }
+
+            function closeModal() {
+                modal = document.getElementById('modal')
+                modal.classList.add('hidden')
+            }
+        </script>
 
 </x-app-layout>
     

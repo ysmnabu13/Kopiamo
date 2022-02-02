@@ -15,6 +15,9 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c28a70ce29.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <style>
           #summary {
             background-color:  #BE8E4B;
@@ -47,10 +50,10 @@
                         <div class="flex flex-col justify-between ml-4 flex-grow">
                             <span class="font-bold text-sm">{{ $cart->name }}</span>
                             <span class="text-red-500 text-xs">{{ $cart->options->type }}</span>
-                            <form class="inline-block" action="{{ route('cart.destroy', $cart->rowId) }}" method="POST" onsubmit="return confirm('Are you sure?');">
+                            <form class="inline-block" action="{{ route('cart.destroy', $cart->rowId) }}" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                <button class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>
+                                <button class="font-semibold hover:text-red-500 text-gray-500 text-xs confirm_delete">Remove</button>
                             </form>
                         </div>
                     </div>
@@ -58,7 +61,7 @@
                     <span class="text-center w-1/5 font-semibold text-sm">RM{{ $cart->price(2) }}</span>
                     <div class="flex justify-center w-1/5">
                         <div>
-                            <form action={{ route('cart.update', $cart->rowId)}} method="post" onsubmit="return confirm('Are you sure?');">
+                            <form action={{ route('cart.update', $cart->rowId)}} method="post">
                                 @csrf
                                 @method('PUT')
                             <input
@@ -70,9 +73,7 @@
                             />
                         </div>
                         <div>
-                            <button type="submit" class="text-blue-600 hover:text-blue-900 mt-2" ><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg></button>
+                            <button id="confirm_update" class="text-blue-600 hover:text-blue-900 mt-2 ml-5 fas fa-edit confirm_update" ></button>
                             
                         </div>
                             </form>
@@ -106,7 +107,7 @@
                     @csrf
                     @method('PUT')
                     <input type="hidden" name="from" value="cartpage">
-                    <button type="submit" class= "bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                    <button type="submit" class= "py-3 text-sm w-full inline-flex items-center px-4 bg-[#e4bc84] border border-transparent rounded-md font-semibold text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Checkout</button>
                 </form>
               </div>
             </div>
@@ -116,3 +117,51 @@
       </body>
       
 </x-app-layout>
+<script>
+  //CONFIRM DELETE
+  $(document).ready(function() {
+    $('.confirm_delete').click(function(e) {
+      e.preventDefault();
+      var form = e.target.form;
+      swal({
+        title: "Are you sure you want to remove this item from your cart?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          form.submit();
+          swal("Item successfully deleted!", {
+            icon: "success",
+          });
+        } else {
+          
+        }
+      });
+    })
+
+
+    $('#confirm_update').click(function(e) {
+      e.preventDefault();
+      var form = e.target.form;
+      swal({
+        title: "Are you sure you want to update the quantity?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willUpdate) => {
+        if (willUpdate) {
+          form.submit();
+          swal("Item quantity successfully updated!", {
+            icon: "success",
+          });
+        } else {
+          
+        }
+      });
+    })
+  })
+
+</script>

@@ -6,6 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/c28a70ce29.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 
 
@@ -30,16 +34,14 @@
     </x-slot>
     
     {{-- Success message for when an item is added to cart  --}}
-    @if (session('message'))
-        <div class="mt-5 ml-5">{{ session('message')}}</div>
-    @endif
 
+    @include('sweetalert::alert', ['cdn' => "https://cdn.jsdelivr.net/npm/sweetalert2@9"])
     <div>
         <div class="max-w-6xl mx-auto py-10 sm:px-6 lg:px-8">
             @auth 
                 @if (Auth::user()->name === 'admin')
                     <div class="block mb-8">
-                        <a href="{{ route('menu.create') }}" class="bg-green-500 hover:bg-green text-white font-bold py-2 px-4 rounded">Add Menu</a>
+                        <a href="{{ route('menu.create') }}" class="inline-flex items-center px-4 py-2 bg-[#e4bc84] border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Add Menu</a>
                     </div>
                 @endif
             @endauth
@@ -108,7 +110,7 @@
                                                         <form class="inline-block" action="{{ route('menu.destroy', $menu->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
                                                         <input type="hidden" name="_method" value="DELETE">
                                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                        <button type="submit" class="text-red-600 hover:text-red-900 mr-2 mt-4" >Delete</button>
+                                                        <button type="submit" class="confirm_delete text-red-600 hover:text-red-900 mr-2 mt-4" >Delete</button>
                                                         </form>
                                                     </td>
                                                 {{-- @else
@@ -174,5 +176,34 @@
             @endauth
 
         </div>
-    </div>
+    </div>  
+
+
 </x-app-layout>
+<script>
+    //CONFIRM DELETE
+    $(document).ready(function() {
+      $('.confirm_delete').click(function(e) {
+        e.preventDefault();
+        var form = e.target.form;
+        swal({
+          title: "Are you sure you want to remove this drink from the menu?",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            form.submit();
+            swal("Item successfully deleted!", {
+              icon: "success",
+            });
+          } else {
+            
+          }
+        });
+      })
+
+    })
+  
+  </script>

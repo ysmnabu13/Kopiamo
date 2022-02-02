@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Rating;
+use App\Models\Order;
 use App\Models\OrderItem;
 
 
@@ -17,8 +18,13 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        $reviews = Rating::all();
-        return view('review.index',compact('reviews'));
+        $orders = Order::all();
+        $orderitems = OrderItem::all();
+        $reviews = Rating::orderBy('id', 'DESC')->get();
+        return view('review.index',compact('reviews'))->with([
+            'orders'        =>  $orders,
+            'orderitems'    =>  $orderitems
+        ]);
     }
 
     /**
@@ -34,14 +40,29 @@ class ReviewController extends Controller
     public function addreview($orderid)
     {   
        // $review=Review::where('order_id',$orderid)->get();
+
+        $orders = Order::where('id', $orderid)->get();
+        $orderitems = OrderItem::where('order_id', $orderid)->get();
        
-       $reviews = Rating::all();
+       
        if (Rating::where('order_id',$orderid)->first())
        {
-        return view('review.index');
+        $reviews = Rating::where('order_id', $orderid)->get();
+        return view('review.index',compact('reviews'))->with([
+            'orders'        =>  $orders,
+            'orderitems'    =>  $orderitems
+        ]);
        }
        else
-       return view('review.create',compact('reviews'))->with(['orderid'=>$orderid]);
+       {
+            $reviews = Rating::where('order_id', $orderid)->get();
+            return view('review.create',compact('reviews'))->with([
+                'orderid'       =>  $orderid,
+                'orders'        =>  $orders,
+                'orderitems'    =>  $orderitems
+            ]);
+       }
+       
     }
 
     /**
@@ -68,9 +89,17 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        return view('review.reviewdetails',compact('id'));
+    public function show($orderid)
+    {   
+        
+        $orders = Order::where('id', $orderid)->get();
+        $orderitems = OrderItem::where('order_id', $orderid)->get();
+        $reviews = Rating::where('order_id', $orderid)->get();
+            return view('review.reviewdetails',compact('reviews'))->with([
+                'orderid'       =>  $orderid,
+                'orders'        =>  $orders,
+                'orderitems'    =>  $orderitems
+            ]);
     }
 
     /**
@@ -90,7 +119,7 @@ class ReviewController extends Controller
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responsedf
      */
     public function update(Request $request, $id)
     {

@@ -84,6 +84,8 @@ class MenuController extends Controller
         }
 
         $menu->save();
+        alert()->success('Success!','Menu successfully added!')->autoClose(2000);
+
         return redirect()->route('menu.index');
     }
 
@@ -150,6 +152,8 @@ class MenuController extends Controller
         }
 
         $menu->save();
+        alert()->success('Success!','Menu successfully edited!')->autoClose(2000);
+
 
         return redirect()->route('menu.index');
     }

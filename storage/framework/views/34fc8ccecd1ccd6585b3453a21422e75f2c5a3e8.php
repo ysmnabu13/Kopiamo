@@ -1,15 +1,6 @@
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
 <script src="https://cdn.tailwindcss.com"></script>
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://unpkg.com/tailwindcss@%5E2/dist/tailwind.min.css" rel="stylesheet">
-</head>
-
-
-
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
 <?php $component->withName('app-layout'); ?>
@@ -17,67 +8,60 @@
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?> 
-        <div class="flex justify-between">
-            <div>
-                <h2 class="font-semibold text-xl text-white leading-tight mt-5">
-                    Review Details
-                </h2>
-            </div>
-        </div>
+        <h2 class="font-semibold text-xl text-white leading-tight">
+            Order details
+        </h2>
      <?php $__env->endSlot(); ?>
-                <div class="flex flex-wrap place-items-center h-screen">
-                    <!-- card -->
-                    <div class="overflow-hidden shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-5 hover:shadow-2xl rounded-lg h-90 w-200 md:w-200 cursor-pointer m-auto">
-                        <a href="#" class="w-full block h-full">
-                            <img alt="blog photo" src="https://images.unsplash.com/photo-1542435503-956c469947f6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80" class="max-h-40 w-full object-cover"/>
-                            <div class="bg-white w-full p-4">
-                                <p class="text-indigo-500 text-2xl font-medium">
-                                    Should You Get Online Education?
-                                </p>
-                                <p class="text-gray-800 text-sm font-medium mb-2">
-                                    A comprehensive guide about online education.
-                                </p>
-                                <p class="text-gray-600 font-light text-md">
-                                    It is difficult to believe that we have become so used to having instant access to information at...
-                                    <a class="inline-flex text-indigo-500" href="#">Read More</a>
-                                </p>
-                                <div class="flex flex-wrap justify-starts items-center py-3 border-b-2 text-xs text-white font-medium">
-                                    <span class="m-1 px-2 py-1 rounded bg-indigo-500">
-                                        #online
-                                    </span>
-                                    <span class="m-1 px-2 py-1 rounded bg-indigo-500">
-                                        #internet
-                                    </span>
-                                    <span class="m-1 px-2 py-1 rounded bg-indigo-500">
-                                        #education
-                                    </span>
-                                </div>
-                                <div class="flex items-center mt-2">
-                                    <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src='https://images.unsplash.com/photo-1477118476589-bff2c5c4cfbb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&q=200'>
-                        
-                                    <div class="pl-3">
-                                        <div class="font-medium">
-                                            Jean Marc
-                                        </div>
-                                        <div class="text-gray-600 text-sm">
-                                            CTO of Supercars
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    
-                </div>
 
-                <!-- Does this resource worth a follow? -->
-                <div class="absolute bottom-0 right-0 mb-4 mr-4 z-10">
-                    <div>
-                        <a title="Follow me on twitter" href="https://www.twitter.com/asad_codes" target="_blank" class="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12">
-                            <img class="object-cover object-center w-full h-full rounded-full" src="https://www.imore.com/sites/imore.com/files/styles/large/public/field/image/2019/12/twitter-logo.jpg"/>
-                        </a>
-                    </div>
-                </div>
+    <div class="container mx-auto py-2">
+        <div class="max mx-auto py-8 sm:px-6 lg:px-8 bg-white">
+            <div class="pl-20 py-4">
+                <p class="text-lg font-bold">Product details</p>
+            </div>
+            <div class="w-3/4 pl-20">
+                <table class="min-w-full divide-y divide-gray-200 w-full">
+                    <thead>
+                        <tr>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-sm font-medium text-gray-500 uppercase tracking-wider">
+                                Image
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Name
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Quantity
+                            </th>
+                            <th scope="col" class="px-6 py-3 bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Price
+                            </th>
+                        </tr>
+                    </thead>
+                <?php $__currentLoopData = $orderitems; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $items): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-900">
+                                <img src="<?php echo e(asset('uploads/menus/'. $items->products->coffee_photo_path)); ?>"  alt="Image" height="80px;" width="80px;">
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-900">
+                                <?php echo e($items->products->menuName); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-900">
+                                <?php echo e($items->qty); ?>
+
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-gray-900">
+                                RM<?php echo e($items->price); ?>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </table>
+            </div>
+           
+        </div>
+    </div>
  <?php echo $__env->renderComponent(); ?>
 <?php endif; ?>
 <?php if (isset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da)): ?>

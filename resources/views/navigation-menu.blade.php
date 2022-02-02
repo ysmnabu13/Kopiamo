@@ -9,7 +9,8 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
-                        <x-jet-application-mark class="block h-9 w-auto" />
+                        {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
+                        <img src="{{ asset('uploads/KOPIMAOLOGO.png') }}" class="block h-12 w-auto" alt="Image">
                     </a>
                 </div>
 
@@ -43,6 +44,15 @@
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('review.index') }}" :active="request()->routeIs('review.index')">
                         {{ __('Review') }}
+                    </x-jet-nav-link>
+                </div>
+                @endif
+                @endauth
+                @auth
+                @if (Auth::user()->name === 'admin')
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('report') }}" :active="request()->routeIs('report')">
+                        {{ __('Report') }}
                     </x-jet-nav-link>
                 </div>
                 @endif

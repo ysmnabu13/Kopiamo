@@ -18,7 +18,7 @@
             <div class="pl-20 py-4">
                 <p class="text-lg font-bold">Product details</p>
             </div>
-            <div class="w-3/4 pl-20">
+            <div class="w-3/4 pl-20 ml-20 shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-[#37251b]">
                 <table class="min-w-full divide-y divide-gray-200 w-full">
                     <thead>
                         <tr>

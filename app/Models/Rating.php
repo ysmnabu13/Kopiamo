@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Rating extends Model
 {
@@ -19,11 +20,11 @@ class Rating extends Model
 
     public function user()
     {
-        return $this->belongsTo('App\Models\User');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function product()
+    public function order()
     {
-        return $this->belongsTo('App\Models\Order');
+        return $this->belongsTo(Order::class, 'order_id', 'id');
     }
 }

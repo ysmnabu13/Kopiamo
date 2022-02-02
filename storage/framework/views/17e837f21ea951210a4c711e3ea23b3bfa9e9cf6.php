@@ -8,7 +8,7 @@
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?> 
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             Order Summary
         </h2>
      <?php $__env->endSlot(); ?>
@@ -18,7 +18,7 @@
             <div class="pl-20 py-4">
                 <p class="text-lg font-bold">Product details</p>
             </div>
-            <div class="w-3/4 pl-20">
+            <div class="w-3/4 pl-20 ml-20 shadow overflow-hidden border-b border-gray-200 py-3 px-3 bg-[#37251b]">
                 <table class="min-w-full divide-y divide-gray-200 w-full">
                     <thead>
                         <tr>
@@ -69,17 +69,18 @@
                 <?php if($order->orderStatus == "Pending"): ?>
                     <p class="text-lg">Please wait while we are preparing your drinks ...</p>
                 <?php elseif($order->orderStatus == "Ready to pick up"): ?>
-                    <p class="text-lg">Your drinks are ready to pick up at our store!</p>
+                    <p class="text-lg">Your drinks are ready to be picked up at our store!</p>
                 <?php else: ?>
                     <p class="text-lg">Don't forget to rate & review our drinks. We love to hear a feedback from you.</p>
                 <?php endif; ?>
             </div>
             <?php if(Auth::user()->name === 'admin'): ?>
             <div class="pl-20 pt-5">
-                <p class="text-lg pb-2"><b>Customer details</b<</p>
+                <p class="text-lg pb-2"><b>Customer details</b></p>
                 <p class="text-lg"><b>Full Name     : </b><?php echo e($order->fullname); ?></p>
                 <p class="text-lg"><b>Email         : </b><?php echo e($order->email); ?></p>
                 <p class="text-lg"><b>Phone Number  : </b><?php echo e($order->phone); ?></p>
+                <p class="text-lg"><b>Payment Type  : </b><?php echo e($order->paymentType); ?></p>
             </div>
             <?php endif; ?>
             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>

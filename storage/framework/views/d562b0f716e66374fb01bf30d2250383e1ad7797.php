@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="<?php echo e(mix('css/app.css')); ?>">
+<script src="https://cdn.tailwindcss.com"></script>
 
 <?php if (isset($component)) { $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da = $component; } ?>
 <?php $component = $__env->getContainer()->make(App\View\Components\AppLayout::class, []); ?>
@@ -7,7 +8,7 @@
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?> 
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             Cart
         </h2>
      <?php $__env->endSlot(); ?>
@@ -19,9 +20,12 @@
         <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" rel="stylesheet">
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/c28a70ce29.js" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <style>
           #summary {
-            background-color: #f6f6f6;
+            background-color:  #BE8E4B;
           }
         </style>
       </head>
@@ -51,10 +55,10 @@
                         <div class="flex flex-col justify-between ml-4 flex-grow">
                             <span class="font-bold text-sm"><?php echo e($cart->name); ?></span>
                             <span class="text-red-500 text-xs"><?php echo e($cart->options->type); ?></span>
-                            <form class="inline-block" action="<?php echo e(route('cart.destroy', $cart->rowId)); ?>" method="POST" onsubmit="return confirm('Are you sure?');">
+                            <form class="inline-block" action="<?php echo e(route('cart.destroy', $cart->rowId)); ?>" method="POST">
                                 <input type="hidden" name="_method" value="DELETE">
                                 <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-                                <button class="font-semibold hover:text-red-500 text-gray-500 text-xs">Remove</button>
+                                <button class="font-semibold hover:text-red-500 text-gray-500 text-xs confirm_delete">Remove</button>
                             </form>
                         </div>
                     </div>
@@ -62,7 +66,7 @@
                     <span class="text-center w-1/5 font-semibold text-sm">RM<?php echo e($cart->price(2)); ?></span>
                     <div class="flex justify-center w-1/5">
                         <div>
-                            <form action=<?php echo e(route('cart.update', $cart->rowId)); ?> method="post" onsubmit="return confirm('Are you sure?');">
+                            <form action=<?php echo e(route('cart.update', $cart->rowId)); ?> method="post">
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('PUT'); ?>
                             <input
@@ -75,9 +79,7 @@
                             />
                         </div>
                         <div>
-                            <button type="submit" class="text-blue-600 hover:text-blue-900 mt-2" ><svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                            </svg></button>
+                            <button id="confirm_update" class="text-blue-600 hover:text-blue-900 mt-2 ml-5 fas fa-edit confirm_update" ></button>
                             
                         </div>
                             </form>
@@ -89,21 +91,21 @@
             </div>
       
             <div id="summary" class="w-1/4 px-8 py-10">
-              <h1 class="font-semibold text-2xl border-b pb-8">Order Summary</h1>
+              <h1 class="font-semibold text-2xl border-b pb-8 text-white">Order Summary</h1>
               <div class="flex justify-between mt-10 mb-5">
-                <span class="font-semibold text-sm uppercase">Total Items </span>
-                <span class="font-semibold text-sm"><?php echo e(Cart::content()->count()); ?></span>
+                <span class="font-semibold text-sm uppercase text-white">Total Items </span>
+                <span class="font-semibold text-sm text-white"><?php echo e(Cart::content()->count()); ?></span>
               </div>
-              <div class="flex justify-between mt-10 mb-5">
-                <span class="font-semibold text-sm uppercase">Subtotal</span>
-                <span class="font-semibold text-sm">RM<?php echo e(Cart::subTotal()); ?></span>
+              <div class="flex justify-between mt-10 mb-5 text-white">
+                <span class="font-semibold text-sm uppercase text-white">Subtotal</span>
+                <span class="font-semibold text-sm text-white">RM<?php echo e(Cart::subTotal()); ?></span>
               </div>
-              <div class="flex justify-between mt-10 mb-5">
-                <span class="font-semibold text-sm uppercase">Sales Tax</span>
-                <span class="font-semibold text-sm">RM 0.00</span>
+              <div class="flex justify-between mt-10 mb-5 text-white">
+                <span class="font-semibold text-sm uppercase text-white">Sales Tax</span>
+                <span class="font-semibold text-sm text-white">RM 0.00</span>
               </div>
               <div class="border-t mt-8">
-                <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+                <div class="flex font-semibold justify-between py-6 text-sm uppercase text-white">
                   <span>Total cost</span>
                   <span>RM<?php echo e(Cart::subTotal()); ?></span>
                 </div>
@@ -111,7 +113,7 @@
                     <?php echo csrf_field(); ?>
                     <?php echo method_field('PUT'); ?>
                     <input type="hidden" name="from" value="cartpage">
-                    <button type="submit" class= "bg-indigo-500 font-semibold hover:bg-indigo-600 py-3 text-sm text-white uppercase w-full">Checkout</button>
+                    <button type="submit" class= "py-3 text-sm w-full inline-flex items-center px-4 bg-[#e4bc84] border border-transparent rounded-md font-semibold text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">Checkout</button>
                 </form>
               </div>
             </div>
@@ -126,4 +128,51 @@
 <?php $component = $__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da; ?>
 <?php unset($__componentOriginal8e2ce59650f81721f93fef32250174d77c3531da); ?>
 <?php endif; ?>
-<?php /**PATH C:\Users\Fahmi ZB W\Documents\GitHub\Kopiamo\resources\views/cart/index.blade.php ENDPATH**/ ?>
+<script>
+  //CONFIRM DELETE
+  $(document).ready(function() {
+    $('.confirm_delete').click(function(e) {
+      e.preventDefault();
+      var form = e.target.form;
+      swal({
+        title: "Are you sure you want to remove this item from your cart?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDelete) => {
+        if (willDelete) {
+          form.submit();
+          swal("Item successfully deleted!", {
+            icon: "success",
+          });
+        } else {
+          
+        }
+      });
+    })
+
+
+    $('#confirm_update').click(function(e) {
+      e.preventDefault();
+      var form = e.target.form;
+      swal({
+        title: "Are you sure you want to update the quantity?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willUpdate) => {
+        if (willUpdate) {
+          form.submit();
+          swal("Item quantity successfully updated!", {
+            icon: "success",
+          });
+        } else {
+          
+        }
+      });
+    })
+  })
+
+</script><?php /**PATH C:\Users\Fahmi ZB W\Documents\GitHub\Kopiamo\resources\views/cart/index.blade.php ENDPATH**/ ?>

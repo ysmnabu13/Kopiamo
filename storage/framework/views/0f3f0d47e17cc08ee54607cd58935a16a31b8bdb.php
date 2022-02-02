@@ -37,22 +37,22 @@
             <?php
 if (! isset($_instance)) {
     $html = \Livewire\Livewire::mount('navigation-menu')->html();
-} elseif ($_instance->childHasBeenRendered('0kGW6Ul')) {
-    $componentId = $_instance->getRenderedChildComponentId('0kGW6Ul');
-    $componentTag = $_instance->getRenderedChildComponentTagName('0kGW6Ul');
+} elseif ($_instance->childHasBeenRendered('EE92MIe')) {
+    $componentId = $_instance->getRenderedChildComponentId('EE92MIe');
+    $componentTag = $_instance->getRenderedChildComponentTagName('EE92MIe');
     $html = \Livewire\Livewire::dummyMount($componentId, $componentTag);
-    $_instance->preserveRenderedChild('0kGW6Ul');
+    $_instance->preserveRenderedChild('EE92MIe');
 } else {
     $response = \Livewire\Livewire::mount('navigation-menu');
     $html = $response->html();
-    $_instance->logRenderedChild('0kGW6Ul', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
+    $_instance->logRenderedChild('EE92MIe', $response->id(), \Livewire\Livewire::getRootElementTagName($html));
 }
 echo $html;
 ?>
 
             <!-- Page Heading -->
             <?php if(isset($header)): ?>
-                <header class="bg-white shadow">
+                <header class="bg-[#37251b] shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         <?php echo e($header); ?>
 
@@ -71,6 +71,7 @@ echo $html;
 
         <?php echo \Livewire\Livewire::scripts(); ?>
 
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </body>
 </html>
 <?php /**PATH C:\Users\Fahmi ZB W\Documents\GitHub\Kopiamo\resources\views/layouts/app.blade.php ENDPATH**/ ?>

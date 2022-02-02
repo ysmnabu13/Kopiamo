@@ -89,7 +89,7 @@
                             TOTAL<span class="ml-2" id="sum">RM {{ Cart::subTotal() }}</span>
                         </div>
                         <div>
-                            <button onclick="swalfunc()" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
+                            <button onclick="swalfunc()" class="w-full inline-flex justify-center py-2 px-4 bg-[#e4bc84] border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
                             Place order | Cash</button>
                         </div>
                         <div id="paypal-button-container" class="pt-3"></div>
@@ -129,7 +129,7 @@
                             TOTAL<span class="ml-2" id="sum">RM {{ $menu->menuPrice }}</span></div>
                         @endforeach
                         <div>
-                            <button onclick="swalfunc()" class="w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-500 hover:bg-blue-800">
+                            <button onclick="swalfunc()" class="w-full inline-flex justify-center py-2 px-4 bg-[#e4bc84] border border-transparent rounded-md font-semibold text-xs text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition">
                             Place order | Cash</button>
                         </div>
                         <div id="paypal-button-container" class="pt-3"></div>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use RealRashid\SweetAlert\Facades\Alert;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use App\Http\Controllers\Controller;
 use App\Models\Menu;
@@ -30,16 +31,22 @@ class CartController extends Controller
 
         Cart::store(auth()->id());
 
-        return redirect()->route('menu.index')->with('message', 'Item successfully added to cart');
+        alert()->success('Success!','Item successfully added to the cart')->autoClose(2000);
+        
+        return redirect()->route('menu.index');
     }
 
     public function destroy($cart){
+
         Cart::remove($cart);
         Cart::store(auth()->id());
-        return $this->index();
+        
+        return redirect()->route('cart.index');
+
     }
 
     public function update(Request $request, $id){
+        
         Cart::update($id, $request->input('cart_qty'));
         Cart::store(auth()->id());
         return $this->index();
