@@ -11,7 +11,7 @@
     
     <div class="h-screen">
       <div class="w-100 mt-24 m-auto lg:mt-16 max-w-sm">
-        <img src="{{ asset('uploads/menus/1cold.jfif') }}" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
+        <img src="{{ asset('uploads/welcome/rebiew.jpg') }}" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
         <div class="bg-white shadow-2xl rounded-b-3xl">
           <h2 class="text-center text-gray-800 text-2xl font-bold pt-6">Customer Feedback</h2>
           <div class="w-5/6 m-auto">

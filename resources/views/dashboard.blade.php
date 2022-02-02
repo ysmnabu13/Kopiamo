@@ -38,7 +38,7 @@
         <div class="carousel-inner relative w-full overflow-hidden">
           <div class="carousel-item active relative float-left w-full">
             <img
-              src="https://mdbootstrap.com/img/Photos/Slides/img%20(19).jpg"
+              src="{{ asset('uploads/welcome/1.png') }}"
               class="block w-full"
               alt="..."
             />
@@ -49,7 +49,7 @@
           </div>
           <div class="carousel-item relative float-left w-full">
             <img
-              src="https://mdbootstrap.com/img/Photos/Slides/img%20(22).jpg"
+              src="{{ asset('uploads/welcome/2.png') }}"
               class="block w-full"
               alt="..."
             />
@@ -60,7 +60,7 @@
           </div>
           <div class="carousel-item relative float-left w-full">
             <img
-              src="https://mdbootstrap.com/img/Photos/Slides/img%20(23).jpg"
+              src="{{ asset('uploads/welcome/4.png') }}"
               class="block w-full"
               alt="..."
             />

@@ -9,14 +9,14 @@
 <?php $__env->startComponent($component->resolveView(), $component->data()); ?>
 <?php $component->withAttributes([]); ?>
      <?php $__env->slot('header', null, []); ?> 
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+        <h2 class="font-semibold text-xl text-white leading-tight">
             Review Form
         </h2>
      <?php $__env->endSlot(); ?>
     
     <div class="h-screen">
       <div class="w-100 mt-24 m-auto lg:mt-16 max-w-sm">
-        <img src="<?php echo e(asset('uploads/menus/1cold.jfif')); ?>" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
+        <img src="<?php echo e(asset('uploads/welcome/rebiew.jpg')); ?>" alt=""class="rounded-t-2xl shadow-2xl lg:w-full 2xl:w-full 2xl:h-44 object-cover"/>
         <div class="bg-white shadow-2xl rounded-b-3xl">
           <h2 class="text-center text-gray-800 text-2xl font-bold pt-6">Customer Feedback</h2>
           <div class="w-5/6 m-auto">
@@ -61,8 +61,8 @@
                   <input name="comment" class="shadow appearance-none border rounded w-80 py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="review" type="text" placeholder="Your Review">
               </div>
               
-            <div class="bg-blue-700 w-72 lg:w-5/6 m-auto mt-2 p-2 hover:bg-indigo-500 rounded-2xl  text-white text-center shadow-xl shadow-bg-blue-700">
-              <button type="submit" class="lg:text-sm text-lg font-bold">Send Review</button>
+            <div class="">
+              <button type="submit" class="lg:text-sm text-lg font-bold inline-flex items-center bg-[#e4bc84] border border-transparent rounded-md text-black uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition w-72 lg:w-5/6 m-auto mt-2 rounded-2xl pl-20 p-4 shadow-xl ml-8">Send Review</button>
             </div>
             </br></br>
             
