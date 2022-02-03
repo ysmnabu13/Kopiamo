@@ -202,7 +202,7 @@
         </div>
       
         <div class="text-center p-4" style="background-color: #37251b;">
-          © 2022 Copyright: Kopiamo test
+          © 2022 Copyright: Kopiamo 
         </div>
     </footer>
 </x-app-layout>
