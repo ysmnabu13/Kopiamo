@@ -79,48 +79,12 @@
                                             </td> 
                                             
                                             <td class="px-6 py-4 mt-2 whitespace-nowrap text-sm font-medium">
-                                                <a href="{{ route('review.show', $review->order_id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">View Menu in Order</a>
-                                                <!--button class="bg-blue-500 text-white rounded-md px-4 py-2 hover:bg-blue-700 transition" onclick="openModal('modal')">Open Review Details</button-->
-                                                <!--<form class="inline-block" action="{{ route('review.destroy', $review->id) }}" method="POST" onsubmit="return confirm('Are you sure?');">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button type="submit" class="text-red-600 hover:text-red-900 mr-2 mt-4" >Delete</button>-->
-                                                </form>
+                                                <a href="{{ route('review.show', $review->order_id) }}" class="text-blue-600 hover:text-blue-900 mb-2 mr-2">Review details</a>
+               
                                             </td>
                                         </tr>
 
-                                        <!--dasadadasdnadbasdbuasdbjasdbuyasdvuyasdbuyazsdbuaysd
-                                        <div id="modal" class="fixed hidden z-50 inset-0 bg-gray-900 bg-opacity-60 overflow-y-auto h-full w-full px-4">
-                                            <div class="relative top-40 mx-auto shadow-lg rounded-md bg-white max-w-md"-->
-
-                                                <!-- Modal header 
-                                                <div class="flex justify-between items-center bg-yellow-800 text-white text-xl rounded-t-md px-4 py-2">
-                                                    <h3>ORDER ID:{{ $review->order_id}}</h3>
-                                                    <button onclick="closeModal()">x</button>
-                                                </div-->
-
-                                                <!-- Modal body PART NI TAK JADI JADI CAMNE NAK DISPLAY ORDER MENU WEHHH
-                                                <div class="max-h-48 overflow-y-scroll p-4">
-                                                    <b>Customer's comment:</b><br/>
-                                                    {{ $review->comment }}<br/><br/>
-                                                
-                                                    <b>Customer's order menu:</b><br/>
-                                                @foreach ($orderitems as $items )
-                                                    @if($items->order_id == $review->order_id)
-                                                        -{{ $items->products->menuName }}-<br/>
-
-                                                    @endif
-                                                @endforeach
-                                                </div-->
-
-                                                
-
-                                                <!-- Modal footer 
-                                                <div class="px-4 py-2 border-t border-t-gray-500 flex justify-end items-center space-x-4">
-                                                    <button class="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition" onclick="closeModal()">Close</button>
-                                                </div>
-                                            </div>
-                                        </div-->
+                                     
                                     @endforeach
                                     </tbody>
                                 </table>
@@ -190,18 +154,7 @@
 
         @endif  
         @endauth 
-        
-        <script type="text/javascript">
-            function openModal(modalId) {
-                modal = document.getElementById(modalId)
-                modal.classList.remove('hidden')
-            }
 
-            function closeModal() {
-                modal = document.getElementById('modal')
-                modal.classList.add('hidden')
-            }
-        </script>
 
 </x-app-layout>
     
