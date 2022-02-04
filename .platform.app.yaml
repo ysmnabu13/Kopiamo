@@ -43,15 +43,6 @@ mounts:
   "storage/app/public":
       source: local
       source_path: "public"
-  "public/uploads":
-      source: local
-      source_path: "uploads"
-  "public/uploads/menus":
-      source: local
-      source_path: "menus"
-  "public/uploads/storage/profile-photos":
-      source: local
-      source_path: "profile-photos"
   "storage/framework/views":
       source: local
       source_path: "views"
@@ -64,6 +55,12 @@ mounts:
   "storage/logs":
       source: local
       source_path: "logs"
+  "public/uploads":
+      source: local
+      source_path: "uploads"
+  "public/uploads/storage/profile-photos":
+      source: local
+      source_path: "profile-photos"
   "bootstrap/cache":
       source: local
       source_path: "cache"
