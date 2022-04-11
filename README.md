@@ -25,7 +25,7 @@ A quick todo list for setting up a freshly cloned project.
 
 ## 5. Run in terminal
 ```
-php artisan migrate
+php artisan migrate:fresh --seed
 ```
 
 ```
